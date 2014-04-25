@@ -1,0 +1,70 @@
+﻿.pageheading
+{
+	text-align: left;
+	font-size: 22px;
+	font-weight: bolder;
+	color: #444547;
+	font-family: Arial,Times New Roman;
+}
+
+.divmain
+{
+	padding: 0px 10px 10px 20px;
+	width: 95%;
+}
+.divEmployee
+{
+	border: 1px solid #d0d0a5;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	-webkit-box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow: 0px 1px 3px rgba(23, 69, 88, .5);
+	background-color: #ffffff;
+	width: 765px;
+	height: 400px;
+	padding: 20px;
+}
+
+.maintab-content
+{
+	border: 1px solid #cccccc;
+	background: #ffffff;
+	color: #ffffff;
+	-webkit-box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow: 0px 1px 3px rgba(23, 69, 88, .5);
+}
+
+.hidden
+{
+	display: none;
+}
+
+.silverbuttons
+{
+    
+    margin-top:25px;
+    padding: 1px;
+    color: #62845b;
+    font-size: 16px;
+    font-weight:bolder;
+    border: solid 1px #aaaaaa;
+    -webkit-border-radius: .5em;
+    -moz-border-radius: .5em;
+    border-radius: .5em;
+    -webkit-box-shadow: 0px 0px 2px #aaaaaa;
+    -moz-box-shadow: 0px 1px 2px #28491c;
+    box-shadow: 2px 2px 2px #aaaaaa;
+    background: url(../images/HourlySales/silverbuttonbg.png) repeat-x;
+    
+    width:100px;
+    height:45px;
+    background-size:100px 45px;
+}
+
+.silverbuttons:hover
+{
+    cursor: pointer;
+    background: url(../images/HourlySales/popupbuttonsbg.png) repeat-x;
+    background-size:100px 45px;
+    color: #fcffff;
+}

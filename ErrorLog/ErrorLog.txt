@@ -1,0 +1,2751 @@
+Wednesday, July 25, 2012
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------7/26/2012 11:25:27 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/26/2012 11:30:41 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/26/2012 11:32:01 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/26/2012 11:32:13 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/26/2012 11:35:10 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/26/2012 11:36:17 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/26/2012 11:38:40 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/26/2012 11:38:44 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/26/2012 11:53:02 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/26/2012 11:56:00 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/26/2012 12:35:30 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/26/2012 12:36:14 PM
+
+System.Data.SqlClient.SqlException (0x80131904): Violation of PRIMARY KEY constraint 'pk_Course_pid'. Cannot insert duplicate key in object 'dbo.tblCourse'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(DbAsyncResult result, String methodName, Boolean sendToPipe)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at AddCourse.btnAdd_Click(Object sender, ImageClickEventArgs e) in c:\WEBSITES\outside-dev\content\AddCourse.aspx.cs:line 38
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/26/2012 12:39:48 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/26/2012 12:39:50 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/26/2012 12:42:37 PM
+
+System.Data.SqlClient.SqlException (0x80131904): Violation of PRIMARY KEY constraint 'pk_Course_pid'. Cannot insert duplicate key in object 'dbo.tblCourse'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(DbAsyncResult result, String methodName, Boolean sendToPipe)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at AddCourse.btnAdd_Click(Object sender, ImageClickEventArgs e) in c:\WEBSITES\outside-dev\content\AddCourse.aspx.cs:line 38
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/26/2012 12:43:11 PM
+
+System.Data.SqlClient.SqlException (0x80131904): Violation of PRIMARY KEY constraint 'pk_Course_pid'. Cannot insert duplicate key in object 'dbo.tblCourse'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(DbAsyncResult result, String methodName, Boolean sendToPipe)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at AddCourse.btnAdd_Click(Object sender, ImageClickEventArgs e) in c:\WEBSITES\outside-dev\content\AddCourse.aspx.cs:line 38
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 3:44:51 AM
+
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosUserAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 653
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 3:53:45 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 3:54:07 AM
+
+System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosUserAPI()
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 3:54:57 AM
+
+System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosUserAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 653
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 5:40:31 AM
+
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 5:40:31 AM
+
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 5:41:25 AM
+
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 5:41:25 AM
+
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 5:41:58 AM
+
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 5:41:58 AM
+
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 5:42:57 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 5:43:33 AM
+
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 5:43:34 AM
+
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 5:43:42 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 5:44:42 AM
+
+Object reference not set to an instance of an object.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 6:07:37 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 6:08:37 AM
+
+Object reference not set to an instance of an object.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 6:17:11 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 6:39:55 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 6:39:55 AM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation()
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 6:39:55 AM
+
+System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosUserAPI()
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 6:41:36 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 6:41:39 AM
+
+System.InvalidOperationException: The Update method can only be called on UpdatePanel with ID 'UpdatePanelMemberType' when UpdateMode is set to Conditional.
+   at System.Web.UI.UpdatePanel.Update()
+   at Search.bindGridView() in c:\WEBSITES\outside-dev\content\ListUsers.aspx.cs:line 85
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 6:41:41 AM
+
+System.InvalidOperationException: The Update method can only be called on UpdatePanel with ID 'UpdatePanelMemberType' when UpdateMode is set to Conditional.
+   at System.Web.UI.UpdatePanel.Update()
+   at Search.bindGridView() in c:\WEBSITES\outside-dev\content\ListUsers.aspx.cs:line 85
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 6:41:49 AM
+
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 6:41:49 AM
+
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 6:42:01 AM
+
+System.InvalidOperationException: The Update method can only be called on UpdatePanel with ID 'UpdatePanelMemberType' when UpdateMode is set to Conditional.
+   at System.Web.UI.UpdatePanel.Update()
+   at Search.bindGridView() in c:\WEBSITES\outside-dev\content\ListUsers.aspx.cs:line 85
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 6:42:06 AM
+
+System.InvalidOperationException: The Update method can only be called on UpdatePanel with ID 'UpdatePanelMemberType' when UpdateMode is set to Conditional.
+   at System.Web.UI.UpdatePanel.Update()
+   at Search.bindGridView() in c:\WEBSITES\outside-dev\content\ListUsers.aspx.cs:line 85
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 6:42:13 AM
+
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 6:42:13 AM
+
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 6:42:20 AM
+
+System.InvalidOperationException: The Update method can only be called on UpdatePanel with ID 'UpdatePanelMemberType' when UpdateMode is set to Conditional.
+   at System.Web.UI.UpdatePanel.Update()
+   at Search.bindGridView() in c:\WEBSITES\outside-dev\content\ListUsers.aspx.cs:line 85
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 6:50:49 AM
+
+System.InvalidOperationException: The Update method can only be called on UpdatePanel with ID 'UpdatePanelMemberType' when UpdateMode is set to Conditional.
+   at System.Web.UI.UpdatePanel.Update()
+   at Search.bindGridView() in c:\WEBSITES\outside-dev\content\ListUsers.aspx.cs:line 85
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 7:17:11 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 7:17:26 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 7:17:45 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 7:18:11 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 7:18:14 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 7:19:00 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 7:19:06 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 7:19:11 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 7:19:42 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 7:20:42 AM
+
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 7:20:42 AM
+
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 7:22:11 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 7:23:50 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 7:24:23 AM
+
+System.IndexOutOfRangeException: Cannot find table 2.
+   at System.Data.DataTableCollection.get_Item(Int32 index)
+   at Store.BindUnAssignedTeamListToStoreTeam() in c:\WEBSITES\outside-dev\content\App_Code\BAL\Store.cs:line 286
+   at ListStores.BindUnAssignedTeamListToStoreTeam(String StoreID) in c:\WEBSITES\outside-dev\content\ListStores.aspx.cs:line 71
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 7:24:32 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 7:24:39 AM
+
+System.IndexOutOfRangeException: Cannot find table 2.
+   at System.Data.DataTableCollection.get_Item(Int32 index)
+   at Store.BindUnAssignedTeamListToStoreTeam() in c:\WEBSITES\outside-dev\content\App_Code\BAL\Store.cs:line 286
+   at ListStores.BindUnAssignedTeamListToStoreTeam(String StoreID) in c:\WEBSITES\outside-dev\content\ListStores.aspx.cs:line 71
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 7:25:48 AM
+
+System.IndexOutOfRangeException: Cannot find table 2.
+   at System.Data.DataTableCollection.get_Item(Int32 index)
+   at Store.BindUnAssignedTeamListToStoreTeam() in c:\WEBSITES\outside-dev\content\App_Code\BAL\Store.cs:line 286
+   at ListStores.BindUnAssignedTeamListToStoreTeam(String StoreID) in c:\WEBSITES\outside-dev\content\ListStores.aspx.cs:line 71
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 7:28:12 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 7:28:16 AM
+
+System.IndexOutOfRangeException: Cannot find table 2.
+   at System.Data.DataTableCollection.get_Item(Int32 index)
+   at Store.BindUnAssignedTeamListToStoreTeam() in c:\WEBSITES\outside-dev\content\App_Code\BAL\Store.cs:line 286
+   at ListStores.BindUnAssignedTeamListToStoreTeam(String StoreID) in c:\WEBSITES\outside-dev\content\ListStores.aspx.cs:line 71
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 7:29:36 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 7:29:46 AM
+
+System.IndexOutOfRangeException: Cannot find table 2.
+   at System.Data.DataTableCollection.get_Item(Int32 index)
+   at Store.BindUnAssignedTeamListToStoreTeam() in c:\WEBSITES\outside-dev\content\App_Code\BAL\Store.cs:line 286
+   at ListStores.BindUnAssignedTeamListToStoreTeam(String StoreID) in c:\WEBSITES\outside-dev\content\ListStores.aspx.cs:line 71
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 7:29:57 AM
+
+System.IndexOutOfRangeException: Cannot find table 2.
+   at System.Data.DataTableCollection.get_Item(Int32 index)
+   at Store.BindUnAssignedTeamListToStoreTeam() in c:\WEBSITES\outside-dev\content\App_Code\BAL\Store.cs:line 286
+   at ListStores.BindUnAssignedTeamListToStoreTeam(String StoreID) in c:\WEBSITES\outside-dev\content\ListStores.aspx.cs:line 71
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 7:36:12 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 7:39:02 AM
+
+System.Web.HttpException (0x80004005): DataBinding: 'System.Data.DataRowView' does not contain a property with the name 'StoreName'.
+   at System.Web.UI.DataBinder.GetPropertyValue(Object container, String propName)
+   at System.Web.UI.DataBinder.Eval(Object container, String[] expressionParts)
+   at ASP.liststores_aspx.__DataBind__control10(Object sender, EventArgs e) in c:\WEBSITES\outside-dev\content\ListStores.aspx:line 58
+   at System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   at System.Web.UI.Control.DataBindChildren()
+   at System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   at System.Web.UI.Control.DataBindChildren()
+   at System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   at System.Web.UI.WebControls.GridView.CreateRow(Int32 rowIndex, Int32 dataSourceIndex, DataControlRowType rowType, DataControlRowState rowState, Boolean dataBind, Object dataItem, DataControlField[] fields, TableRowCollection rows, PagedDataSource pagedDataSource)
+   at System.Web.UI.WebControls.GridView.CreateChildControls(IEnumerable dataSource, Boolean dataBinding)
+   at System.Web.UI.WebControls.CompositeDataBoundControl.PerformDataBinding(IEnumerable data)
+   at System.Web.UI.WebControls.GridView.PerformDataBinding(IEnumerable data)
+   at System.Web.UI.WebControls.DataBoundControl.OnDataSourceViewSelectCallback(IEnumerable data)
+   at System.Web.UI.WebControls.DataBoundControl.PerformSelect()
+   at ListStores.bindGridView() in c:\WEBSITES\outside-dev\content\ListStores.aspx.cs:line 104
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 7:39:02 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 7:39:26 AM
+
+System.Web.HttpException (0x80004005): DataBinding: 'System.Data.DataRowView' does not contain a property with the name 'StoreName'.
+   at System.Web.UI.DataBinder.GetPropertyValue(Object container, String propName)
+   at System.Web.UI.DataBinder.Eval(Object container, String[] expressionParts)
+   at ASP.liststores_aspx.__DataBind__control10(Object sender, EventArgs e) in c:\WEBSITES\outside-dev\content\ListStores.aspx:line 58
+   at System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   at System.Web.UI.Control.DataBindChildren()
+   at System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   at System.Web.UI.Control.DataBindChildren()
+   at System.Web.UI.Control.DataBind(Boolean raiseOnDataBinding)
+   at System.Web.UI.WebControls.GridView.CreateRow(Int32 rowIndex, Int32 dataSourceIndex, DataControlRowType rowType, DataControlRowState rowState, Boolean dataBind, Object dataItem, DataControlField[] fields, TableRowCollection rows, PagedDataSource pagedDataSource)
+   at System.Web.UI.WebControls.GridView.CreateChildControls(IEnumerable dataSource, Boolean dataBinding)
+   at System.Web.UI.WebControls.CompositeDataBoundControl.PerformDataBinding(IEnumerable data)
+   at System.Web.UI.WebControls.GridView.PerformDataBinding(IEnumerable data)
+   at System.Web.UI.WebControls.DataBoundControl.OnDataSourceViewSelectCallback(IEnumerable data)
+   at System.Web.UI.WebControls.DataBoundControl.PerformSelect()
+   at ListStores.bindGridView() in c:\WEBSITES\outside-dev\content\ListStores.aspx.cs:line 104
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 7:39:26 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 7:40:26 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 7:46:36 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 7:49:07 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 7:50:53 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 7:51:44 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 7:55:05 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 7:55:52 AM
+
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AddEmployee.LoadEmployee() in c:\WEBSITES\outside-dev\content\AddEmployee.aspx.cs:line 194
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 7:56:06 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 7:56:16 AM
+
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at AddEmployee.LoadEmployee() in c:\WEBSITES\outside-dev\content\AddEmployee.aspx.cs:line 194
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 8:00:37 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 8:01:30 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 8:08:48 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 8:09:10 AM
+
+System.Data.SqlClient.SqlException (0x80131904): Error converting data type nvarchar to int.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters) in c:\WEBSITES\outside-dev\content\App_Code\DAL\SQLHelper.cs:line 1039
+   at Store.InsertStoreTeam() in c:\WEBSITES\outside-dev\content\App_Code\BAL\Store.cs:line 299
+   at ListStores.btnAdd_Click(Object sender, ImageClickEventArgs e) in c:\WEBSITES\outside-dev\content\ListStores.aspx.cs:line 176
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 8:09:28 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 8:10:32 AM
+
+System.Data.SqlClient.SqlException (0x80131904): Error converting data type nvarchar to int.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at Microsoft.ApplicationBlocks.Data.SqlHelper.ExecuteScalar(SqlConnection connection, CommandType commandType, String commandText, SqlParameter[] commandParameters) in c:\WEBSITES\outside-dev\content\App_Code\DAL\SQLHelper.cs:line 1039
+   at Store.InsertStoreTeam() in c:\WEBSITES\outside-dev\content\App_Code\BAL\Store.cs:line 299
+   at ListStores.btnAdd_Click(Object sender, ImageClickEventArgs e) in c:\WEBSITES\outside-dev\content\ListStores.aspx.cs:line 176
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 8:13:57 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 8:38:17 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 8:41:56 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 8:44:22 AM
+
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 8:44:22 AM
+
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 8:54:08 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 11:12:06 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 11:22:48 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 11:26:54 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 11:27:06 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 11:27:12 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 11:27:23 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 11:29:31 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/27/2012 12:12:26 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/30/2012 1:49:09 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7/30/2012 2:47:12 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/7/2012 1:50:17 PM
+
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/7/2012 1:50:17 PM
+
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/22/2012 1:09:47 PM
+
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.End()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 392
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 9:48:01 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 9:53:10 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 10:16:56 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 10:18:37 AM
+
+System.Net.WebException: The remote server returned an error: (405) Method Not Allowed.
+   at System.Net.HttpWebRequest.GetResponse()
+   at AddEmployee.HelperforLitmosassignusertoteam(String TeamID) in c:\WEBSITES\outside-dev\content\AddEmployee.aspx.cs:line 486
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 1:37:37 PM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 1:37:37 PM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 1:37:38 PM
+
+System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at Main.AddNode() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 540
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 510
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 1:37:38 PM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 1:37:38 PM
+
+System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at Main.AddNode() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 540
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 510
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 1:37:38 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 1:37:43 PM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 1:37:43 PM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 1:37:43 PM
+
+System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at Main.AddNode() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 540
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 510
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 1:37:43 PM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 1:37:43 PM
+
+System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at Main.AddNode() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 540
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 510
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 1:37:43 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 1:38:19 PM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 1:38:19 PM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 1:38:19 PM
+
+System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at Main.AddNode() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 540
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 510
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 1:38:19 PM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 1:38:19 PM
+
+System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at Main.AddNode() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 540
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 510
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 1:38:19 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 1:42:11 PM
+
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.End()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 392
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 1:42:19 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 1:44:53 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 1:45:33 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 1:46:07 PM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 1:46:07 PM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 1:46:07 PM
+
+System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at Main.AddNode() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 540
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 510
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 1:46:07 PM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 1:46:07 PM
+
+System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at Main.AddNode() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 540
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 510
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 1:46:07 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 1:58:06 PM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 1:58:06 PM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 1:58:06 PM
+
+System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at Main.AddNode() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 540
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 510
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 1:58:06 PM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 1:58:06 PM
+
+System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at Main.AddNode() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 540
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 510
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 1:58:06 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 2:01:16 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 2:04:28 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 2:07:39 PM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 2:07:39 PM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 2:07:39 PM
+
+System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at Main.AddNode() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 540
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 510
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 2:07:39 PM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 2:07:39 PM
+
+System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at Main.AddNode() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 540
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 510
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 2:07:39 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 2:07:48 PM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 2:07:48 PM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 2:07:48 PM
+
+System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at Main.AddNode() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 540
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 510
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 2:07:48 PM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 2:07:48 PM
+
+System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at Main.AddNode() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 540
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 510
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 2:07:48 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 2:12:29 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 2:13:53 PM
+
+System.Net.WebException: The remote server returned an error: (405) Method Not Allowed.
+   at System.Net.HttpWebRequest.GetResponse()
+   at AddEmployee.HelperforLitmosassignusertoteam(String TeamID) in c:\WEBSITES\outside-dev\content\AddEmployee.aspx.cs:line 486
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 2:35:25 PM
+
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.End()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 392
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 4:54:35 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 4:54:36 PM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 4:54:36 PM
+
+System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosUserAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 667
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 4:54:42 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 4:54:42 PM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 4:54:42 PM
+
+System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosUserAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 667
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 4:55:31 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 4:55:31 PM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/24/2012 4:55:31 PM
+
+System.Net.WebException: The remote server returned an error: (404) Not Found.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosUserAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 667
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/27/2012 10:31:41 AM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/27/2012 10:31:41 AM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/27/2012 10:31:41 AM
+
+System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at Main.AddNode() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 540
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 510
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/27/2012 10:31:41 AM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/27/2012 10:31:41 AM
+
+System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at Main.AddNode() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 540
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 510
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/27/2012 10:31:41 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/27/2012 10:35:22 AM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/27/2012 10:35:22 AM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/27/2012 10:35:23 AM
+
+System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at Main.AddNode() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 540
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 510
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/27/2012 10:35:23 AM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/27/2012 10:35:23 AM
+
+System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at Main.AddNode() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 540
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 510
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/27/2012 10:35:23 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/27/2012 10:35:57 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+8/27/2012 10:36:40 AM
+
+System.Net.WebException: The remote server returned an error: (405) Method Not Allowed.
+   at System.Net.HttpWebRequest.GetResponse()
+   at AddEmployee.HelperforLitmosassignusertoteam(String TeamID) in c:\WEBSITES\outside-dev\content\AddEmployee.aspx.cs:line 486
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+9/3/2012 5:58:19 AM
+
+System.Net.WebException: The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel. ---> System.Security.Authentication.AuthenticationException: The remote certificate is invalid according to the validation procedure.
+   at System.Net.Security.SslState.StartSendAuthResetSignal(ProtocolToken message, AsyncProtocolRequest asyncRequest, Exception exception)
+   at System.Net.Security.SslState.StartSendBlob(Byte[] incoming, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ProcessReceivedBlob(Byte[] buffer, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartReceiveBlob(Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartSendBlob(Byte[] incoming, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ProcessReceivedBlob(Byte[] buffer, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartReceiveBlob(Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartSendBlob(Byte[] incoming, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ProcessReceivedBlob(Byte[] buffer, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartReceiveBlob(Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartSendBlob(Byte[] incoming, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ForceAuthentication(Boolean receiveFirst, Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ProcessAuthentication(LazyAsyncResult lazyResult)
+   at System.Threading.ExecutionContext.runTryCode(Object userData)
+   at System.Runtime.CompilerServices.RuntimeHelpers.ExecuteCodeWithGuaranteedCleanup(TryCode code, CleanupCode backoutCode, Object userData)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean ignoreSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Net.TlsStream.ProcessAuthentication(LazyAsyncResult result)
+   at System.Net.TlsStream.Write(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.PooledStream.Write(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.ConnectStream.WriteHeaders(Boolean async)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+9/3/2012 5:58:20 AM
+
+System.Net.WebException: The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel. ---> System.Security.Authentication.AuthenticationException: The remote certificate is invalid according to the validation procedure.
+   at System.Net.Security.SslState.StartSendAuthResetSignal(ProtocolToken message, AsyncProtocolRequest asyncRequest, Exception exception)
+   at System.Net.Security.SslState.StartSendBlob(Byte[] incoming, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ProcessReceivedBlob(Byte[] buffer, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartReceiveBlob(Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartSendBlob(Byte[] incoming, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ProcessReceivedBlob(Byte[] buffer, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartReceiveBlob(Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartSendBlob(Byte[] incoming, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ProcessReceivedBlob(Byte[] buffer, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartReceiveBlob(Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartSendBlob(Byte[] incoming, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ForceAuthentication(Boolean receiveFirst, Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ProcessAuthentication(LazyAsyncResult lazyResult)
+   at System.Threading.ExecutionContext.runTryCode(Object userData)
+   at System.Runtime.CompilerServices.RuntimeHelpers.ExecuteCodeWithGuaranteedCleanup(TryCode code, CleanupCode backoutCode, Object userData)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean ignoreSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Net.TlsStream.ProcessAuthentication(LazyAsyncResult result)
+   at System.Net.TlsStream.Write(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.PooledStream.Write(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.ConnectStream.WriteHeaders(Boolean async)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+9/3/2012 5:58:54 AM
+
+System.Net.WebException: The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel. ---> System.Security.Authentication.AuthenticationException: The remote certificate is invalid according to the validation procedure.
+   at System.Net.Security.SslState.StartSendAuthResetSignal(ProtocolToken message, AsyncProtocolRequest asyncRequest, Exception exception)
+   at System.Net.Security.SslState.StartSendBlob(Byte[] incoming, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ProcessReceivedBlob(Byte[] buffer, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartReceiveBlob(Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartSendBlob(Byte[] incoming, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ProcessReceivedBlob(Byte[] buffer, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartReceiveBlob(Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartSendBlob(Byte[] incoming, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ProcessReceivedBlob(Byte[] buffer, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartReceiveBlob(Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartSendBlob(Byte[] incoming, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ForceAuthentication(Boolean receiveFirst, Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ProcessAuthentication(LazyAsyncResult lazyResult)
+   at System.Threading.ExecutionContext.runTryCode(Object userData)
+   at System.Runtime.CompilerServices.RuntimeHelpers.ExecuteCodeWithGuaranteedCleanup(TryCode code, CleanupCode backoutCode, Object userData)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean ignoreSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Net.TlsStream.ProcessAuthentication(LazyAsyncResult result)
+   at System.Net.TlsStream.Write(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.PooledStream.Write(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.ConnectStream.WriteHeaders(Boolean async)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+9/3/2012 5:58:54 AM
+
+System.Net.WebException: The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel. ---> System.Security.Authentication.AuthenticationException: The remote certificate is invalid according to the validation procedure.
+   at System.Net.Security.SslState.StartSendAuthResetSignal(ProtocolToken message, AsyncProtocolRequest asyncRequest, Exception exception)
+   at System.Net.Security.SslState.StartSendBlob(Byte[] incoming, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ProcessReceivedBlob(Byte[] buffer, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartReceiveBlob(Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartSendBlob(Byte[] incoming, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ProcessReceivedBlob(Byte[] buffer, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartReceiveBlob(Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartSendBlob(Byte[] incoming, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ProcessReceivedBlob(Byte[] buffer, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartReceiveBlob(Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartSendBlob(Byte[] incoming, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ForceAuthentication(Boolean receiveFirst, Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ProcessAuthentication(LazyAsyncResult lazyResult)
+   at System.Threading.ExecutionContext.runTryCode(Object userData)
+   at System.Runtime.CompilerServices.RuntimeHelpers.ExecuteCodeWithGuaranteedCleanup(TryCode code, CleanupCode backoutCode, Object userData)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean ignoreSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Net.TlsStream.ProcessAuthentication(LazyAsyncResult result)
+   at System.Net.TlsStream.Write(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.PooledStream.Write(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.ConnectStream.WriteHeaders(Boolean async)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+9/3/2012 7:16:03 AM
+
+System.Net.WebException: The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel. ---> System.Security.Authentication.AuthenticationException: The remote certificate is invalid according to the validation procedure.
+   at System.Net.Security.SslState.StartSendAuthResetSignal(ProtocolToken message, AsyncProtocolRequest asyncRequest, Exception exception)
+   at System.Net.Security.SslState.StartSendBlob(Byte[] incoming, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ProcessReceivedBlob(Byte[] buffer, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartReceiveBlob(Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartSendBlob(Byte[] incoming, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ProcessReceivedBlob(Byte[] buffer, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartReceiveBlob(Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartSendBlob(Byte[] incoming, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ProcessReceivedBlob(Byte[] buffer, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartReceiveBlob(Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartSendBlob(Byte[] incoming, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ForceAuthentication(Boolean receiveFirst, Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ProcessAuthentication(LazyAsyncResult lazyResult)
+   at System.Threading.ExecutionContext.runTryCode(Object userData)
+   at System.Runtime.CompilerServices.RuntimeHelpers.ExecuteCodeWithGuaranteedCleanup(TryCode code, CleanupCode backoutCode, Object userData)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean ignoreSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Net.TlsStream.ProcessAuthentication(LazyAsyncResult result)
+   at System.Net.TlsStream.Write(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.PooledStream.Write(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.ConnectStream.WriteHeaders(Boolean async)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+9/3/2012 7:16:03 AM
+
+System.Net.WebException: The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel. ---> System.Security.Authentication.AuthenticationException: The remote certificate is invalid according to the validation procedure.
+   at System.Net.Security.SslState.StartSendAuthResetSignal(ProtocolToken message, AsyncProtocolRequest asyncRequest, Exception exception)
+   at System.Net.Security.SslState.StartSendBlob(Byte[] incoming, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ProcessReceivedBlob(Byte[] buffer, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartReceiveBlob(Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartSendBlob(Byte[] incoming, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ProcessReceivedBlob(Byte[] buffer, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartReceiveBlob(Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartSendBlob(Byte[] incoming, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ProcessReceivedBlob(Byte[] buffer, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartReceiveBlob(Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.StartSendBlob(Byte[] incoming, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ForceAuthentication(Boolean receiveFirst, Byte[] buffer, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslState.ProcessAuthentication(LazyAsyncResult lazyResult)
+   at System.Threading.ExecutionContext.runTryCode(Object userData)
+   at System.Runtime.CompilerServices.RuntimeHelpers.ExecuteCodeWithGuaranteedCleanup(TryCode code, CleanupCode backoutCode, Object userData)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean ignoreSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Net.TlsStream.ProcessAuthentication(LazyAsyncResult result)
+   at System.Net.TlsStream.Write(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.PooledStream.Write(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.ConnectStream.WriteHeaders(Boolean async)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+9/5/2012 7:32:53 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+9/5/2012 7:34:43 AM
+
+System.Net.WebException: The remote server returned an error: (405) Method Not Allowed.
+   at System.Net.HttpWebRequest.GetResponse()
+   at AddEmployee.HelperforLitmosassignusertoteam(String TeamID) in c:\WEBSITES\outside-dev\content\AddEmployee.aspx.cs:line 486
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+9/5/2012 7:50:34 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+9/5/2012 8:52:18 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+9/5/2012 8:52:29 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+9/5/2012 8:52:29 AM
+
+System.Data.SqlClient.SqlException (0x80131904): Conversion failed when converting the varchar value 'asasas' to data type int.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at Main.StoreManagerOverrideUserCourses() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 1135
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+9/6/2012 8:54:25 AM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+9/6/2012 8:54:25 AM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+9/6/2012 8:54:26 AM
+
+System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at Main.AddNode() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 540
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 510
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+9/6/2012 8:54:26 AM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+9/6/2012 8:54:26 AM
+
+System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at Main.AddNode() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 540
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 510
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+9/6/2012 8:54:26 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+9/11/2012 2:25:59 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+9/20/2012 12:32:57 PM
+
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+9/20/2012 12:32:57 PM
+
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/4/2012 2:38:04 AM
+
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.End()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 392
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/4/2012 2:38:05 AM
+
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.End()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 392
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/5/2012 9:43:23 AM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/5/2012 9:43:23 AM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/5/2012 9:43:23 AM
+
+System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at Main.AddNode() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 540
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 510
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/5/2012 9:43:23 AM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/5/2012 9:43:23 AM
+
+System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at Main.AddNode() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 540
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 510
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/5/2012 9:43:23 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/5/2012 3:09:42 PM
+
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.End()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 392
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/5/2012 3:09:50 PM
+
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/5/2012 3:09:50 PM
+
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/5/2012 3:15:54 PM
+
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.End()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 392
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/5/2012 3:15:59 PM
+
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/5/2012 3:15:59 PM
+
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/8/2012 10:44:20 AM
+
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/8/2012 10:44:20 AM
+
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/8/2012 10:44:50 AM
+
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.End()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 392
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/8/2012 11:01:49 AM
+
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/8/2012 11:01:49 AM
+
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/8/2012 11:02:14 AM
+
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/8/2012 11:02:14 AM
+
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/8/2012 11:03:16 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/9/2012 2:38:18 PM
+
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.End()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 392
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/9/2012 2:49:41 PM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/9/2012 2:49:41 PM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/9/2012 2:49:41 PM
+
+System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at Main.AddNode() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 540
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 510
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/9/2012 2:49:41 PM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/9/2012 2:49:41 PM
+
+System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at Main.AddNode() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 540
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 510
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/9/2012 2:49:41 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/9/2012 2:58:43 PM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/9/2012 2:58:43 PM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/9/2012 2:58:43 PM
+
+System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at Main.AddNode() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 540
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 510
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/9/2012 2:58:43 PM
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'and'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning()
+   at System.Data.SqlClient.TdsParser.Run(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj)
+   at System.Data.SqlClient.SqlDataReader.ConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, DbAsyncResult result)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 347
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/9/2012 2:58:44 PM
+
+System.IndexOutOfRangeException: There is no row at position 0.
+   at System.Data.RBTree`1.GetNodeByIndex(Int32 userIndex)
+   at System.Data.DataRowCollection.get_Item(Int32 index)
+   at Main.AddNode() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 540
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 510
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/9/2012 2:58:44 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/10/2012 11:52:19 AM
+
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.End()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 392
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/10/2012 11:52:25 AM
+
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/10/2012 11:52:25 AM
+
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/10/2012 3:51:42 PM
+
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.End()
+   at Main.GetEmployeeInformation() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 392
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/10/2012 3:51:47 PM
+
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/10/2012 3:51:47 PM
+
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Main.HelperforLitmosCourseAPI() in c:\WEBSITES\outside-dev\content\Main.aspx.cs:line 492
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/11/2012 6:11:40 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/11/2012 11:42:00 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/11/2012 11:48:00 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/11/2012 11:48:05 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/11/2012 11:48:12 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/11/2012 12:15:44 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/15/2012 2:38:21 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/15/2012 2:42:13 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/15/2012 3:02:09 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/15/2012 3:08:03 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/16/2012 11:24:53 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/16/2012 11:49:56 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/18/2012 10:43:35 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/18/2012 1:42:32 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/18/2012 1:43:35 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/18/2012 1:50:55 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/18/2012 1:51:16 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/18/2012 2:04:27 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/18/2012 2:09:55 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/18/2012 2:10:16 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/18/2012 3:20:36 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/18/2012 3:20:55 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/18/2012 4:15:09 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/19/2012 6:47:40 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/19/2012 6:49:27 PM
+
+System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\WEBSITES\dev.vitos.com\content\ResponseXML\StoreLitmosUserID.xml'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at System.Xml.XmlWriterSettings.CreateWriter(String outputFileName)
+   at AddEmployee.BuildXML(String userid) in c:\WEBSITES\dev.vitos.com\content\AddEmployee.aspx.cs:line 562
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/19/2012 6:49:27 PM
+
+Object reference not set to an instance of an object.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/22/2012 8:32:31 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/22/2012 9:34:44 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/22/2012 9:34:48 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/22/2012 9:34:54 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/22/2012 12:24:05 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/22/2012 12:25:30 PM
+
+System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\WEBSITES\dev.vitos.com\content\ResponseXML\StoreLitmosUserID.xml'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at System.Xml.XmlWriterSettings.CreateWriter(String outputFileName)
+   at AddEmployee.BuildXML(String userid) in c:\WEBSITES\dev.vitos.com\content\AddEmployee.aspx.cs:line 562
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+10/22/2012 12:25:30 PM
+
+Object reference not set to an instance of an object.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+11/15/2012 4:01:26 PM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+11/28/2012 11:15:52 AM
+
+Incorrect syntax near the keyword 'and'.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+

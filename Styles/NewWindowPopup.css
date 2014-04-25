@@ -1,0 +1,236 @@
+﻿#overlay
+{
+    position: fixed;
+    height: 100%;
+    width: 100%; 
+    background-color: #fffddd;
+    opacity: 0.4;
+}
+
+.main
+{
+    position: absolute;
+    top: 3%;
+    left: 25%;
+    margin-left: -70px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    border: 3px solid gray;
+    padding: 0;
+    border: 1px dashed silver;
+    background-color: #ffffff;
+}
+
+#dv_move
+{
+	border:2px solid #9f9e94;
+   -moz-border-radius: 15px;
+	border-radius: 15px; 
+	-webkit-box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow: 0px 1px 3px rgba(23, 69, 88, .5);
+}
+
+#dv_no_move
+{
+    padding: 2px -40px -50px 2px;
+    height: 90%;
+    width: 100%;
+}
+
+.title
+{
+    width: 100%;
+    height: 24px;
+    font-size: 15px;
+    font-weight:bolder;
+    color: #484949;
+    text-align:center;
+    vertical-align:middle;
+    border-bottom :2px solid #9f9e94;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    -moz-border-top-left-radius: 15px;
+    -moz-border-top-right-radius: 15px;
+    padding-top:7px;
+    background: url(../images/HourlySales/popuptitlebg.png) repeat-x;
+    
+}
+
+#dv_load
+{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -100px;
+    margin: 0 auto;
+}
+
+.daysbuttons
+{
+	text-align:center;
+	margin:0px auto;
+	width:90%;
+	height: 33px;
+}
+
+.daysbuttons input[type=submit]
+{
+	margin: 0px;
+    padding: 0px;
+    color: #ffffff;
+    border: 1px solid #28491c;
+    background: url(../images/HourlySales/popupbuttonshoverbg.png) repeat-x;
+    width:14%;
+    height: 33px;
+    float:left;
+    font-size: 14px;
+    font-weight:bolder;
+    color: #ffffff;
+    font-family: Arial,Times New Roman;
+    -webkit-box-shadow: 0px 0px 4px #28491c;
+	-moz-box-shadow: 0px 1px 2px #28491c;
+}
+
+.daysbuttons input[type=submit]:hover
+{
+	cursor: pointer;
+    background: url(../images/HourlySales/popupbuttonsbg.png) repeat-x;
+}
+
+.daysbuttons #btnMonday
+{	
+	border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+    -moz-border-top-left-radius: 7px;
+    -moz-border-bottom-left-radius: 7px;
+}
+
+.daysbuttons #btnSunday
+{
+	border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+    -moz-border-top-right-radius: 7px;
+    -moz-border-bottom-right-radius: 7px;
+}
+
+.hourlysalestbl
+{
+	width:98%;
+	border:1px solid #ffffff;
+	font-family: Arial,Times New Roman;
+}
+
+.hourlysalestbl td
+{
+	border:1px solid #ffffff;
+}
+.tableheading
+{
+    background: url(../images/HourlySales/popupbuttonsbg.png) repeat-x;
+    width:49%;
+    text-align:center;
+    font-size: 13px;
+    font-weight:bolder;
+    color: #ffffff;
+    
+}
+
+.tablesubheading td
+{
+	height:30px;
+	width:50px;
+    background: url(../images/HourlySales/tablesubheadingbg.png) repeat-x;
+    text-align:center;
+    font-size: 12px;
+    font-weight:bolder;
+    color: #ffffff;
+}
+
+.hours
+{
+	height:25px;
+	background: url(../images/HourlySales/hoursbg.png) repeat-x;
+	font-size: 12px;
+    font-weight:bolder;
+    color: #000000;
+    padding-left:5px;
+    text-align:left;
+}
+
+.data
+{
+	height:25px;
+	background-color:#b3d999;
+	font-size: 12px;
+    font-weight:bolder;
+    color: #000000;
+    text-align:right;
+    padding-right:5px;
+}
+
+.average
+{
+	height:30px;
+	background-color:#9ec288;
+	font-size: 13px;
+    font-weight:bolder;
+    color: #000000;
+    padding-left:5px;
+    text-align:left;
+}
+
+.silverbuttons
+{
+    
+    margin-top:25px;
+    padding: 1px;
+    color: #62845b;
+    font-size: 16px;
+    font-weight:bolder;
+    border: solid 1px #aaaaaa;
+    -webkit-border-radius: .5em;
+    -moz-border-radius: .5em;
+    border-radius: .5em;
+    -webkit-box-shadow: 0px 0px 2px #aaaaaa;
+    -moz-box-shadow: 0px 1px 2px #28491c;
+    box-shadow: 2px 2px 2px #aaaaaa;
+    background: url(../images/HourlySales/silverbuttonbg.png) repeat-x;
+    
+    width:100px;
+    height:45px;
+    background-size:100px 45px;
+}
+
+.silverbuttons:hover
+{
+    cursor: pointer;
+    background: url(../images/HourlySales/popupbuttonsbg.png) repeat-x;
+    background-size:100px 45px;
+    color: #fcffff;
+}
+
+.tbldate
+{
+	width:100%;
+	font-size: 16px; 
+	font-weight: bolder;
+    padding-left:10px;
+    padding-top:25px;
+}
+
+.tbldate td
+{
+	padding:10px;
+	vertical-align:top;
+}
+
+.tblthanks
+{
+	width:100%;
+	font-size: 25px;
+    font-weight:bolder;
+    text-align:center;
+    color:#4a4b4b;
+    padding-top:100px;
+}
+

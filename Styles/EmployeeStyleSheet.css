@@ -1,0 +1,49 @@
+﻿body 
+        {
+	        background-color: #fbf3c5;
+	        margin-bottom: 0px;
+	        margin-left: 0px;
+	        margin-right: 0px;
+	        margin-top: 0px;
+	        font-family: Arial, Verdana, Helvetica, sans-serif;
+	        font-size: 12px;
+        }
+        .star
+        {
+            color:Red;
+        }
+        .width
+        {
+            width:40px;
+        }
+        .txtdatewidth
+        {
+            width:80px;
+        }
+        .lefttd
+        {
+           text-align:right;
+           
+        }
+        .text
+        {
+            font-family:Arial;
+            font-weight:lighter;
+            font-size:12px;
+        }
+        .table
+        {
+            font-family:Arial;
+            font-size:12px;
+            border-bottom:1px;
+            border-top:1px;
+            border-left:1px;
+            border-right:1px;
+            border-style:solid;
+            border-color:Green;
+        }
+        .heading
+        {
+            background-color:#006D31;
+            color:#ffffff;
+        }

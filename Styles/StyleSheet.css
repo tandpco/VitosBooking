@@ -1,0 +1,184 @@
+﻿body
+{
+    background-color: #fbf3c5;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    font-family: Arial, Verdana, Helvetica, sans-serif;
+    font-size: 12px;
+}
+.star
+{
+    color: Red;
+}
+.width
+{
+    width: 40px;
+}
+.txtdatewidth
+{
+    width: 65px;
+}
+.lefttd
+{
+    text-align: right;
+}
+.text
+{
+    font-family: Arial;
+    font-weight: lighter;
+    font-size: 12px;
+}
+.table
+{
+    font-family: Arial;
+    font-size: 12px;
+    border-bottom: 1px;
+    border-top: 1px;
+    border-left: 1px;
+    border-right: 1px;
+    border-style: solid;
+    border-color: Green;
+}
+.heading
+{
+    background-color: #006D31;
+    color: #ffffff;
+}
+.tablewhitebackground
+{
+    font-family: Arial;
+    font-size: 12px;
+    border-bottom: 1px;
+    border-top: 1px;
+    border-left: 1px;
+    border-right: 1px;
+    border-style: solid;
+    border-color: Gray;
+    border-width:.5px;
+    background-color:#FFFFFF;
+    border-radius:10px 10px 10px 10px;
+}
+.rowcolor
+{
+    background-color: #E8E8E8;
+    color: Black;
+}
+.alternaterowcolor
+{
+    background-color: #E0E0E0;
+    color: Black;
+}
+.button
+{
+    
+    color: Black;
+    font-weight: bold;
+    border-style: solid;
+    border-width:.5px;
+    border-color:Gray;
+    font-family: Arial;
+    font-size: 16px;
+    height:60px;
+    width:320px;
+    border-radius:5px;
+}
+.paddingtd
+{
+    padding: 1px 3px 1px 3px;
+    border-top:1px solid green;
+}
+
+.griditembg
+{
+    background-image: url(../images/griditembg.png);
+}
+.nogriditembg
+{
+    background-color:#E7E8C0;
+}
+
+.popupbg
+{
+    background-image: url(../images/popupbg.png);
+    height:50px;
+    width:320px;
+    color:gray;/*#898B8B*/
+    font-weight:bolder;
+    border-style: solid;
+    border-width:.5px;
+    border-color:Gray;
+    border-collapse:collapse;
+    font-family:Arial;
+    font-size: 16px;
+    border-radius:5px 5px 5px 5px;
+}
+
+.schedulingheader
+{
+    background-image: url(../images/popupbg.png);
+    color: gray;
+    font-weight: bolder;
+    border-style: solid;
+    border-width:.5px;
+    border-color:Gray;
+    font-family: Arial;
+    font-size: 14px;
+    border-collapse:collapse;
+    height:37px;
+    width:320px;
+    border-radius:10px 10px 1px 1px;
+   
+}
+.createschedulebg
+{
+    background-image: url(../images/newpopupbg.png);
+    color: gray;
+    font-weight: bolder;
+    border-style: solid;
+    border-width:1px;
+    border-color:Gray;
+    font-family: Arial;
+    font-size: 16px;
+    border-collapse:collapse;
+    height:50px;
+    width:370px;
+    border-radius:5px 5px 5px 5px;
+}
+
+.createschedulebg:hover
+{
+	cursor: pointer;
+    background: url(../images/createschedulebg.png);
+    color: #FDFFFF;
+}
+.tdright
+{
+    text-align:right;
+}
+.tdfloatright
+{
+    float:right;
+}
+
+.tablebg
+{
+    background-color: #E7E8C0;
+    color:Black;
+    border-style: solid;
+    border-width:1px;
+    border-color:inherit;
+    font-family: Arial;
+    font-size: 12px;
+    border-collapse:inherit;
+    border-collapse:separate;
+    height:100px;
+    border-radius:15px 15px 10px 10px;
+}
+.footerbg
+{
+    background: url(../images/footerbg.png);
+}
+
+

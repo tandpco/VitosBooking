@@ -1,0 +1,68 @@
+﻿body {
+	background-color: #fbf3c5;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 0px;
+	font-family: Verdana,  Arial, Helvetica, sans-serif;
+	font-size: 13px;
+}
+
+button {
+	min-height: 75px;
+	min-width: 75px;
+	background-color: #f5a920;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+input[type=text] {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+input[type=password] {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+textarea {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+select {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.orangetext {
+	color: #f5a920;
+}
+
+.PageHeader {
+	font-size: 16px;
+	color: #b11218;
+	font-weight: bold;
+}
+
+.superSelect {
+	font-size: 48px;
+	font-weight: bold;
+}
+
+
+.largeSelect {
+	font-size: 22px;
+	font-weight: bold;
+}
+
+.smallbutton {
+	min-height: 50px;
+	min-width: 50px;
+	background-color: #f5a920;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.redbuttonthinwide {border-color: #fff2cc; font-family: verdana; font-size: 9pt; background-color: #c30a0d; color: #ffffff; width:100px; Height:25px}

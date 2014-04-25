@@ -1,0 +1,57 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Employee.master.cs" Inherits="Master_Page_Employee" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link id="stylesheet1" runat="server" rel="stylesheet" type="text/css" href="~/Styles/EmployeeStyleSheet.css" />
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <asp:ScriptManager ID="sm1" runat="server">
+    </asp:ScriptManager>
+    <table width="70%" cellpadding="0" cellspacing="0" align="center" class="table">
+        <tr>
+            <td align="Left">
+                <img id="Img1" src="../images/logo_sm.jpg" alt="" width="200" height="96" hspace="10" vspace="10" runat="server" />
+            </td>
+            
+                                    <td width="33%" align="center">
+                                        <div align="right">
+                                            <b>
+                                                <%= masterpage_name %></b>&nbsp;<br />
+                                            <b>Store:
+                                                <%= masterpage_storeid%></b>&nbsp;<br />
+                                            <div id="ClockDate">
+                                                <%=DateTime.Now.ToString("D")%>&nbsp;</div>
+                                            <div id="ClockTime" onclick="clockToggleSeconds()">
+                                                <%=DateTime.Now.ToShortTimeString()%>&nbsp;</div>
+                                            <div class="counter" id="redirect">
+                                                900&nbsp;</div>
+                                        </div>
+                                    </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="left" style="padding-left:2px;padding-right:2px;">
+                <table width="100%" cellpadding="0" cellspacing="0" align="center">
+                    <tr>
+                        <td>
+                            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                            </asp:ContentPlaceHolder>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                &nbsp;
+            </td>
+        </tr>
+    </table>
+    </form>
+</body>
+</html>

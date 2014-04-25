@@ -1,0 +1,30 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="IFrame.master.cs" Inherits="IFrame_Page_Employee" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Vito's Point of Sale</title>
+    <link href="../css/vitosmain.css" type="text/css" rel="Stylesheet" />
+    <link href="../css/messagecss.css" type="text/css" rel="Stylesheet" />
+    <link href="../css/vitos.css" type="text/css" rel="Stylesheet" />
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <asp:ScriptManager ID="sm1" runat="server">
+    </asp:ScriptManager>
+    <table width="300" height="400" cellpadding="0" cellspacing="0" align="center" style="font-family: Arial;
+        font-size: 12px; border-bottom: 1px; border-left: 1px; border-right: 1px; border-top: 1px;
+        border-style: solid; border-color: Green; background-color: #fbf3c5;">
+        <tr height="400">
+            <td valign="top" width="300">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </td>
+        </tr>
+    </table>
+    </form>
+</body>
+</html>
