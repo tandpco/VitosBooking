@@ -376,7 +376,7 @@ function getDelivery() {
 
 function getPhone() {
     var loDelivery,loPhone;
-//    alert("Starting getPhone()");
+    alert("Starting getPhone()");
     loDelivery = ie4? eval("document.all.btnDelivery") : document.getElementById('btnDelivery');
     loPhone = ie4? eval("document.all.btnPhone") : document.getElementById('btnPhone');
 /*
