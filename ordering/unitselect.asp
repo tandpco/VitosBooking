@@ -2442,6 +2442,23 @@ function saveEditReason() {
 		}
 	}
 }
+
+function verifyClick() {
+    alert("Hello this is an Alert");
+}
+
+function back2Delivery() {
+    var lsLocation = "neworder.asp";
+    alert("Back 2 Delivery");
+    window.location = lsLocation;
+}
+
+function back2Phone() {
+    var lsLocation = "neworder.asp";
+    alert("Back 2 Phone");
+    window.location = lsLocation;
+}
+
 //-->
 </script>
 </head>
@@ -2456,6 +2473,15 @@ function saveEditReason() {
 			<tr height="31">
 				<td valign="top" width="1010">
 					<div align="center">
+                        <ol id="tabs">
+						    <li><a onclick="back2Delivery();" title="Delivery">Delivery</a></li>
+						    <li><a onclick="back2Phone();" title="Phone">Phone</a></li>
+						    <li>Address</li>
+						    <li>Customer Name</li>
+						    <li class="active">Order</li>
+						    <li>Notes</li>
+						</ol>						
+
 <%
 If gbTestMode Then
 	If gbDevMode Then

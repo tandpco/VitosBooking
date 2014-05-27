@@ -329,39 +329,92 @@ function disableEnterKey() {
 	}
 }
 
-function getPhone() {
-	var loAreaCode, loPhone, loOrderTypeDiv, loPhoneDiv, loNameDiv;
+function getDelivery() {
+    var loDelivery,loPhone;
+    alert("Starting getDelivery()");
 
-	loAreaCode = ie4? eval("document.all.areacode") : document.getElementById('areacode');
-	loPhone = ie4? eval("document.all.phone") : document.getElementById('phone');
-<%
-If Len(Session("CustomerPhone")) > 0 Then
-%>
-	loAreaCode.value = "<%=Left(Session("CustomerPhone"), 3)%>";
-	loPhone.value = "<%=Mid(Session("CustomerPhone"), 4, 3) & "-" & Right(Session("CustomerPhone"), 4)%>";
-<%
-Else
-	If ganAreaCodes(0) = 0 Then
+/*
+    loBtnsDelivery = ie4? eval("document.all.btnDelivery") : document.getElementById('btnDelivery');
+    loBtnsPhone = ie4? eval("document.all.btnPhone") : document.getElementById('btnPhone');
+
+    loBtnsDelivery.class = "active";
+    loBtnsPhone.class = "";
+*/
+    var loAreaCode, loPhone, loOrderTypeDiv, loPhoneDiv, loNameDiv;
+
+    loAreaCode = ie4? eval("document.all.areacode") : document.getElementById('areacode');
+    loPhone = ie4? eval("document.all.phone") : document.getElementById('phone');
+    <%
+    If Len(Session("CustomerPhone")) > 0 Then
+    %>
+        loAreaCode.value = "<%=Left(Session("CustomerPhone"), 3)%>";
+    loPhone.value = "<%=Mid(Session("CustomerPhone"), 4, 3) & "-" & Right(Session("CustomerPhone"), 4)%>";
+    <%
+    Else
+    If ganAreaCodes(0) = 0 Then
 %>
 	loAreaCode.value = "419";
-<%
-	Else
+    <%
+        Else
+    %>
+        loAreaCode.value = "<%=ganAreaCodes(0)%>";
+    <%
+        End If
+    End If
+    %>
+	
+    loMainDiv = ie4? eval("document.all.ordertypediv") : document.getElementById('ordertypediv');
+    loPhoneDiv = ie4? eval("document.all.phonediv") : document.getElementById('phonediv');
+    loNameDiv = ie4? eval("document.all.namediv") : document.getElementById('namediv');
+	
+    loMainDiv.style.visibility = "hidden";
+    loNameDiv.style.visibility = "hidden";
+    loPhoneDiv.style.visibility = "visible";
+	
+    resetRedirect();
+}
+
+function getPhone() {
+    var loDelivery,loPhone;
+//    alert("Starting getPhone()");
+    loDelivery = ie4? eval("document.all.btnDelivery") : document.getElementById('btnDelivery');
+    loPhone = ie4? eval("document.all.btnPhone") : document.getElementById('btnPhone');
+/*
+    loDelivery.class = "";
+    loPhone.class = "active";
+*/
+    var loAreaCode, loPhone, loOrderTypeDiv, loPhoneDiv, loNameDiv;
+
+    loAreaCode = ie4? eval("document.all.areacode") : document.getElementById('areacode');
+    loPhone = ie4? eval("document.all.phone") : document.getElementById('phone');
+    <%
+    If Len(Session("CustomerPhone")) > 0 Then
+    %>
+        loAreaCode.value = "<%=Left(Session("CustomerPhone"), 3)%>";
+    loPhone.value = "<%=Mid(Session("CustomerPhone"), 4, 3) & "-" & Right(Session("CustomerPhone"), 4)%>";
+    <%
+    Else
+    If ganAreaCodes(0) = 0 Then
 %>
-	loAreaCode.value = "<%=ganAreaCodes(0)%>";
-<%
-	End If
-End If
-%>
+	loAreaCode.value = "419";
+    <%
+        Else
+    %>
+        loAreaCode.value = "<%=ganAreaCodes(0)%>";
+    <%
+        End If
+    End If
+    %>
 	
-	loMainDiv = ie4? eval("document.all.ordertypediv") : document.getElementById('ordertypediv');
-	loPhoneDiv = ie4? eval("document.all.phonediv") : document.getElementById('phonediv');
-	loNameDiv = ie4? eval("document.all.namediv") : document.getElementById('namediv');
+    loMainDiv = ie4? eval("document.all.ordertypediv") : document.getElementById('ordertypediv');
+    loPhoneDiv = ie4? eval("document.all.phonediv") : document.getElementById('phonediv');
+    loNameDiv = ie4? eval("document.all.namediv") : document.getElementById('namediv');
 	
-	loMainDiv.style.visibility = "hidden";
-	loNameDiv.style.visibility = "hidden";
-	loPhoneDiv.style.visibility = "visible";
+    loMainDiv.style.visibility = "hidden";
+    loNameDiv.style.visibility = "hidden";
+    loPhoneDiv.style.visibility = "visible";
 	
-	resetRedirect();
+    resetRedirect();
 }
 
 function setFocusAreaCode(pbAreaCode) {
@@ -692,6 +745,13 @@ function shiftName() {
 	resetRedirect();
 }
 
+function clrPhone() {
+    var loPhone;
+	
+    loPhone = ie4? eval("document.all.phone") : document.getElementById('phone');
+    loPhone.value = "";
+}
+
 function goNext() {
 	var loName, lsName, loAreaCode, loPhone, lsValue, lsLocation;
 	
@@ -704,7 +764,7 @@ function goNext() {
 			return false;
 		lsValue = loAreaCode.value + loPhone.value.substr(0, 3) + loPhone.value.substr(4);
 		
-		lsLocation = "customerfind.asp?t=" + gnOrderType.toString() + "&p=" + lsValue;
+		lsLocation = "customerfind.asp?t=" + gnOrderType.toString() + "&p=" + lsValue + "&r=3";
 	}
 	else {
 		loName = ie4? eval("document.all.name") : document.getElementById('name');
@@ -724,23 +784,33 @@ function goQuick() {
 }
 
 function goCallerID(psPhone) {
-	var loName, lsName, loPhone, lsValue, lsLocation;
+//    alert("Starting goCallerID()");
+//    loDelivery = ie4? eval("document.all.btnDelivery") : document.getElementById('btnDelivery');
+//    loPhone = ie4? eval("document.all.btnPhone") : document.getElementById('btnPhone');
+    if(gnOrderType == 2) {
+        document.getElementById("btnDelivery").innerHTML = "Pick Up";
+    }
+//    document.getElementById("btnDelivery").className = "active";
+
+    var loName, lsName, loPhone, lsValue, lsLocation;
 	
 	if (isNaN(Number(psPhone))) {
 		getPhone();
-	}
-	else {
+	} else {
 		if (psPhone.length != 10) {
 			loPhone = ie4? eval("document.all.phone") : document.getElementById('phone');
 			loPhone.value = psPhone;
 			getPhone();
-		}
-		else {
-			lsLocation = "customerfind.asp?t=" + gnOrderType.toString() + "&p=" + psPhone;
+		} else {
+			lsLocation = "customerfind.asp?t=" + gnOrderType.toString() + "&p=" + psPhone + "&r=3";
 			
 			window.location = lsLocation;
 		}
 	}
+}
+
+function goBack() {
+    window.location = "neworder.asp";
 }
 
 function iframeclick() {
@@ -763,6 +833,14 @@ document.getElementById("litmosiframe").contentWindow.document.body.onclick = fu
 			<tr height="31">
 				<td valign="top" width="1010">
 					<div align="center">
+                        <ol id="tabs">
+						    <li id="btnDelivery"><a onclick="gnOrderType = 1; getPhone();" title="Delivery">Delivery</a></li>
+						    <li><a onclick="gnOrderType = 2; getPhone();" title="Delivery">Phone</a></li>
+						    <li>Address</li>
+						    <li>Customer Name</li>
+						    <li>Order</li>
+						    <li>Notes</li>
+						</ol>
 <%
 If gbTestMode Then
 	If gbDevMode Then
@@ -784,7 +862,7 @@ End If
 					</div>
 				</td>
 			</tr>
-			<tr height="628">
+			<tr height="500">
 				<td valign="top" width="1010">
 					<div id="content" style="position: relative; width: 1010px; height: 615px; overflow: auto;">
 						<div id="ordertypediv" style="position: absolute; top: 0px; left: 0px; width: 1010px;">
@@ -797,7 +875,9 @@ For i = 0 To UBound(ganOrderTypeIDs)
 		Case 1, 2
 %>
 										<div style="position: relative; height: 100px;">
-										<div style="position: absolute; top: 0px; left: 0px;"><button style="width:125px; height: 100px;" onclick="gnOrderType = <%=ganOrderTypeIDs(i)%>; getPhone();"><%=gasOrderTypeDescriptions(i)%></button></div>
+<!--										<div style="position: absolute; top: 0px; left: 0px;"><button style="width:125px; height: 100px;" onclick="gnOrderType = <%=ganOrderTypeIDs(i)%>; getPhone();"><%=gasOrderTypeDescriptions(i)%></button></div> -->
+                							<div style="position: absolute; top: 0px; left: 0px;"><button style="width:125px; height: 100px;" ><%=gasOrderTypeDescriptions(i)%></button></div>
+
 <%
 			If ganLineIDs(0) <> 0 Then
 				gnLeft = 125
@@ -816,26 +896,8 @@ For i = 0 To UBound(ganOrderTypeIDs)
 								<tr>
 									<td valign="top">
 <%
-		Case 3, 4
-%>
-										<button style="width:125px;" onclick="gnOrderType = <%=ganOrderTypeIDs(i)%>; getName();"><%=gasOrderTypeDescriptions(i)%></button><br/>
-										&nbsp;<br/>
-<%
 	End Select
 Next
-%>
-										<button name="QUICK" style="width:125px;" onclick="gnOrderType = 4; goQuick();">Quick Ticket</button><br/>
-										&nbsp;<br/>
-<%
-If Request("o").Count = 0 Then
-%>
-										<button name="QUICK" style="width:125px;" onclick="window.location = 'neworder.asp'">Refresh<br/>Caller ID</button>
-<%
-Else
-%>
-										<button name="QUICK" style="width:125px;" onclick="window.location = 'neworder.asp?o=<%=Request("o")%>'">Refresh<br/>Caller ID</button>
-<%
-End If
 
 If Not gbShowMenuButtons Then
 %>
@@ -1110,7 +1172,7 @@ End If
 											</tr>
 										</table>
 									</td>
-									<td valign="top" width="75"></td>
+                                    <td valign="top" width="75"></td>
 									<td valign="top">
 										<table align="center" cellpadding="0" cellspacing="0">
 											<tr>
@@ -1142,14 +1204,32 @@ End If
 												<td><button onclick="backspacePhone()">Bksp</button></td>
 											</tr>
 											<tr>
-												<td colspan="3"><button style="width: 235px;" onclick="goNext()">OK</button></td>
+												<td colspan="3"><button style="width: 235px;" onclick="clrPhone()">Clear Phone Number</button></td>
 											</tr>
 										</table>
 									</td>
+                                    <td valign="top" width="75"></td>
+                                    <td valign="top">
+                                        <br /><br /><br /><br />
+                                        <table align="center" cellpadding="0" cellspacing="0">
+                                            <tr>
+                                                <td colspan="3"><button style="width: 235px;" onclick="">Add Extension</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3"><button style="width: 235px;" onclick="">Add Department</button></td>
+                                            </tr>
+                                        </table>
+                                    </td>
 									<td valign="top" width="75">&nbsp;</td>
 									<td valign="top" width="235">&nbsp;</td>
 								</tr>
 							</table>
+                            <br /><br />
+                            <table align="center" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td colspan="3"><button style="width: 235px;" onclick="goBack()">Back</button></td><td colspan="3"><button style="width: 235px;" onclick="goNext()">Next</button></td>
+                                </tr>
+                            </table>
 						</div>
 						<div id="namediv" style="position: absolute; top: 0px; left: 0px; width: 1010px; visibility: hidden;">
 							<table align="center" cellpadding="0" cellspacing="0">
@@ -1195,7 +1275,7 @@ End If
 				</td>
 			</tr>
 			<tr height="105">
-				<td valign="top" colspan="2" width="1010">
+				<td valign="top" colspan="2" width="1010" style="position: relative; top: -15px;">
 					<div align="center">
 <%
 If gbShowMenuButtons Then
@@ -1246,14 +1326,18 @@ Else
 End If
 End If
 %>
-						<a href="/opentickets.asp"><img src="/images/btn_opentickets.jpg" alt="Open Tickets" width="75" height="75"  border="0"/></a>
+<!--
+   						<a href="/opentickets.asp"><img src="/images/btn_opentickets.jpg" alt="Open Tickets" width="75" height="75"  border="0"/></a>
 						<a href="/orderlookup.asp"><img src="/images/btn_orderlookup.jpg" alt="Order Lookup" width="75" height="75" border="0" /></a>
 						<a href="/ordersearch.asp"><img src="/images/btn_ordersearch.jpg" alt="Order Search" width="75" height="75" border="0" /></a>
 						<a href="/driverdispatch.asp"><img src="/images/btn_driverdispatch.jpg" alt="Driver Dispatch" width="75" height="75" border="0" /></a>
+-->
+                        
+
 <%If RSEmp("DriverStatus") = "Active" Or Session("SecurityID") > 1 Then%>
-						  <a href="/viewdrives.asp"><img src="/images/btn_drives.jpg" alt="Drives" width="75" height="75" border="0" /></a>
+<!--						  <a href="/viewdrives.asp"><img src="/images/btn_drives.jpg" alt="Drives" width="75" height="75" border="0" /></a>-->
 <%End If%>
-						<a href="/main.asp"><img src="/images/btn_mainmenu.jpg" alt="Main Menu" border="0" /></a><a href="/default.asp"><img src="/images/btn_signoff.jpg" alt="Sign Off" border="0" /></a><br />
+<!--						<a href="/main.asp"><img src="/images/btn_mainmenu.jpg" alt="Main Menu" border="0" /></a><a href="/default.asp"><img src="/images/btn_signoff.jpg" alt="Sign Off" border="0" /></a><br />-->
 <%
 End If
 %>

@@ -47,6 +47,7 @@ If Request("action") = "SaveAddress" Then
 		End If
 	End If
 End If
+
 %>
 <!-- #Include Virtual="include2/globals.asp" -->
 <!-- #Include Virtual="include2/math.asp" -->
@@ -57,7 +58,7 @@ End If
 <%
 Dim gnOrderID, gnCustomerID, gnAddressID
 Dim gsEMail, gsFirstName, gsLastName, gdtBirthdate, gnPrimaryAddressID, gsHomePhone, gsCellPhone, gsWorkPhone, gsFAXPhone, gbIsEMailList, gbIsTextList
-Dim gbNoChecks
+Dim gbNoChecks,gsExtension
 Dim gnOrderStoreID, gsOrderAddress1, gsOrderAddress2, gsOrderCity, gsOrderState, gsOrderPostalCode, gsOrderAddressNotes
 Dim ganAddressIDs(), gasAddresses()
 Dim i
@@ -773,6 +774,17 @@ function saveCustomer() {
 
 //-->
 </script>
+    <style type="text/css">
+        .auto-style2 {
+            width: 439px;
+        }
+        .auto-style3 {
+            width: 556px;
+        }
+        .auto-style6 {
+            width: 74px;
+        }
+    </style>
 </head>
 
 <body onload="clockInit(clockLocalStartTime, clockServerStartTime); clockOnLoad();" onunload="clockOnUnload()">
@@ -785,6 +797,15 @@ function saveCustomer() {
 			<tr height="31">
 				<td valign="top" width="1010">
 					<div align="center">
+                        <ol id="tabs">
+						    <li><a onclick="back2Delivery();" title="Delivery">Delivery</a></li>
+						    <li><a onclick="back2Phone();" title="Phone">Phone</a></li>
+						    <li><a onclick="back2Adx();" title="Phone">Address</a></li>
+						    <li class="active">Customer Name</li>
+						    <li>Order</li>
+						    <li>Notes</li>
+						</ol>						
+
 <%
 If gbTestMode Then
 	If gbDevMode Then
@@ -829,49 +850,29 @@ End If
 							</form>
 							<table width="1000" align="center" cellpadding="0" cellspacing="0">
 								<tr>
-									<td colspan="3">
-										<table align="center" cellpadding="0" cellspacing="0">
+									<td>
+										<table align="left" cellpadding="0" cellspacing="0" style="width: 995px">
 											<tr>
-												<td align="right"><strong>First Name:</strong></td>
-												<td><input type="text" value="<%=gsFirstName%>" id="firstname" disabled autocomplete="off" onkeydown="disableEnterKey();" onfocus="setCurrentField('firstname');" style="width: 125px; background-color: #cccccc;" /></td>
-												<td>&nbsp;</td>
-												<td align="right"><strong>Last Name:</strong></td>
-												<td><input type="text" value="<%=gsLastName%>" id="lastname" disabled autocomplete="off" onkeydown="disableEnterKey();" onfocus="setCurrentField('lastname');" style="width: 125px; background-color: #cccccc;" /></td>
-												<td>&nbsp;</td>
-												<td align="right"><strong>Birth Date:</strong></td>
-												<td><input type="text" value="<%=gdtBirthdate%>" id="birthdate" disabled autocomplete="off" onkeydown="disableEnterKey();" onfocus="setCurrentField('birthdate');" style="width: 125px; background-color: #cccccc;" /></td>
-												<td>&nbsp;</td>
-												<td align="right"><strong>E-Mail</strong></td>
-												<td>
-												<input type="text" value="<%=gsEMail%>" id="email" disabled autocomplete="off" onkeydown="disableEnterKey();" onfocus="setCurrentField('email');" style="width: 225px; background-color: #cccccc;" /></td>
+												<td align="left" class="auto-style2"><strong>First Name</strong></td>
+												<td align="left" class="auto-style3" colspan="3"><strong>Last Name:</strong></td>											</tr>
+											<tr>
+												<td align="left" class="auto-style2"><input type="text" value="<%=gsFirstName%>" id="firstname" disabled autocomplete="off" onkeydown="disableEnterKey();" onfocus="setCurrentField('firstname');" style="width: 427px; background-color: #cccccc; margin-left: 0px;" /></td>
+												<td align="left" class="auto-style3" colspan="3"><input type="text" value="<%=gsLastName%>" id="lastname" disabled autocomplete="off" onkeydown="disableEnterKey();" onfocus="setCurrentField('lastname');" style="width: 552px; background-color: #cccccc;" /></td>
+                                            </tr>
+											<tr>
+												<td align="left" class="auto-style2"><strong>E-Mail</strong></td>
+                                                <td align="left" class="auto-style3" colspan="3"><strong>Extension or Department</strong></td>
 											</tr>
 											<tr>
-												<td align="right"><strong>Home Phone:</strong></td>
-												<td><input type="text" value="<%=gsHomePhone%>" id="homephone" disabled autocomplete="off" onkeydown="disableEnterKey();" onfocus="setCurrentField('homephone');" style="width: 125px; background-color: #cccccc;" /></td>
-												<td>&nbsp;</td>
-												<td align="right"><strong>Cell Phone:</strong></td>
-												<td><input type="text" value="<%=gsCellPhone%>" id="cellphone" disabled autocomplete="off" onkeydown="disableEnterKey();" onfocus="setCurrentField('cellphone');" style="width: 125px; background-color: #cccccc;" /></td>
-												<td>&nbsp;</td>
-												<td align="right"><strong>Work Phone:</strong></td>
-												<td><input type="text" value="<%=gsWorkPhone%>" id="workphone" disabled autocomplete="off" onkeydown="disableEnterKey();" onfocus="setCurrentField('workphone');" style="width: 125px; background-color: #cccccc;" /></td>
-												<td>&nbsp;</td>
-												<td align="right"><strong>FAX Phone:</strong></td>
-												<td><input type="text" value="<%=gsFAXPhone%>" id="faxphone" disabled autocomplete="off" onkeydown="disableEnterKey();" onfocus="setCurrentField('faxphone');" style="width: 125px; background-color: #cccccc;" /></td>
-											</tr>
-											<tr>
-												<td align="right"><strong>E-Mail List:</strong></td>
-												<td><input type="checkbox" value="yes" id="isemaillist" disabled <%If gbIsEmailList Then Response.Write("checked") End If%> /></td>
-												<td>&nbsp;</td>
-												<td align="right"><strong>SMS List:</strong></td>
-												<td><input type="checkbox" value="yes" id="istextlist" disabled <%If gbIsTextList Then Response.Write("checked") End If%> /></td>
-												<td>&nbsp;</td>
-												<td align="right"><strong>No Checks:</strong></td>
-												<td><input type="checkbox" value="yes" id="nochecks" disabled <%If gbNoChecks Then Response.Write("checked") End If%> /></td>
-												<td>&nbsp;</td>
-												<td align="right">&nbsp;</td>
-												<td>&nbsp;</td>
-											</tr>
-										</table>
+												<td align="left" class="auto-style2"><input type="text" value="<%=gsEMail%>" id="email" disabled autocomplete="off" onkeydown="disableEnterKey();" onfocus="setCurrentField('firstname');" style="width: 427px; background-color: #cccccc; margin-left: 0px;" /></td>
+												<td align="left" class="auto-style3" colspan="3"><input type="text" value="<%=gsExtension%>" id="extension" disabled autocomplete="off" onkeydown="disableEnterKey();" onfocus="setCurrentField('lastname');" style="width: 552px; background-color: #cccccc;" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td>&nbsp</td>
+                                                <td class="auto-style6">Text Me:</td>
+                                                <td class="auto-style3"><input id="txtYes" type="checkbox" />Yes<input id="txtNo" type="checkbox" />No</td>
+                                            </tr>
+                                        </table>
 									</td>
 								</tr>
 							</table>

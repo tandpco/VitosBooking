@@ -1,6 +1,8 @@
 ﻿<%
 Option Explicit
+
 Response.buffer = TRUE
+Dim gnCustomerID
 
 If Session("SecurityID") = "" Then
 	Response.Redirect("/default.asp")
@@ -21,6 +23,20 @@ End If
 If Not IsNumeric(Request("t")) Then
 	Response.Redirect("neworder.asp")
 End If
+
+If Request("c").Count <> 0 Then
+	If IsNumeric(Request("c")) Then
+		gsAssignVisible = "hidden"
+		gsPostalVisible = "visible"
+        gnCustomerID = Request("c")
+	Else
+        gnCustomerID = 0
+	End If
+Else
+    gnCustomerID = 0
+End If
+
+
 %>
 <!-- #Include Virtual="include2/globals.asp" -->
 <!-- #Include Virtual="include2/math.asp" -->
@@ -37,7 +53,7 @@ End If
 <!-- #Include Virtual="include2/employee.asp" -->
 <%
 Dim gbShowMenuButtons
-Dim gnOrderTypeID, gsPhone, ganCustomerIDs(), ganPrimaryAddressIDs(), ganAddressIDs(), ganStoreIDs(), gasAddresses(), gasNames(), i
+Dim gnOrderTypeID, gsPhone, ganCustomerIDs(), ganPrimaryAddressIDs(), ganAddressIDs(), ganStoreIDs(), gasAddresses(), gasNames(), i, rowCnt
 Dim ganOrderIDs(), gsLocalErrorMsg
 Dim gsAssignVisible, gsPostalVisible, gsPhoneVisible
 Dim gasPostalCodes(), ganAreaCodes()
@@ -73,12 +89,19 @@ Dim gbNeedPrinterAlert
 gnOrderTypeID = CLng(Request("t"))
 
 gsPhone = Request("p")
+
+If (Request("r")) Then
+    rowCnt = Request("r")
+Else
+    rowCnt = 3
+End If
+
 Session("CustomerPhone") = gsPhone
 
 Session("ReturnURL") = "/ordering/customerfind.asp?t=" & gnOrderTypeID & "&p=" & gsPhone
 Session("SaveURL") = "/ordering/addressfind.asp?t=" & gnOrderTypeID & "&p=" & gsPhone
 
-If GetCustomersByPhone(gsPhone, ganCustomerIDs, ganPrimaryAddressIDs, ganAddressIDs, ganStoreIDs, gasAddresses, gasNames) Then
+If GetCustomersByPhone(gsPhone, ganCustomerIDs, ganPrimaryAddressIDs, ganAddressIDs, ganStoreIDs, gasAddresses, gasNames, rowCnt) Then
 	If ganCustomerIDs(0) = 0 Then
 		If Request("c").Count = 0 And Request("p2").Count > 0 Then
 			Response.Redirect("/custmaint/newaddress.asp?t=" & gnOrderTypeID)
@@ -114,28 +137,9 @@ End If
 <link rel="stylesheet" href="/css/vitos.css" type="text/css" />
 <!-- #Include Virtual="include2/clock-server.asp" -->
 <script type="text/javascript">
-<!--
+
 var ie4=document.all;
 
-<%
-If Request("c").Count <> 0 Then
-	If IsNumeric(Request("c")) Then
-		gsAssignVisible = "hidden"
-		gsPostalVisible = "visible"
-%>
-var gnCustomerID = <%=Request("c")%>;
-<%
-	Else
-%>
-var gnCustomerID = 0;
-<%
-	End If
-Else
-%>
-var gnCustomerID = 0;
-<%
-End If
-%>
 var gbHalfAddress = false;
 var gbFocusAreaCode = false;
 
@@ -402,40 +406,7 @@ function getNewPhone() {
 }
 
 function cancelNewPhone() {
-<%
-If gnOrderTypeID = 1 And ganCustomerIDs(0) = 0 Then
-%>
-	var loAreaCode, loPhone, lsValue;
-	
-	loAreaCode = ie4? eval("document.all.areacode") : document.getElementById('areacode');
-	loPhone = ie4? eval("document.all.phone") : document.getElementById('phone');
-	if (loPhone.value.length != 8)
-		return false;
-	lsValue = loAreaCode.value + loPhone.value.substr(0, 3) + loPhone.value.substr(4);
-	
-	window.location = "/custmaint/newaddress.asp?t=<%=gnOrderTypeID%>&p=" + lsValue;
-<%
-Else
-%>
-	var loDiv;
-	
-	loDiv = ie4? eval("document.all.addressdiv") : document.getElementById('addressdiv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.postalcodediv") : document.getElementById('postalcodediv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.namediv") : document.getElementById('namediv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.phonediv") : document.getElementById('phonediv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.phoneconfirmdiv") : document.getElementById('phoneconfirmdiv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.assigndiv") : document.getElementById('assigndiv');
-	loDiv.style.visibility = "visible";
-	
-	resetRedirect();
-<%
-End If
-%>
+// I took the code out of here JRS 20140514
 }
 
 function setFocusAreaCode(pbAreaCode) {
@@ -588,13 +559,31 @@ function goPickupNoCustomer() {
 	
 	window.location = lsLocation;
 }
+
+function verifyClick() {
+    alert("Hello this is an Alert");
+}
+
+function back2Delivery() {
+    var lsLocation = "neworder.asp";
+//    alert("Back 2 Delivery");
+    window.location = lsLocation;
+}
+
+function back2Phone() {
+    var lsLocation = "neworder.asp";
+//    alert("Back 2 Phone");
+    window.location = lsLocation;
+}
+
+
 //-->
 </script>
 </head>
 
 <body onload="clockInit(clockLocalStartTime, clockServerStartTime); clockOnLoad();" onunload="clockOnUnload()">
 
-<div id="mainwindow" style="position: absolute; top: 0px; left: 0px; width=1010px; height: 768px; overflow: hidden;">
+<div id="mainwindow" style="position: absolute; top: 0px; left: 0px; width=810PX; height: 968px; overflow: hidden;">
 <table cellspacing="0" cellpadding="0" width="1010" height="764" border="1">
 	<tr>
 		<td valign="top" width="1010" height="764">
@@ -602,6 +591,15 @@ function goPickupNoCustomer() {
 			<tr height="31">
 				<td valign="top" width="1010">
 					<div align="center">
+                        <ol id="tabs">
+						    <li><a onclick="back2Delivery();" title="Delivery">Delivery</a></li>
+						    <li><a onclick="back2Phone();" title="Phone">Phone</a></li>
+						    <li class="active">Address</li>
+						    <li>Customer Name</li>
+						    <li>Order</li>
+						    <li>Notes</li>
+						</ol>						
+
 <%
 If gbTestMode Then
 	If gbDevMode Then
@@ -622,10 +620,21 @@ End If
 					</div>
 				</td>
 			</tr>
-			<tr height="628">
+<%
+If ganCustomerIDs(0) <> 0 Then
+	Dim adxCnt
+    adxCnt = UBound(ganCustomerIDs) + 1
+else
+    adxCnt = 1
+End If
+If gnOrderTypeID <> 1 Then
+    adxCnt = adxCnt + 1
+End If
+%>
+			<tr>
 				<td valign="top" width="1010">
-					<div id="content" style="position: relative; width: 1010px; height: 618px; overflow: auto;">
-						<div id="assigndiv" style="position: absolute; top: 0px; left: 0px; width: 1010px; visibility: <%=gsAssignVisible%>;">
+					<div id="content" align="center" style="position: relative; width: 1010PX; height: <%= 100 * adxCnt %>px; overflow: auto;">
+						<div id="assigndiv" align="center" style="position: relative; top: 0px; left: 0px; width: 810PX; visibility: <%=gsAssignVisible%>;">
 <%
 If gnOrderTypeID = 1 Then
 %>
@@ -637,21 +646,24 @@ Else
 <%
 End If
 %>
-							<button style="width: 1010px;" onclick="window.location = '/custmaint/newaddress.asp?t=<%=gnOrderTypeID%>'">Add A New Customer</button>
+                            <div align="center"><strong>Most Recent Addresses</strong></div><br/>
+
+<!--							<button style="width: 810PX;" onclick="window.location = '/custmaint/newaddress.asp?t=<%=gnOrderTypeID%>'">Add A New Customer</button>-->
 <%
 If gnOrderTypeID <> 1 Then
 %>
-							<button style="width: 1010px;" onclick="getName();">Enter Name and Begin Order</button>
+							<!--<button style="width: 810PX;" onclick="getName();">Enter Name and Begin Order</button>-->
 <%
 End If
 
 If ganCustomerIDs(0) <> 0 Then
 	Dim lnLastCustomer
 	lnLastCustomer = ganCustomerIDs(0)
+
 	For i = 0 To UBound(ganCustomerIDs)
 		If 	lnLastCustomer <> ganCustomerIDs(i) Then
 %>
-							<button style="width: 1010px;" onclick="window.location = '/custmaint/newaddress.asp?c=<%=lnLastCustomer%>'"><%=gasNames(i - 1)%><br/>Add A New Address for this Customer</button>
+<!--							<button style="width: 810PX;" onclick="window.location = '/custmaint/newaddress.asp?c=<%=lnLastCustomer%>'"><%=gasNames(i - 1)%><br/>Add A New Address for this Customer</button>-->
 <%
 			lnLastCustomer = ganCustomerIDs(i)
 		End If
@@ -660,33 +672,33 @@ If ganCustomerIDs(0) <> 0 Then
 			If ganPrimaryAddressIDs(i) = ganAddressIDs(i) Then
 				If gnOrderTypeID = 1 And ganStoreIDs(i) <> Session("StoreID") Then
 %>
-							<button style="width: 1010px;" onclick="window.location='otherstore.asp?t=<%=gnOrderTypeID%>&s=<%=ganStoreIDs(i)%>&c=<%=ganCustomerIDs(i)%>&a=<%=ganAddressIDs(i)%>'">PRIMARY ADDRESS<br/><%=gasNames(i)%><br/><%=gasAddresses(i)%></button>
+							<button style="width: 730px;" onclick="window.location='otherstore.asp?t=<%=gnOrderTypeID%>&s=<%=ganStoreIDs(i)%>&c=<%=ganCustomerIDs(i)%>&a=<%=ganAddressIDs(i)%>'"><%=gasAddresses(i)%></button><button style="width: 20px;" onclick="window.location='../custmaint/editcustomer.asp?c=<%=ganCustomerIDs(i)%>&a=<%=ganAddressIDs(i)%>&o=0'" >Edit</button>
 <%
 				Else
 %>
-							<button style="width: 1010px;" onclick="window.location='unitselect.asp?t=<%=gnOrderTypeID%>&c=<%=ganCustomerIDs(i)%>&a=<%=ganAddressIDs(i)%>'">PRIMARY ADDRESS<br/><%=gasNames(i)%><br/><%=gasAddresses(i)%></button>
+							<button style="width: 730px; " onclick="window.location='customerselect.asp?t=<%=gnOrderTypeID%>&c=<%=ganCustomerIDs(i)%>&a=<%=ganAddressIDs(i)%>&pa=<%=ganPrimaryAddressIDs(i)%>'"><%=gasAddresses(i)%></button><button style="width: 20px;" onclick="window.location='../custmaint/editcustomer.asp?c=<%=ganCustomerIDs(i)%>&a=<%=ganAddressIDs(i)%>&o=0'" >Edit</button>
 <%
 				End If
 			Else
 				If gnOrderTypeID = 1 And ganStoreIDs(i) <> Session("StoreID") Then
 %>
-							<button style="width: 1010px;" onclick="window.location='otherstore.asp?t=<%=gnOrderTypeID%>&s=<%=ganStoreIDs(i)%>&c=<%=ganCustomerIDs(i)%>&a=<%=ganAddressIDs(i)%>'"><%=gasNames(i)%><br/><%=gasAddresses(i)%></button>
+							<button style="width: 730px; " onclick="window.location='otherstore.asp?t=<%=gnOrderTypeID%>&s=<%=ganStoreIDs(i)%>&c=<%=ganCustomerIDs(i)%>&a=<%=ganAddressIDs(i)%>'"><%=gasAddresses(i)%></button><button style="width: 20px;" onclick="window.location='../custmaint/editcustomer.asp?c=<%=ganCustomerIDs(i)%>&a=<%=ganAddressIDs(i)%>&o=0'" >Edit</button>
 <%
 				Else
 %>
-							<button style="width: 1010px;" onclick="window.location='unitselect.asp?t=<%=gnOrderTypeID%>&c=<%=ganCustomerIDs(i)%>&a=<%=ganAddressIDs(i)%>'"><%=gasNames(i)%><br/><%=gasAddresses(i)%></button>
+							<button style="width: 730px; " onclick="window.location='customerselect.asp?t=<%=gnOrderTypeID%>&c=<%=ganCustomerIDs(i)%>&a=<%=ganAddressIDs(i)%>&pa=<%=ganPrimaryAddressIDs(i)%>'"><%=gasAddresses(i)%></button><button style="width: 20px;" onclick="window.location='../custmaint/editcustomer.asp?c=<%=ganCustomerIDs(i)%>&a=<%=ganAddressIDs(i)%>&o=0'" >Edit</button>
 <%
 				End If
 			End If
 		End If
 	Next
 %>
-							<button style="width: 1010px;" onclick="window.location = '/custmaint/newaddress.asp?c=<%=ganCustomerIDs(UBound(ganCustomerIDs))%>'"><%=gasNames(UBound(ganCustomerIDs))%><br/>Add A New Address for this Customer</button>
+<!--							<button style="width: 810px;" onclick="window.location = '/custmaint/newaddress.asp?c=<%=ganCustomerIDs(UBound(ganCustomerIDs))%>'"><%=gasNames(UBound(ganCustomerIDs))%><br/>Add A New Address for this Customer</button>-->
 <%
 End If
 %>
 						</div>
-						<div id="postalcodediv" style="position: absolute; top: 0px; left: 0px; width: 1010px; visibility: <%=gsPostalVisible%>;">
+						<div id="postalcodediv" style="position: absolute; top: 0px; left: 0px; width: 810PX; visibility: <%=gsPostalVisible%>;">
 							<table align="center" cellpadding="0" cellspacing="0">
 								<tr>
 									<td colspan="3"><div align="center">
@@ -803,7 +815,7 @@ End If
 								</tr>
 							</table>
 						</div>
-						<div id="addressdiv" style="position: absolute; top: 0px; left: 0px; width: 1010px; visibility: hidden;">
+						<div id="addressdiv" style="position: absolute; top: 0px; left: 0px; width: 810PX; visibility: hidden;">
 							<table align="center" cellpadding="0" cellspacing="0">
 								<tr>
 									<td colspan="11"><div align="center">
@@ -863,7 +875,7 @@ End If
 								</tr>
 							</table>
 						</div>
-						<div id="namediv" style="position: absolute; top: 0px; left: 0px; width: 1010px; visibility: hidden;">
+						<div id="namediv" style="position: absolute; top: 0px; left: 0px; width: 810PX; visibility: hidden;">
 							<table align="center" cellpadding="0" cellspacing="0">
 								<tr>
 									<td colspan="11"><div align="center">
@@ -927,7 +939,7 @@ End If
 								</tr>
 							</table>
 						</div>
-						<div id="phonediv" style="position: absolute; top: 0px; left: 0px; width: 1010px; visibility: <%=gsPhoneVisible%>;">
+						<div id="phonediv" style="position: absolute; top: 0px; left: 0px; width: 810PX; visibility: <%=gsPhoneVisible%>;">
 							<table align="center" cellpadding="0" cellspacing="0">
 								<tr>
 									<td valign="top">
@@ -1061,10 +1073,14 @@ End If
 			<tr height="105">
 				<td valign="top" colspan="2" width="1010">
 					<div align="center">
+                        <button style="width: 810PX;" onclick="window.location='customerfind.asp?t=<%=gnOrderTypeID %>&p=<%=gsPhone %>&r=99999'">All Addresses</button><br />
+                        <!-- ?o=0&c=" + custID + "&a=" + adxID -->
+                        <button style="width: 810PX;" onclick="window.location='../custmaint/newaddress.asp?o=0&c=<%=gnCustomerID %>&a=0'">Add New Address</button><br />
+
 <%
 If gbShowMenuButtons Then
 %>
-						<a href="/main.asp"><img src="/images/btn_mainmenu.jpg" alt="Main Menu" border="0" /></a><a href="/default.asp"><img src="/images/btn_signoff.jpg" alt="Sign Off" border="0" /></a><br />
+<!--						<a href="/main.asp"><img src="/images/btn_mainmenu.jpg" alt="Main Menu" border="0" /></a><a href="/default.asp"><img src="/images/btn_signoff.jpg" alt="Sign Off" border="0" /></a><br />-->
 <%
 End If
 %>
