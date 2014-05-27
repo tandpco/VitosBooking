@@ -833,14 +833,6 @@ document.getElementById("litmosiframe").contentWindow.document.body.onclick = fu
 			<tr height="31">
 				<td valign="top" width="1010">
 					<div align="center">
-                        <ol id="tabs">
-						    <li id="btnDelivery"><a onclick="gnOrderType = 1; getPhone();" title="Delivery">Delivery</a></li>
-						    <li><a onclick="gnOrderType = 2; getPhone();" title="Delivery">Phone</a></li>
-						    <li>Address</li>
-						    <li>Customer Name</li>
-						    <li>Order</li>
-						    <li>Notes</li>
-						</ol>
 <%
 If gbTestMode Then
 	If gbDevMode Then
@@ -1114,7 +1106,15 @@ End If
 								</tr>
 							</table>
 						</div>
-						<div id="phonediv" style="position: absolute; top: 0px; left: 0px; width: 1010px; visibility: hidden;">
+						<div id="phonediv" align="center" style="position: absolute; top: 0px; left: 0px; width: 1010px; visibility: hidden;">
+	                        <ol id="tabs">
+							    <li id="btnDelivery"><a onclick="gnOrderType = 1; getPhone();" title="Delivery">Delivery</a></li>
+							    <li><a onclick="gnOrderType = 2; getPhone();" title="Delivery">Phone</a></li>
+							    <li>Address</li>
+							    <li>Customer Name</li>
+							    <li>Order</li>
+							    <li>Notes</li>
+							</ol>
 							<table align="center" cellpadding="0" cellspacing="0">
 								<tr>
 									<td valign="top">
