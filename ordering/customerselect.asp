@@ -7,34 +7,6 @@ If Session("SecurityID") = "" Then
   Response.Redirect("/default.asp")
 End If
 
-'If Request("p").Count = 0 Then
-' Response.Redirect("neworder.asp")
-'End If
-
-'If Not IsNumeric(Request("p")) Then
-' Response.Redirect("neworder.asp")
-'End If
-
-'If Request("t").Count = 0 Then
-' Response.Redirect("neworder.asp")
-'End If
-
-'If Not IsNumeric(Request("t")) Then
-' Response.Redirect("neworder.asp")
-'End If
-
-'If Request("c").Count <> 0 Then
-' If IsNumeric(Request("c")) Then
-'   gsAssignVisible = "hidden"
-'   gsPostalVisible = "visible"
-'        gnCustomerID = Request("c")
-' Else
-'        gnCustomerID = 0
-' End If
-'Else
-'    gnCustomerID = 0
-'End If
-
 
 %>
 <!-- #Include Virtual="include2/globals.asp" -->
@@ -63,6 +35,11 @@ Else
   gbShowMenuButtons = FALSE
 End If
 
+
+' Highlight the currently selected tab.
+Dim currentTab
+currentTab = "customer-name"
+
 gsAssignVisible = "visible"
 gsPostalVisible = "hidden"
 gsPhoneVisible = "hidden"
@@ -87,10 +64,11 @@ Dim gbNeedPrinterAlert
 
 gnOrderTypeID = CLng(Request("t"))
 
-gsPhone = Request("p")
-paID = Request("pa")
+gsPhone = Session("CustomerPhone")
+paID = Session("CustomerPhone")
 gnCustomerID = Request("c")
 gnAddressID = Request("a")
+Session("AddressID") = gnAddressID
 
 adxCnt = 1
 
@@ -100,12 +78,12 @@ Else
     rowCnt = 3
 End If
 
-Session("CustomerPhone") = gsPhone
+'Session("CustomerPhone") = gsPhone
 
 Session("ReturnURL") = "/ordering/customerfind.asp?t=" & gnOrderTypeID & "&p=" & gsPhone
 Session("SaveURL") = "/ordering/addressfind.asp?t=" & gnOrderTypeID & "&p=" & gsPhone
 
-If GetCustomerPrimaryAddressDetails(paID, gasNames, ganCustomerIDs, gasEMails) Then
+If GetCustomerPrimaryAddressDetails(gnAddressID, gasNames, ganCustomerIDs, gasEMails) Then
 '    Response.Write("Customer Count = " & UBound(ganCustomerIDs) + 1 & "<br>")
 '    For i = 0 to UBound(ganCustomerIDs)
 '        Response.Write("CustomerID = " & ganCustomerIDs(i) & "<br>")
@@ -621,41 +599,10 @@ function back2Adx() {
     <input type="hidden" id="txtCustID" value="<%=gnCustomerID %>" />
     <input type="hidden" id="txtAddressID" value="<%=gnAddressID %>" />
     <table cellspacing="0" cellpadding="0" width="1010" height="764" border="1">
-      <tr>
-        <td valign="top" width="1010" height="764">
-        <table cellspacing="0" cellpadding="5" width="1010">
-          <tr height="31">
-            <td valign="top" width="1010">
-              <div align="center">
-                            <ol id="tabs">
-                    <li><a onclick="back2Delivery();" title="Delivery">Delivery</a></li>
-                    <li><a onclick="back2Phone();" title="Phone">Phone</a></li>
-                    <li><a onclick="back2Adx();" title="Phone">Address</a></li>
-                    <li class="active">Customer Name</li>
-                    <li>Order</li>
-                    <li>Notes</li>
-                </ol>           
-
-<%
-If gbTestMode Then
-  If gbDevMode Then
-%>
-            <strong>DEV SYSTEM
-<%
-  Else
-%>
-            <strong>TEST SYSTEM
-<%
-  End If
-End If
-%>
-            Store <%=Session("StoreID")%></strong> |
-            <b><%=Session("name")%></b> |
-            <span id="ClockDate"><%=clockDateString(gDate)%></span> |
-            <span id="ClockTime" onclick="clockToggleSeconds()"><%=clockTimeString(Hour(gDate), Minute(gDate), Second(gDate))%></span>
-          </div>
-        </td>
-      </tr>
+  <tr>
+    <td valign="top" width="1010" height="764">
+    <table cellspacing="0" cellpadding="0" width="1010">
+      <!-- #Include Virtual="ordering/top-header.asp" -->
 <%
 If ganCustomerIDs(0) <> 0 Then
   Dim adxCnt
@@ -670,6 +617,7 @@ End If
       <tr>
                 <asp:TextBox ID="txtMaintCost" onkeypress="calculateFinanceDetail(); return false;" runat="server"></asp:TextBox>
         <td valign="top" width="1010">
+          <div id="content-wrapper">
           <div id="content" align="center" style="position: relative; width: 1010PX; height: <%= 150 * adxCnt %>px; overflow: hidden;">
                         <div id="assigndiv" align="center" style="position: relative; top: 0px; left: 0px; width: 810PX; visibility: <%=gsAssignVisible%>;">
 <%
@@ -690,7 +638,7 @@ If ganCustomerIDs(0) <> 0 Then
 ' lnLastCustomer = ganCustomerIDs(0)
     For i = 0 to UBound(ganCustomerIDs)
 %>
-              <button style="width: 730px; text-align:left"  onclick="window.location='unitselect.asp?t=<%=gnOrderTypeID%>&c=<%=ganCustomerIDs(i)%>&a=<%=paID%>'"><%=gasNames(i)%>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%=gasEmails(i) %></button><button style="width: 20px;" onclick="window.location='../custmaint/editcustomer.asp?c=<%=ganCustomerIDs(i)%>&a=<%=paID%>&o=0'" >Edit</button>
+              <button style="width: 730px; text-align:left"  onclick="window.location='unitselect.asp?t=<%=gnOrderTypeID%>&c=<%=ganCustomerIDs(i)%>&a=<%=gnAddressID%>'"><%=gasNames(i)%><span style="float:right;display:inline-block;margin-right:10px;font-size:14px"><%=IIf(gasEmails(i),gasEmails(i),"No Email Yet") %></span></button><button style="width: 20px;" onclick="window.location='../custmaint/editcustomer.asp?c=<%=ganCustomerIDs(i)%>&a=<%=gnAddressID%>&o=0'" >Edit</button>
 <%
     Next
 End If
@@ -1065,6 +1013,7 @@ End If
                 </tr>
               </table>
             </div>
+          </div>
           </div>
         </td>
       </tr>

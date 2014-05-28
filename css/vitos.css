@@ -66,3 +66,104 @@ select {
 }
 
 .redbuttonthinwide {border-color: #fff2cc; font-family: verdana; font-size: 9pt; background-color: #c30a0d; color: #ffffff; width:100px; Height:25px}
+
+/* Dan */
+ol#tabs {
+	list-style-type: none;
+	margin:0;
+	top:2px;
+	left:0;
+	padding:0;
+	/*margin: -6px 0 0 -311px;*/
+	width: 752px;
+	position: absolute;
+}
+ol#tabs li,#statusBlock {
+	display: block;
+	margin:0px;
+	background: #E2DAAC;
+	border: 1px solid black;
+	box-shadow: inset 0 -4px 0 rgba(0,0,0,0.3), inset 0 10px 15px rgba(255,255,255,0.5);
+	float: left;
+	font-weight: bold;
+	padding-top: 20px;
+	text-align: center;
+	text-shadow: 0 1px 0 rgba(255,255,255,0.85);
+	height: 50px;
+	width: 100px;
+	position: relative;
+}
+ol#tabs li a {
+	color:#000;
+	text-decoration: none;
+	position: absolute;
+	top: 0;
+	bottom:0;
+	right:0;
+	left:0;
+	padding-top: 20px
+}
+#statusBlock {
+	float: none;
+	display: block;
+	position: absolute;
+	right:0px;
+	top:2px;
+	width:360px;
+	padding:15px 20px 0;
+	height: 55px;
+	box-shadow: none;
+	font-weight:  normal;
+	border-color: #AFA779;
+	border-bottom-left-radius: 8px;
+}
+ol#tabs li.active a, ol#tabs li:active a {
+	padding-top: 25px;
+}
+ol#tabs li.active, ol#tabs li:active {
+	background: #AFA779;
+	border-bottom: 1px solid #7C7446;
+	box-shadow: inset 0 0 0 rgba(0,0,0,0.3), inset 0 4px 1px 2px rgba(0,0,0,0.3), inset 0 -1px 2px rgba(0,0,0,0.3);
+	padding-top: 30px;
+	height: 40px;
+}
+ol#tabs li:nth-child(4) {
+	padding-top: 15px;
+	height: 55px;
+}
+ol#tabs li:nth-child(4).active, ol#tabs li:nth-child(4):active {
+	padding-top: 25px;
+	height: 45px;
+} 
+ol#tabs li:last-child {
+	border-bottom-right-radius: 8px;
+}
+#addressList > button {
+	display: none;
+}
+
+#addressList > button:nth-child(1),#addressList > button:nth-child(2),#addressList > button:nth-child(3) {
+	display: block;
+	width:810px;
+}
+
+#addressList.showAll > button {
+	display: inline-block;
+	width:400px;
+}
+#content-wrapper {
+	position:relative;
+	height: 672px;
+	overflow: auto;
+	top: 20px;
+}
+.fadeMe {
+	opacity:0.3;
+	border-width:0;
+	outline: 0;
+}
+.counter#redirect {
+	background-color:orange;
+	padding:1px 8px;
+	border-radius: 15px;
+}

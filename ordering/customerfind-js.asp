@@ -12,6 +12,11 @@ function resetRedirect() {
 //  loRedirectDiv.innerHTML = <%=gnRedirectTime%>;
 }
 
+function  showAllAddresses(el) {
+  document.getElementById("addressList").className = 'showAll'
+  el.className = 'fadeMe'
+}
+
 function disableEnterKey() {
   var loText, loDiv;
   

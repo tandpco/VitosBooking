@@ -309,9 +309,8 @@ Function GetCustomerPrimaryAddressDetails(ByVal pnPrimaryAddressID, ByRef pasNam
 			Loop
 		Else
 			ReDim panCustomerIDs(0),pasNames(0)
-			pasAddresses(0) = ""
-			pasNames(0) = ""
-            panCustomerIDs(0) = ""
+			pasNames(0) = 0
+      panCustomerIDs(0) = 0
 		End If
 		
 		DBCloseQuery loRS

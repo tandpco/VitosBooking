@@ -148,4 +148,10 @@ Function CenterText(ByVal psText, ByVal pnFieldWidth)
 	
 	CenterText = lsRet
 End Function
+
+
+Function IIf( expr, truepart, falsepart )
+   IIf = falsepart
+   If expr Then IIf = truepart
+End Function
 %>
