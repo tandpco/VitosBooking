@@ -29,7 +29,7 @@ Dim gsExpectedDateTime
 Dim gbShowMenuButtons
 Dim gsReference
 Dim gsLocalErrorMsg, gbNeedPrinterAlert
-Dim gnCustomerID, gnAddressID
+Dim gnCustomerID, gnAddressID, gnOrderType
 Dim gsAccountName, gsPrimaryContactName, gsPrimaryContactEmail, gsSMSEmail, gsMailBody
 Dim gsStoreName, gsStoreAddress1, gsStoreAddress2, gsStoreCity, gsStoreState, gsStorePostalCode, gsStorePhone, gsStoreFAX, gsStoreHours
 Dim gsVoidReason
@@ -46,26 +46,6 @@ End If
 If Request("o").Count = 0 Then
 	If Session("OrderID") <> 0 Then
 		If Session("OrderLineCount") = 0 Or Request("cancel") = "yes" Then
-			If Session("IsPaid") Then
-				Select Case Session("PaymentTypeID")
-' 2013-08-26 TAM: No need to void since we're not forcing capture until store close
-'					Case 3
-'						If Request("Inet") = "yes" Then
-'							If Not CCWebOrderVoid(Session("StoreID"), Session("PaymentReference"), gsReference) Then
-'								Response.Redirect("/error.asp?err=" & Server.URLEncode("Could Not Void Credit Card Charge"))
-'							End If
-'						Else
-'							If Not CCVoid(Session("StoreID"), Session("PaymentReference"), gsReference) Then
-'								Response.Redirect("/error.asp?err=" & Server.URLEncode("Could Not Void Credit Card Charge"))
-'							End If
-'						End If
-					Case 4
-' 2013-10-10 TAM: No need to credit since not debiting until store closeout
-'						If Not CreditAccountLedger(Session("AccountID"), Session("OrderID"), "Voided Order", Session("OrderTotal")) Then
-'							Response.Redirect("/error.asp?err=" & Server.URLEncode("Could Not Void Charge On Account"))
-'						End If
-				End Select
-			End If
 			
 			If Request("VoidReason").Count > 0 Then
 				gsVoidReason = Trim(Request("VoidReason"))
@@ -316,7 +296,8 @@ function resetRedirect() {
 	var loRedirectDiv;
 	
 	loRedirectDiv = ie4? eval("document.all.redirect") : document.getElementById("redirect");
-	loRedirectDiv.innerHTML = <%=gnRedirectTime%>;
+    //	loRedirectDiv.innerHTML = <%=gnRedirectTime%>;
+//	alert("gnOrderType = " + gnOrderType);
 }
 
 function disableEnterKey() {
@@ -331,7 +312,7 @@ function disableEnterKey() {
 
 function getDelivery() {
     var loDelivery,loPhone;
-    alert("Starting getDelivery()");
+//    alert("Starting getDelivery()");
 
 /*
     loBtnsDelivery = ie4? eval("document.all.btnDelivery") : document.getElementById('btnDelivery');
@@ -352,7 +333,7 @@ function getDelivery() {
     <%
     Else
     If ganAreaCodes(0) = 0 Then
-%>
+    %>
 	loAreaCode.value = "419";
     <%
         Else
@@ -376,7 +357,7 @@ function getDelivery() {
 
 function getPhone() {
     var loDelivery,loPhone;
-//    alert("Starting getPhone()");
+//    alert("Starting getPhone() gnOrderType = " + gnOrderType);
     loDelivery = ie4? eval("document.all.btnDelivery") : document.getElementById('btnDelivery');
     loPhone = ie4? eval("document.all.btnPhone") : document.getElementById('btnPhone');
 /*
@@ -396,7 +377,7 @@ function getPhone() {
     Else
     If ganAreaCodes(0) = 0 Then
 %>
-	loAreaCode.value = "419";
+	    loAreaCode.value = "419";
     <%
         Else
     %>
@@ -784,13 +765,9 @@ function goQuick() {
 }
 
 function goCallerID(psPhone) {
-//    alert("Starting goCallerID()");
+//    alert("Starting goCallerID. gnOrderType = " + gnOrderType);
 //    loDelivery = ie4? eval("document.all.btnDelivery") : document.getElementById('btnDelivery');
 //    loPhone = ie4? eval("document.all.btnPhone") : document.getElementById('btnPhone');
-    if(gnOrderType == 2) {
-        document.getElementById("btnDelivery").innerHTML = "Pick Up";
-    }
-//    document.getElementById("btnDelivery").className = "active";
 
     var loName, lsName, loPhone, lsValue, lsLocation;
 	
@@ -833,14 +810,6 @@ document.getElementById("litmosiframe").contentWindow.document.body.onclick = fu
 			<tr height="31">
 				<td valign="top" width="1010">
 					<div align="center">
-                        <ol id="tabs">
-						    <li id="btnDelivery"><a onclick="gnOrderType = 1; getPhone();" title="Delivery">Delivery</a></li>
-						    <li><a onclick="gnOrderType = 2; getPhone();" title="Delivery">Phone</a></li>
-						    <li>Address</li>
-						    <li>Customer Name</li>
-						    <li>Order</li>
-						    <li>Notes</li>
-						</ol>
 <%
 If gbTestMode Then
 	If gbDevMode Then
@@ -883,7 +852,7 @@ For i = 0 To UBound(ganOrderTypeIDs)
 				gnLeft = 125
 				For j = 0 To UBound(ganLineIDs)
 %>
-										<div style="position: absolute; top: 0px; left: <%=gnLeft%>px;"><button style="width:125px; height: 100px;" onclick="gnOrderType = <%=ganOrderTypeIDs(i)%>; goCallerID('<%=gasPhoneNumbers(j)%>');">Line <%=ganLineIDs(j)%><br/><%=gasPhoneNumbers(j)%><br/><%=gasNames(j)%></button></div>
+										<div style="position: absolute; top: 0px; left: <%=gnLeft%>px;"><button style="width:125px; height: 100px;" onclick="gnOrderType = <%=ganOrderTypeIDs(i)%>;<% gnOrderType = ganOrderTypeIDs(i)%>; goCallerID('<%=gasPhoneNumbers(j)%>');">Line <%=ganLineIDs(j)%><br/><%=gasPhoneNumbers(j)%><br/><%=gasNames(j)%></button></div>
 <%
 					gnLeft = gnLeft + 125
 				Next
@@ -1114,11 +1083,26 @@ End If
 								</tr>
 							</table>
 						</div>
-						<div id="phonediv" style="position: absolute; top: 0px; left: 0px; width: 1010px; visibility: hidden;">
+						<div id="phonediv" align="center" style="position: absolute; top: 0px; left: 0px; width: 1010px; visibility: hidden;">
+
+                            <ol id='tabs'>
+                                <%if gnOrderType = 1 Then %>
+                                    <li class="active"><a onclick='gnOrderType = 1; getPhone();' title='Delivery'>Delivery</a></li>
+                                    <li><a onclick='gnOrderType = 2; getPhone();' title='Delivery'>Phone</a></li>
+                                <% else %>
+                                    <li><a onclick='gnOrderType = 1; getPhone();' title='Delivery'>Delivery</a></li>
+                                    <li class="active"><a onclick='gnOrderType = 2; getPhone();' title='Delivery'>Phone</a></li>
+                                <%end if %>
+                                <li>Address</li>
+                                <li>Customer Name</li>
+                                <li>Order</li>
+                                <li>Notes</li>
+                            </ol>
 							<table align="center" cellpadding="0" cellspacing="0">
 								<tr>
 									<td valign="top">
 										<table align="center" cellpadding="0" cellspacing="0">
+                                            <tr></tr>
 											<tr>
 												<td colspan="3"><div align="center">
 													<strong>AREA CODE</strong></div></td>

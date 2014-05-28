@@ -69,22 +69,7 @@ gsPostalVisible = "hidden"
 gsPhoneVisible = "hidden"
 Dim gbNeedPrinterAlert
 
-' 2012-10-01 TAM: Don't release hold orders during ordering process in case of stuck hold order
-'If Not ReleaseHoldOrders(Session("StoreID"), Session("TransactionDate"), ganOrderIDs) Then
-'	Response.Redirect("/error.asp?err=" & Server.URLEncode(gsDBErrorMessage))
-'End If
-'
-'If ganOrderIDs(0) > 0 Then
-'	For i = 0 To UBound(ganOrderIDs)
-'		If Not PrintOrder(Session("StoreID"), ganOrderIDs(i), TRUE) Then
-'			ResetHoldOrder ganOrderIDs(i)
-'			gbNeedPrinterAlert = TRUE
-'			gsLocalErrorMsg = "PRINT FAILURE, CANNOT RELEASE HOLD ORDERS!"
-'		End If
-'	Next
-'Else
-	gbNeedPrinterAlert = FALSE
-'End If
+gbNeedPrinterAlert = FALSE
 
 gnOrderTypeID = CLng(Request("t"))
 
@@ -136,449 +121,8 @@ End If
 <title>Vito's Point of Sale</title>
 <link rel="stylesheet" href="/css/vitos.css" type="text/css" />
 <!-- #Include Virtual="include2/clock-server.asp" -->
-<script type="text/javascript">
+<!-- #Include Virtual="ordering/customerfind-js.asp" -->
 
-var ie4=document.all;
-
-var gbHalfAddress = false;
-var gbFocusAreaCode = false;
-
-function resetRedirect() {
-//	var loRedirectDiv;
-//	
-//	loRedirectDiv = ie4? eval("document.all.redirect") : document.getElementById("redirect");
-//	loRedirectDiv.innerHTML = <%=gnRedirectTime%>;
-}
-
-function disableEnterKey() {
-	var loText, loDiv;
-	
-	if (event.keyCode == 13) {
-		event.cancelBubble = true;
-		event.returnValue = false;
-		return false;
-	}
-}
-
-function getAddress() {
-	var loText, loDiv;
-	
-	loText = ie4? eval("document.all.postalcode") : document.getElementById('postalcode');
-	loText.value = "";
-	loText = ie4? eval("document.all.streetnumber") : document.getElementById('streetnumber');
-	loText.value = "";
-	
-	loDiv = ie4? eval("document.all.assigndiv") : document.getElementById('assigndiv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.addressdiv") : document.getElementById('addressdiv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.namediv") : document.getElementById('namediv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.phonediv") : document.getElementById('phonediv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.phoneconfirmdiv") : document.getElementById('phoneconfirmdiv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.postalcodediv") : document.getElementById('postalcodediv');
-	loDiv.style.visibility = "visible";
-	
-	resetRedirect();
-}
-
-function addToPostalCode(psDigit) {
-	var loText, lsText;
-	
-	loText = ie4? eval("document.all.postalcode") : document.getElementById('postalcode');
-	lsText = loText.value;
-	lsText += psDigit;
-	loText.value = lsText;
-	
-	resetRedirect();
-}
-
-function backspacePostalCode() {
-	var loText, lsText;
-	
-	loText = ie4? eval("document.all.postalcode") : document.getElementById('postalcode');
-	lsText = loText.value;
-	if (lsText.length > 0) {
-		lsText = lsText.substr(0, (lsText.length - 1));
-		loText.value = lsText;
-	}
-	
-	resetRedirect();
-}
-
-function setPostalCode(psDigit) {
-	var loPhone, lsPhone;
-	
-	loPhone = ie4? eval("document.all.postalcode") : document.getElementById('postalcode');
-	loPhone.value = psDigit;
-	
-	resetRedirect();
-}
-
-function addToStreetNumber(psDigit) {
-	var loText, lsText;
-	
-	loText = ie4? eval("document.all.streetnumber") : document.getElementById('streetnumber');
-	lsText = loText.value;
-	lsText += psDigit;
-	loText.value = lsText;
-	
-	resetRedirect();
-}
-
-function backspaceStreetNumber() {
-	var loText, lsText;
-	
-	loText = ie4? eval("document.all.streetnumber") : document.getElementById('streetnumber');
-	lsText = loText.value;
-	if (lsText.length > 0) {
-		lsText = lsText.substr(0, (lsText.length - 1));
-		loText.value = lsText;
-	}
-	
-	resetRedirect();
-}
-
-function cancelPostalCode() {
-	var loText, loDiv;
-	
-	loText = ie4? eval("document.all.postalcode") : document.getElementById('postalcode');
-	loText.value = "";
-	loText = ie4? eval("document.all.streetnumber") : document.getElementById('streetnumber');
-	loText.value = "";
-	
-	gbHalfAddress = false;
-	
-	loDiv = ie4? eval("document.all.postalcodediv") : document.getElementById('postalcodediv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.addressdiv") : document.getElementById('addressdiv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.namediv") : document.getElementById('namediv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.phonediv") : document.getElementById('phonediv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.phoneconfirmdiv") : document.getElementById('phoneconfirmdiv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.assigndiv") : document.getElementById('assigndiv');
-	loDiv.style.visibility = "visible";
-}
-
-function getStreetLetter(pbHalfAddress) {
-	var loText, lsPostalCode, lsStreetNumber, loDiv;
-	
-	loText = ie4? eval("document.all.postalcode") : document.getElementById('postalcode');
-	lsPostalCode = loText.value;
-	if (lsPostalCode.length != 5)
-		return false;
-	loText = ie4? eval("document.all.streetnumber") : document.getElementById('streetnumber');
-	lsStreetNumber = loText.value;
-	if (lsStreetNumber.length == 0)
-		return false;
-	
-	gbHalfAddress = pbHalfAddress;
-	
-	loDiv = ie4? eval("document.all.postalstreetspan") : document.getElementById('postalstreetspan');
-	loDiv.innerHTML = "<strong>Zip Code: " + lsPostalCode + " &nbsp; Street Number: " + lsStreetNumber
-	if (gbHalfAddress) {
-		loDiv.innerHTML = loDiv.innerHTML + " 1/2"
-	}
-	loDiv.innerHTML = loDiv.innerHTML + "</strong><br/>"
-	
-	loDiv = ie4? eval("document.all.assigndiv") : document.getElementById('assigndiv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.postalcodediv") : document.getElementById('postalcodediv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.namediv") : document.getElementById('namediv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.phonediv") : document.getElementById('phonediv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.phoneconfirmdiv") : document.getElementById('phoneconfirmdiv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.addressdiv") : document.getElementById('addressdiv');
-	loDiv.style.visibility = "visible";
-	
-	resetRedirect();
-}
-
-function cancelAddress() {
-	var loText, loDiv;
-	
-	loDiv = ie4? eval("document.all.assigndiv") : document.getElementById('assigndiv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.addressdiv") : document.getElementById('addressdiv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.namediv") : document.getElementById('namediv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.phonediv") : document.getElementById('phonediv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.phoneconfirmdiv") : document.getElementById('phoneconfirmdiv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.postalcodediv") : document.getElementById('postalcodediv');
-	loDiv.style.visibility = "visible";
-	
-	resetRedirect();
-}
-
-function getName() {
-	var loText, loDiv;
-	
-	loText = ie4? eval("document.all.name") : document.getElementById('name');
-	loText.value = "";
-	
-	loDiv = ie4? eval("document.all.assigndiv") : document.getElementById('assigndiv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.addressdiv") : document.getElementById('addressdiv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.postalcodediv") : document.getElementById('postalcodediv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.phonediv") : document.getElementById('phonediv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.phoneconfirmdiv") : document.getElementById('phoneconfirmdiv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.namediv") : document.getElementById('namediv');
-	loDiv.style.visibility = "visible";
-	
-	resetRedirect();
-}
-
-function addToName(psDigit) {
-	var loName, lsName;
-	
-	loName = ie4? eval("document.all.name") : document.getElementById('name');
-	lsName = loName.value;
-	lsName += psDigit;
-	loName.value = lsName;
-	
-	resetRedirect();
-}
-
-function backspaceName() {
-	var loName, lsName;
-	
-	loName = ie4? eval("document.all.name") : document.getElementById('name');
-	lsName = loName.value;
-	if (lsName.length > 0) {
-		lsName = lsName.substr(0, (lsName.length - 1));
-		loName.value = lsName;
-	}
-	
-	resetRedirect();
-}
-
-function cancelName() {
-	var loDiv;
-	
-	loDiv = ie4? eval("document.all.addressdiv") : document.getElementById('addressdiv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.postalcodediv") : document.getElementById('postalcodediv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.namediv") : document.getElementById('namediv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.phonediv") : document.getElementById('phonediv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.phoneconfirmdiv") : document.getElementById('phoneconfirmdiv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.assigndiv") : document.getElementById('assigndiv');
-	loDiv.style.visibility = "visible";
-	
-	resetRedirect();
-}
-
-function getNewPhone() {
-	var loDiv;
-	
-	loDiv = ie4? eval("document.all.assigndiv") : document.getElementById('assigndiv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.addressdiv") : document.getElementById('addressdiv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.postalcodediv") : document.getElementById('postalcodediv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.namediv") : document.getElementById('namediv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.phoneconfirmdiv") : document.getElementById('phoneconfirmdiv');
-	loDiv.style.visibility = "hidden";
-	loDiv = ie4? eval("document.all.phonediv") : document.getElementById('phonediv');
-	loDiv.style.visibility = "visible";
-	
-	resetRedirect();
-}
-
-function cancelNewPhone() {
-// I took the code out of here JRS 20140514
-}
-
-function setFocusAreaCode(pbAreaCode) {
-	var loAreaCode, loPhone;
-	
-	loAreaCode = ie4? eval("document.all.areacode") : document.getElementById('areacode');
-	loPhone = ie4? eval("document.all.phone") : document.getElementById('phone');
-	
-	if (pbAreaCode) {
-		loAreaCode.style.backgroundColor = "#FFFFFF";
-		loPhone.style.backgroundColor = "#CCCCCC";
-	}
-	else {
-		loAreaCode.style.backgroundColor = "#CCCCCC";
-		loPhone.style.backgroundColor = "#FFFFFF";
-	}
-	
-	gbFocusAreaCode = pbAreaCode;
-	
-	resetRedirect();
-}
-
-function addToPhone(psDigit) {
-	var loPhone, lsPhone;
-	
-	if (gbFocusAreaCode) {
-		loPhone = ie4? eval("document.all.areacode") : document.getElementById('areacode');
-	}
-	else {
-		loPhone = ie4? eval("document.all.phone") : document.getElementById('phone');
-	}
-	
-	lsPhone = loPhone.value;
-	if (gbFocusAreaCode) {
-		if (lsPhone.length < 3) {
-			lsPhone += psDigit;
-			loPhone.value = lsPhone;
-		}
-		if (lsPhone.length == 3) {
-			setFocusAreaCode(false);
-		}
-	}
-	else {
-		if (lsPhone.length < 8) {
-			if (lsPhone.length == 3) {
-				lsPhone = lsPhone + "-";
-			}
-			lsPhone += psDigit;
-			loPhone.value = lsPhone;
-		}
-	}
-	
-	resetRedirect();
-}
-
-function setAreaCode(psDigit) {
-	var loPhone, lsPhone;
-	
-	loPhone = ie4? eval("document.all.areacode") : document.getElementById('areacode');
-	lsPhone = psDigit;
-	loPhone.value = lsPhone;
-	
-	resetRedirect();
-}
-
-function clearAreaCode(psDigit) {
-	var loPhone, lsPhone;
-	
-	loPhone = ie4? eval("document.all.areacode") : document.getElementById('areacode');
-	loPhone.value = "";
-	
-	setFocusAreaCode(true);
-}
-
-function backspacePhone() {
-	var loText, lsText;
-	
-	if (gbFocusAreaCode) {
-		loText = ie4? eval("document.all.areacode") : document.getElementById('areacode');
-	}
-	else {
-		loText = ie4? eval("document.all.phone") : document.getElementById('phone');
-	}
-	
-	lsText = loText.value;
-	if (lsText.length > 0) {
-		lsText = lsText.substr(0, (lsText.length - 1));
-		if ((!gbFocusAreaCode) && (lsText.length == 4)) {
-			lsText = lsText.substr(0, (lsText.length - 1));
-		}
-		loText.value = lsText;
-	}
-	
-	resetRedirect();
-}
-
-function cancelPhone() {
-	var loPhone, loOrderTypeDiv, loPhoneDiv, loNameDiv;
-	
-	window.location = "neworder.asp";
-}
-
-function goNewPhone() {
-	var loName, lsName, loAreaCode, loPhone, lsValue, lsLocation;
-	
-	loAreaCode = ie4? eval("document.all.areacode") : document.getElementById('areacode');
-	loPhone = ie4? eval("document.all.phone") : document.getElementById('phone');
-	if (loAreaCode.value.length != 3)
-		return false;
-	if (loPhone.value.length != 8)
-		return false;
-	lsValue = loAreaCode.value + loPhone.value.substr(0, 3) + loPhone.value.substr(4);
-	
-	lsLocation = "customerfind.asp?t=<%=gnOrderTypeID%>&p=" + lsValue + "&p2=yes";
-	
-	window.location = lsLocation;
-}
-
-function goNext(psDigit) {
-	var loText, lsLocation;
-	
-	lsLocation = "streetfind.asp?t=<%=Request("t")%>&z=";
-	loText = ie4? eval("document.all.postalcode") : document.getElementById('postalcode');
-	lsLocation = lsLocation + encodeURIComponent(loText.value) + "&y=";
-	
-	loText = ie4? eval("document.all.streetnumber") : document.getElementById('streetnumber');
-	lsLocation = lsLocation + encodeURIComponent(loText.value) + "&x=" + psDigit;
-	
-	if (gbHalfAddress) {
-		lsLocation = lsLocation + "&w=true";
-	}
-	else {
-		lsLocation = lsLocation + "&w=false";
-	}
-	lsLocation = lsLocation + "&c=" + gnCustomerID.toString();
-	
-	window.location = lsLocation;
-}
-
-function goPickupNoCustomer() {
-	var loText, lsLocation;
-	
-	loText = ie4? eval("document.all.name") : document.getElementById('name');
-	lsText = loText.value;
-	if (lsText.length == 0) {
-		return false;
-	}
-	
-	lsLocation = "unitselect.asp?t=<%=gnOrderTypeID%>&n=" + encodeURIComponent(lsText);
-	
-	window.location = lsLocation;
-}
-
-function verifyClick() {
-    alert("Hello this is an Alert");
-}
-
-function back2Delivery() {
-    var lsLocation = "neworder.asp";
-//    alert("Back 2 Delivery");
-    window.location = lsLocation;
-}
-
-function back2Phone() {
-    var lsLocation = "neworder.asp";
-//    alert("Back 2 Phone");
-    window.location = lsLocation;
-}
-
-
-//-->
-</script>
 </head>
 
 <body onload="clockInit(clockLocalStartTime, clockServerStartTime); clockOnLoad();" onunload="clockOnUnload()">
@@ -591,15 +135,6 @@ function back2Phone() {
 			<tr height="31">
 				<td valign="top" width="1010">
 					<div align="center">
-                        <ol id="tabs">
-						    <li><a onclick="back2Delivery();" title="Delivery">Delivery</a></li>
-						    <li><a onclick="back2Phone();" title="Phone">Phone</a></li>
-						    <li class="active">Address</li>
-						    <li>Customer Name</li>
-						    <li>Order</li>
-						    <li>Notes</li>
-						</ol>						
-
 <%
 If gbTestMode Then
 	If gbDevMode Then
@@ -618,6 +153,17 @@ End If
 						<span id="ClockDate"><%=clockDateString(gDate)%></span> |
 						<span id="ClockTime" onclick="clockToggleSeconds()"><%=clockTimeString(Hour(gDate), Minute(gDate), Second(gDate))%></span>
 					</div>
+                    <div align="center">
+                        <br />
+                        <ol id="tabs">
+						    <li><a onclick="back2Delivery();" title="Delivery">Delivery</a></li>
+						    <li><a onclick="back2Phone();" title="Phone">Phone</a></li>
+						    <li class="active">Address</li>
+						    <li>Customer Name</li>
+						    <li>Order</li>
+						    <li>Notes</li>
+						</ol>						
+                    </div>
 				</td>
 			</tr>
 <%
@@ -633,7 +179,7 @@ End If
 %>
 			<tr>
 				<td valign="top" width="1010">
-					<div id="content" align="center" style="position: relative; width: 1010PX; height: <%= 100 * adxCnt %>px; overflow: auto;">
+					<div id="content" align="center" style="position: relative; width: 1010PX;  overflow: auto;">
 						<div id="assigndiv" align="center" style="position: relative; top: 0px; left: 0px; width: 810PX; visibility: <%=gsAssignVisible%>;">
 <%
 If gnOrderTypeID = 1 Then
@@ -672,21 +218,21 @@ If ganCustomerIDs(0) <> 0 Then
 			If ganPrimaryAddressIDs(i) = ganAddressIDs(i) Then
 				If gnOrderTypeID = 1 And ganStoreIDs(i) <> Session("StoreID") Then
 %>
-							<button style="width: 730px;" onclick="window.location='otherstore.asp?t=<%=gnOrderTypeID%>&s=<%=ganStoreIDs(i)%>&c=<%=ganCustomerIDs(i)%>&a=<%=ganAddressIDs(i)%>'"><%=gasAddresses(i)%></button><button style="width: 20px;" onclick="window.location='../custmaint/editcustomer.asp?c=<%=ganCustomerIDs(i)%>&a=<%=ganAddressIDs(i)%>&o=0'" >Edit</button>
+							<button style="width: 810px;" onclick="window.location='otherstore.asp?t=<%=gnOrderTypeID%>&s=<%=ganStoreIDs(i)%>&c=<%=ganCustomerIDs(i)%>&a=<%=ganAddressIDs(i)%>'"><%=gasAddresses(i)%></button>
 <%
 				Else
 %>
-							<button style="width: 730px; " onclick="window.location='customerselect.asp?t=<%=gnOrderTypeID%>&c=<%=ganCustomerIDs(i)%>&a=<%=ganAddressIDs(i)%>&pa=<%=ganPrimaryAddressIDs(i)%>'"><%=gasAddresses(i)%></button><button style="width: 20px;" onclick="window.location='../custmaint/editcustomer.asp?c=<%=ganCustomerIDs(i)%>&a=<%=ganAddressIDs(i)%>&o=0'" >Edit</button>
+							<button style="width: 810px; " onclick="window.location='customerselect.asp?t=<%=gnOrderTypeID%>&c=<%=ganCustomerIDs(i)%>&a=<%=ganAddressIDs(i)%>&pa=<%=ganPrimaryAddressIDs(i)%>'"><%=gasAddresses(i)%></button>
 <%
 				End If
 			Else
 				If gnOrderTypeID = 1 And ganStoreIDs(i) <> Session("StoreID") Then
 %>
-							<button style="width: 730px; " onclick="window.location='otherstore.asp?t=<%=gnOrderTypeID%>&s=<%=ganStoreIDs(i)%>&c=<%=ganCustomerIDs(i)%>&a=<%=ganAddressIDs(i)%>'"><%=gasAddresses(i)%></button><button style="width: 20px;" onclick="window.location='../custmaint/editcustomer.asp?c=<%=ganCustomerIDs(i)%>&a=<%=ganAddressIDs(i)%>&o=0'" >Edit</button>
+							<button style="width: 810px; " onclick="window.location='otherstore.asp?t=<%=gnOrderTypeID%>&s=<%=ganStoreIDs(i)%>&c=<%=ganCustomerIDs(i)%>&a=<%=ganAddressIDs(i)%>'"><%=gasAddresses(i)%></button>
 <%
 				Else
 %>
-							<button style="width: 730px; " onclick="window.location='customerselect.asp?t=<%=gnOrderTypeID%>&c=<%=ganCustomerIDs(i)%>&a=<%=ganAddressIDs(i)%>&pa=<%=ganPrimaryAddressIDs(i)%>'"><%=gasAddresses(i)%></button><button style="width: 20px;" onclick="window.location='../custmaint/editcustomer.asp?c=<%=ganCustomerIDs(i)%>&a=<%=ganAddressIDs(i)%>&o=0'" >Edit</button>
+							<button style="width: 810px; " onclick="window.location='customerselect.asp?t=<%=gnOrderTypeID%>&c=<%=ganCustomerIDs(i)%>&a=<%=ganAddressIDs(i)%>&pa=<%=ganPrimaryAddressIDs(i)%>'"><%=gasAddresses(i)%></button>
 <%
 				End If
 			End If
@@ -697,6 +243,20 @@ If ganCustomerIDs(0) <> 0 Then
 <%
 End If
 %>
+<br /><br />
+                        <button style="width: 400PX;" onclick="window.location='customerfind.asp?t=<%=gnOrderTypeID %>&p=<%=gsPhone %>&r=99999'">All Addresses</button>
+                        <button style="width: 400PX;" onclick="window.location='../custmaint/newaddress.asp?o=0&c=<%=gnCustomerID %>&a=0'">Add New Address</button><br />
+
+<%
+If gbShowMenuButtons Then
+%>
+<!--						<a href="/main.asp"><img src="/images/btn_mainmenu.jpg" alt="Main Menu" border="0" /></a><a href="/default.asp"><img src="/images/btn_signoff.jpg" alt="Sign Off" border="0" /></a><br />-->
+<%
+End If
+%>
+						<span class="orangetext">For technical assistance, please call 419.720.5050</span>
+					</div>
+
 						</div>
 						<div id="postalcodediv" style="position: absolute; top: 0px; left: 0px; width: 810PX; visibility: <%=gsPostalVisible%>;">
 							<table align="center" cellpadding="0" cellspacing="0">
@@ -939,7 +499,7 @@ End If
 								</tr>
 							</table>
 						</div>
-						<div id="phonediv" style="position: absolute; top: 0px; left: 0px; width: 810PX; visibility: <%=gsPhoneVisible%>;">
+						<div id="phonediv" style="position: absolute; top: 128px; left: 0px; width: 810PX; visibility: <%=gsPhoneVisible%>;">
 							<table align="center" cellpadding="0" cellspacing="0">
 								<tr>
 									<td valign="top">
@@ -1070,25 +630,6 @@ End If
 					</div>
 				</td>
 			</tr>
-			<tr height="105">
-				<td valign="top" colspan="2" width="1010">
-					<div align="center">
-                        <button style="width: 810PX;" onclick="window.location='customerfind.asp?t=<%=gnOrderTypeID %>&p=<%=gsPhone %>&r=99999'">All Addresses</button><br />
-                        <!-- ?o=0&c=" + custID + "&a=" + adxID -->
-                        <button style="width: 810PX;" onclick="window.location='../custmaint/newaddress.asp?o=0&c=<%=gnCustomerID %>&a=0'">Add New Address</button><br />
-
-<%
-If gbShowMenuButtons Then
-%>
-<!--						<a href="/main.asp"><img src="/images/btn_mainmenu.jpg" alt="Main Menu" border="0" /></a><a href="/default.asp"><img src="/images/btn_signoff.jpg" alt="Sign Off" border="0" /></a><br />-->
-<%
-End If
-%>
-						<span class="orangetext">For technical assistance, please call 419.720.5050</span>
-					</div>
-				</td>
-			</tr>
-		</table>
 		</td>
 	</tr>
 </table>
