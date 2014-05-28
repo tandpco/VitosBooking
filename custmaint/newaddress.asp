@@ -29,6 +29,13 @@ If Request("a").Count > 0 Then
 'Else
 '	Response.Redirect("../ticket.asp?OrderID=" & Request("o"))
 End If
+
+
+
+' Highlight the currently selected tab.
+Dim currentTab
+currentTab = "address"
+
 %>
 <!-- #Include Virtual="include2/globals.asp" -->
 <!-- #Include Virtual="include2/math.asp" -->
@@ -73,6 +80,7 @@ End If
 <title>Vito's Point of Sale</title>
 <link rel="stylesheet" href="/css/vitos.css" type="text/css" />
 <!-- #Include Virtual="include2/clock-server.asp" -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
 <!--
 var ie4=document.all;
@@ -165,6 +173,24 @@ function goNext(psDigit) {
 		window.location = lsLocation;
 	}
 }
+
+function back2Delivery() {
+    var lsLocation = "neworder.asp";
+    //    alert("Back 2 Delivery");
+    window.location = lsLocation;
+}
+
+function back2Phone() {
+    var lsLocation = "neworder.asp";
+    //    alert("Back 2 Phone");
+    window.location = lsLocation;
+}
+
+function back2Adx() {
+    var lsLocation = "customerfind.asp";
+    window.location = lsLocation;
+}
+
 //-->
 </script>
 </head>
@@ -176,32 +202,10 @@ function goNext(psDigit) {
 	<tr>
 		<td valign="top" width="1010" height="764">
 		<table cellspacing="0" cellpadding="5" width="1010">
-			<tr height="31">
-				<td valign="top" width="1010">
-					<div align="center">
-<%
-If gbTestMode Then
-	If gbDevMode Then
-%>
-						<strong>DEV SYSTEM
-<%
-	Else
-%>
-						<strong>TEST SYSTEM
-<%
-	End If
-End If
-%>
-						Store <%=Session("StoreID")%></strong> |
-						<b><%=Session("name")%></b> |
-						<span id="ClockDate"><%=clockDateString(gDate)%></span> 
-						|
-						<span id="ClockTime" onclick="clockToggleSeconds()"><%=clockTimeString(Hour(gDate), Minute(gDate), Second(gDate))%></span>
-					</div>
-				</td>
-			</tr>
+			<!-- #Include Virtual="ordering/top-header.asp" -->
 			<tr height="733">
 				<td valign="top" width="1010">
+					<div id="content-wrapper">
 					<div id="content" style="position: relative; width: 1010px; height: 723px; overflow: auto;">
 						<table align="center" cellpadding="0" cellspacing="0">
 							<tr>
@@ -305,7 +309,7 @@ End If
 								</td>
 							</tr>
 						</table>
-
+					</div>
 					</div>
 				</td>
 			</tr>

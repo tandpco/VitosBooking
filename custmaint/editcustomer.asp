@@ -48,6 +48,11 @@ If Request("action") = "SaveAddress" Then
 	End If
 End If
 
+
+
+' Highlight the currently selected tab.
+Dim currentTab
+currentTab = "address"
 %>
 <!-- #Include Virtual="include2/globals.asp" -->
 <!-- #Include Virtual="include2/math.asp" -->
@@ -794,40 +799,10 @@ function saveCustomer() {
 	<tr>
 		<td valign="top" width="1010" height="764">
 		<table cellspacing="0" cellpadding="5" width="1010">
-			<tr height="31">
-				<td valign="top" width="1010">
-					<div align="center">
-                        <ol id="tabs">
-						    <li><a onclick="back2Delivery();" title="Delivery">Delivery</a></li>
-						    <li><a onclick="back2Phone();" title="Phone">Phone</a></li>
-						    <li><a onclick="back2Adx();" title="Phone">Address</a></li>
-						    <li class="active">Customer Name</li>
-						    <li>Order</li>
-						    <li>Notes</li>
-						</ol>						
-
-<%
-If gbTestMode Then
-	If gbDevMode Then
-%>
-						<strong>DEV SYSTEM <%
-	Else
-%>
-						<strong>TEST SYSTEM
-<%
-	End If
-End If
-%>
-						Store <%=Session("StoreID")%></strong> |
-						<b><%=Session("name")%></b> |
-						<span id="ClockDate"><%=clockDateString(gDate)%></span> 
-						|
-						<span id="ClockTime" onclick="clockToggleSeconds()"><%=clockTimeString(Hour(gDate), Minute(gDate), Second(gDate))%></span>
-					</div>
-				</td>
-			</tr>
+			<!-- #Include Virtual="ordering/top-header.asp" -->
 			<tr height="733">
 				<td valign="top" width="1010">
+					<div id="content-wrapper">
 					<div id="content" style="position: relative; width: 1010px; height: 723px; overflow: auto;">
 						<div id="orderlinenotes" style="position: absolute; left: 0px; top: 0px; width: 1010px; height: 723px; background-color: #fbf3c5;">
 							<form id="formCustomer" name="formCustomer" method="post" action="editcustomer.asp">
@@ -1004,6 +979,7 @@ End If
 							<p align="center"><strong>Are you sure you want to delete the following address from this customer?</strong><br/><br/><strong><span id="dispaddr" name="dispaddr">Here</span></strong><br/><br/>
 							<button onclick="ConfirmDelete();">Confirm</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button onclick="CancelDelete();">Cancel</button></p>
 						</div>
+					</div>
 					</div>
 				</td>
 			</tr>
