@@ -25,7 +25,7 @@
         <% End If %>
       </li>
       <li class="<%=IIf(Session("AddressID") <= 1,"disabled","")%>  <%=IIf(currentTab = "order","active","")%>">Order</li>
-      <li class="<%=IIf(Session("AddressID") <= 1,"disabled","")%>  <%=IIf(currentTab = "notes","active","")%>">Notes</li>
+      <li class="<%=IIf(Session("AddressID") <= 1,"disabled","")%>  <%=IIf(currentTab = "notes","active","")%>" onclick="gotoOrderNotes()">Notes</li>
     </ol>
   </td>
 </tr>

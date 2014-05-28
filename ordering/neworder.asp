@@ -835,10 +835,10 @@ document.getElementById("litmosiframe").contentWindow.document.body.onclick = fu
                     <li><a onclick='goBack();' title='Delivery' id="bookingType">Delivery</a></li>
                 <%end if%>
                 <li class="active"><a onclick='getPhone();' title='Phone'>Phone</a></li>
-                <li>Address</li>
-                <li>Customer Name</li>
-                <li>Order</li>
-                <li>Notes</li>
+                <li class="disabled">Address</li>
+                <li class="disabled">Customer Name</li>
+                <li class="disabled">Order</li>
+                <li class="disabled">Notes</li>
             </ol>
         </td>
       </tr>

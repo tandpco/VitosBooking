@@ -60,6 +60,10 @@ Dim gasEditReasons()
 	gbNeedPrinterAlert = FALSE
 'End If
 
+' Highlight the currently selected tab.
+Dim currentTab
+currentTab = "order"
+
 gdManagerPrice = 0.00
 gbConfirmDelivery = FALSE
 
@@ -1410,7 +1414,7 @@ function saveNotes() {
 	
 	loNotes = ie4? eval("document.all.notes") : document.getElementById('notes');
 	gsOrderNotes = loNotes.value;
-	
+	console.log("unitselect.asp?o=" + gnOrderID.toString() + "&OrderNotes=" + encodeURIComponent(gsOrderNotes))
 	window.location = "unitselect.asp?o=" + gnOrderID.toString() + "&OrderNotes=" + encodeURIComponent(gsOrderNotes);
 }
 
@@ -2470,38 +2474,8 @@ function back2Phone() {
 	<tr>
 		<td valign="top" width="1010" height="764">
 		<table cellspacing="0" cellpadding="5" width="1010">
-			<tr height="31">
-				<td valign="top" width="1010">
-					<div align="center">
-                        <ol id="tabs">
-						    <li><a onclick="back2Delivery();" title="Delivery">Delivery</a></li>
-						    <li><a onclick="back2Phone();" title="Phone">Phone</a></li>
-						    <li>Address</li>
-						    <li>Customer Name</li>
-						    <li class="active">Order</li>
-						    <li>Notes</li>
-						</ol>						
 
-<%
-If gbTestMode Then
-	If gbDevMode Then
-%>
-						<strong>DEV SYSTEM
-<%
-	Else
-%>
-						<strong>TEST SYSTEM
-<%
-	End If
-End If
-%>
-						Store <%=Session("StoreID")%></strong> |
-						<b><%=Session("name")%></b> |
-						<span id="ClockDate"><%=clockDateString(gDate)%></span> |
-						<span id="ClockTime" onclick="clockToggleSeconds()"><%=clockTimeString(Hour(gDate), Minute(gDate), Second(gDate))%></span>
-					</div>
-				</td>
-			</tr>
+			<!-- #Include Virtual="ordering/top-header.asp" -->
 			<tr height="733">
 				<td valign="top" width="1010">
 					<div id="content" style="position: relative; width: 1010px; height: 723px; overflow: auto;">

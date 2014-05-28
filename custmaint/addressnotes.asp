@@ -29,6 +29,11 @@ If Request("OrderID").Count > 0 Then
 		Response.Redirect("../main.asp")
 	End If
 End If
+
+
+' Highlight the currently selected tab.
+Dim currentTab
+currentTab = "notes"
 %>
 <!-- #Include Virtual="include2/globals.asp" -->
 <!-- #Include Virtual="include2/math.asp" -->
@@ -353,6 +358,28 @@ function saveNotes() {
 	loForm.submit();
 }
 
+function back2Delivery() {
+    var lsLocation = "neworder.asp";
+    //    alert("Back 2 Delivery");
+    window.location = lsLocation;
+}
+
+function back2Phone() {
+    var lsLocation = "neworder.asp";
+    //    alert("Back 2 Phone");
+    window.location = lsLocation;
+}
+
+function back2Adx() {
+    var lsLocation = "customerfind.asp";
+    window.location = lsLocation;
+}
+
+function back2Order() {
+    var lsLocation = "unitselect.asp";
+    windows.location = lsLocation;
+}
+
 //-->
 </script>
 </head>
@@ -364,31 +391,10 @@ function saveNotes() {
 	<tr>
 		<td valign="top" width="1010" height="764">
 		<table cellspacing="0" cellpadding="5" width="1010">
-			<tr height="31">
-				<td valign="top" width="1010">
-					<div align="center">
-<%
-If gbTestMode Then
-	If gbDevMode Then
-%>
-						<strong>DEV SYSTEM <%
-	Else
-%>
-						<strong>TEST SYSTEM
-<%
-	End If
-End If
-%>
-						Store <%=Session("StoreID")%></strong> |
-						<b><%=Session("name")%></b> |
-						<span id="ClockDate"><%=clockDateString(gDate)%></span> 
-						|
-						<span id="ClockTime" onclick="clockToggleSeconds()"><%=clockTimeString(Hour(gDate), Minute(gDate), Second(gDate))%></span>
-					</div>
-				</td>
-			</tr>
+			<!-- #Include Virtual="ordering/top-header.asp" -->
 			<tr height="733">
 				<td valign="top" width="1010">
+					<div id="content-wrapper" style="top:10px">
 					<div id="content" style="position: relative; width: 1010px; height: 723px; overflow: auto;">
 						<div id="orderlinenotes" style="position: absolute; left: 0px; top: 0px; width: 1010px; height: 723px; background-color: #fbf3c5;">
 							<form id="formNotes" name="formNotes" method="post" action="addressnotes.asp">
@@ -449,6 +455,7 @@ End If
 								</tr>
 							</table>
 						</div>
+					</div>
 					</div>
 				</td>
 			</tr>

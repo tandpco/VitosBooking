@@ -310,6 +310,7 @@ Function GetCustomerPrimaryAddressDetails(ByVal pnPrimaryAddressID, ByRef pasNam
 		Else
 			ReDim panCustomerIDs(0),pasNames(0)
 			pasNames(0) = 0
+			pasEmails(0) = ""
       panCustomerIDs(0) = 0
 		End If
 		

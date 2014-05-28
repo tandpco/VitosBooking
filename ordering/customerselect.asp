@@ -638,7 +638,7 @@ If ganCustomerIDs(0) <> 0 Then
 ' lnLastCustomer = ganCustomerIDs(0)
     For i = 0 to UBound(ganCustomerIDs)
 %>
-              <button style="width: 730px; text-align:left"  onclick="window.location='unitselect.asp?t=<%=gnOrderTypeID%>&c=<%=ganCustomerIDs(i)%>&a=<%=gnAddressID%>'"><%=gasNames(i)%><span style="float:right;display:inline-block;margin-right:10px;font-size:14px"><%=IIf(gasEmails(i),gasEmails(i),"No Email Yet") %></span></button><button style="width: 20px;" onclick="window.location='../custmaint/editcustomer.asp?c=<%=ganCustomerIDs(i)%>&a=<%=gnAddressID%>&o=0'" >Edit</button>
+              <button style="width: 730px; text-align:left"  onclick="window.location='unitselect.asp?t=<%=gnOrderTypeID%>&c=<%=ganCustomerIDs(i)%>&a=<%=gnAddressID%>'"><%=gasNames(i)%><span style="float:right;display:inline-block;margin-right:10px;font-size:14px"><%=IIf(gasEmails(i) <> "",gasEmails(i),"No Email Yet") %></span></button><button style="width: 20px;" onclick="window.location='../custmaint/editcustomer.asp?c=<%=ganCustomerIDs(i)%>&a=<%=gnAddressID%>&o=0'" >Edit</button>
 <%
     Next
 End If
