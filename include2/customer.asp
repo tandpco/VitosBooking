@@ -526,6 +526,30 @@ Function AddCustomer(ByVal psEMail, ByVal psPassword, ByVal psFirstName, ByVal p
 End Function
 
 ' **************************************************************************
+' Function: UpdateCustomer
+' Purpose: Updates an existing customer.
+' Parameters:	psEMail - The e-mail address
+'				psFirstName - The first name
+'				psLastName - The last name
+'                psExtension - The Customers Phone Extension 
+' Return: True/False
+' **************************************************************************
+Function UpdateCustomer_New(ByVal psEMail, ByVal psFirstName, ByVal psLastName, ByVal psExtension, ByVal custID)
+	Dim lnRet, lsSQL, loRS
+	
+	lnRet = FALSE
+	
+	lsSQL = "UPDATE tblCustomers SET EMail = '" & psEMail & "', firstName = '" & psFirstName & "',  lastName = '" & psLastname & "', extension = '" & psExtension & "' WHERE CustomerID = " & custID
+	Response.Write "<script type='text/javascript'>alert('lsSQL = '" & lsSQL & ");</script>"
+	If DBExecuteSQL(lsSQL) Then
+		lnRet = TRUE
+	End If
+	
+	UpdateCustomer_New = lnRet
+End Function
+
+
+' **************************************************************************
 ' Function: IsCustomerCheckOK
 ' Purpose: Determines if a check can be accepted from a customer.
 ' Parameters:	pnCustomerID - The CustomerID to find
@@ -761,7 +785,7 @@ Function GetStoreCollegeDebitAccounts(ByVal pnStoreID, ByRef panAccountIDs, ByRe
 			Do While Not loRS.eof
 				ReDim Preserve panAccountIDs(lnPos), pasAccountNames(lnPos), pabAccountOnHolds(lnPos)
 				
-				panAccountIDs(lnPos) = loRS("AccountID")
+				panAccountIDs(lnPos) = loRS("updateAccountID")
 				If IsNull(loRS("AccountName")) Then
 					pasAccountNames(lnPos) = ""
 				Else
