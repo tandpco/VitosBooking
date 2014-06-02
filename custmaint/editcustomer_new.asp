@@ -74,20 +74,14 @@ Dim gnSessionID, gsIPAddress, gnEmpID, gsRefID, gdtTransactionDate, gdtSubmitDat
 gnOrderID = CLng(Request("o"))
 gnCustomerID = CLng(Request("c"))
 gnAddressID = CLng(Request("a"))
-Response.Write "<script type='text/javascript'>alert('I am at decision point');</script>"
+
 If Request("action") = "savecustomer" Then
-	Response.Write "<script type='text/javascript'>alert('I am at action');</script>"
 	gsTitle = "Edit Customer"
 	
 	gsEMail = Request("saveemail")
 	gsFirstName = Request("savefirstname")
 	gsLastName = Request("savelastname")
     gsExtension = Request("saveextension")
-
-		Response.Write "<script type='text/javascript'>alert('EMail = " & gsEMail & "'');</script>"
-		Response.Write "<script type='text/javascript'>alert('First name = " & gsFirstname & "'');</script>"
-		Response.Write "<script type='text/javascript'>alert('Last Name = " & gsLastName & "'');</script>"
-		Response.Write "<script type='text/javascript'>alert('Extension = " & gsExtension & "'');</script>"
 
 '	gdtBirthdate = Request("savebirthdate")
 '	gsHomePhone = Request("savehomephone")
@@ -129,7 +123,6 @@ If Request("action") = "savecustomer" Then
 	Session("ReturnURL") = "editcustomer.asp?o=" & gnOrderID & "&c=" & gnCustomerID & "&a=" & gnAddressID
 	Session("SaveURL") = "editcustomer.asp?o=" & gnOrderID & "&c=" & gnCustomerID & "&a=" & gnAddressID
 Else
-Response.Write "<script type='text/javascript'>alert('I am at else');</script>"
 	If gnCustomerID = 1 Then
 		gsTitle = "<font color=""red"">Add Customer - Please Verify All Information</font>"
 	Else
@@ -704,7 +697,7 @@ function saveCustomer() {
 //	loFormNotes.value = ie4? eval("document.all.saveextension") : document.getElementById('saveextension');
 //	loFormNotes.value = loNotes;
 
-	alert("I'm here");
+//	alert("I'm here");
 
 	loForm = ie4? eval("document.all.formCustomer") : document.getElementById("formCustomer");
 	loForm.submit();

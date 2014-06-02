@@ -540,7 +540,6 @@ Function UpdateCustomer_New(ByVal psEMail, ByVal psFirstName, ByVal psLastName, 
 	lnRet = FALSE
 	
 	lsSQL = "UPDATE tblCustomers SET EMail = '" & psEMail & "', firstName = '" & psFirstName & "',  lastName = '" & psLastname & "', extension = '" & psExtension & "' WHERE CustomerID = " & custID
-	Response.Write "<script type='text/javascript'>alert('lsSQL = '" & lsSQL & ");</script>"
 	If DBExecuteSQL(lsSQL) Then
 		lnRet = TRUE
 	End If
