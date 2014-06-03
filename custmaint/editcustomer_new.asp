@@ -83,27 +83,6 @@ If Request("action") = "savecustomer" Then
 	gsLastName = Request("savelastname")
     gsExtension = Request("saveextension")
 
-'	gdtBirthdate = Request("savebirthdate")
-'	gsHomePhone = Request("savehomephone")
-'	gsCellPhone = Request("savecellphone")
-'	gsWorkPhone = Request("saveworkphone")
-'	gsFAXPhone = Request("savefaxphone")
-'	If Request("saveisemaillist") = "yes" Then
-'		gbIsEMailList = TRUE
-'	Else
-'		gbIsEMailList = FALSE
-'	End If
-'	If Request("saveistextlist") = "yes" Then
-'		gbIsTextList = TRUE
-'	Else
-'		gbIsTextList = FALSE
-'	End If
-'	If Request("savenochecks") = "yes" Then
-'		gbNoChecks = TRUE
-'	Else
-'		gbNoChecks = FALSE
-'	End If
-	
 	If gnCustomerID = 1 Then
 		gnCustomerID = AddCustomer(gsEMail, "", gsFirstName, gsLastName, gdtBirthdate, 1, gsHomePhone, gsCellPhone, gsWorkPhone, gsFAXPhone, gbIsEMailList, gbIsTextList)
 		
