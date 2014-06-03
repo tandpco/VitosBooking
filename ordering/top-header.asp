@@ -1,3 +1,16 @@
+<script type="text/javascript">
+  function changeDeliveryType() {
+    var $s = window.location.search;
+    if($s.indexOf('t=1') !== -1) {
+      $s = $s.replace('t=1','t=2')
+    }
+
+    else if($s.indexOf('t=2') !== -1) {
+      $s = $s.replace('t=2','t=1')
+    }
+    window.location = window.location.pathname+$s
+  }
+</script>
 <tr height="72">
   <td valign="top" width="1010" height="72">
     <div id="statusBlock">
@@ -8,7 +21,7 @@
       <span id="ClockTime" onclick="clockToggleSeconds()"><%=clockTimeString(Hour(gDate), Minute(gDate), Second(gDate))%></span></div>
     </div>
     <ol id="tabs">
-      <li class="<%=IIf(currentTab = "start","active","")%>"><a onclick="if(confirm('Are you sure? You will lose any data you have entered so far.')) back2Delivery();" title="Delivery">Delivery</a></li>
+      <li class="<%=IIf(currentTab = "start","active","")%>"><a onclick="if(confirm('Would you like to toggle pickup/delivery?')) changeDeliveryType();" title="Delivery" class="showExtraNoteOnHover"><%= Iif(Session("OrderTypeID") = 2,"Pickup", "Delivery")%></a></li>
       <li class="<%=IIf(currentTab = "phone","active","")%>"><a onclick="if(confirm('Are you sure? You will lose any data you have entered so far.')) back2Phone();" title="Phone">Phone</a></li>
       <li class="<%=IIf(currentTab = "address","active","")%>">
         <% If Session("CustomerPhone") Then %>

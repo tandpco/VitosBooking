@@ -66,7 +66,7 @@ Dim gsEMail, gsFirstName, gsLastName, gdtBirthdate, gnPrimaryAddressID, gsHomePh
 Dim gbNoChecks,gsExtension
 Dim gnOrderStoreID, gsOrderAddress1, gsOrderAddress2, gsOrderCity, gsOrderState, gsOrderPostalCode, gsOrderAddressNotes
 Dim ganAddressIDs(), gasAddresses()
-Dim i,req
+Dim i
 Dim gsTitle
 Dim gnStoreID, gsPostalCode, gsAddress1, gsAddress2, gsCity, gsState, gdDeliveryCharge, gdDriverMoney, gnNewAddressID, gnStoreID2, gsAddressNotes, gbIsManual
 Dim gnSessionID, gsIPAddress, gnEmpID, gsRefID, gdtTransactionDate, gdtSubmitDate, gdtReleaseDate, gdtExpectedDate, gnStoreID3, gnCustomerID2, gsCustomerName, gsCustomerPhone, gnAddressID2, gnOrderTypeID, gbIsPaid, gnPaymentTypeID, gsPaymentReference, gnAccountID, gdTax, gdTax2, gdTip, gnOrderStatusID, gsOrderNotes
@@ -81,28 +81,26 @@ If Request("action") = "savecustomer" Then
 	gsEMail = Request("saveemail")
 	gsFirstName = Request("savefirstname")
 	gsLastName = Request("savelastname")
-    gsExtension = Request("saveextension")
-
-'	gdtBirthdate = Request("savebirthdate")
-'	gsHomePhone = Request("savehomephone")
-'	gsCellPhone = Request("savecellphone")
-'	gsWorkPhone = Request("saveworkphone")
-'	gsFAXPhone = Request("savefaxphone")
-'	If Request("saveisemaillist") = "yes" Then
-'		gbIsEMailList = TRUE
-'	Else
-'		gbIsEMailList = FALSE
-'	End If
-'	If Request("saveistextlist") = "yes" Then
-'		gbIsTextList = TRUE
-'	Else
-'		gbIsTextList = FALSE
-'	End If
-'	If Request("savenochecks") = "yes" Then
-'		gbNoChecks = TRUE
-'	Else
-'		gbNoChecks = FALSE
-'	End If
+	gdtBirthdate = Request("savebirthdate")
+	gsHomePhone = Request("savehomephone")
+	gsCellPhone = Request("savecellphone")
+	gsWorkPhone = Request("saveworkphone")
+	gsFAXPhone = Request("savefaxphone")
+	If Request("saveisemaillist") = "yes" Then
+		gbIsEMailList = TRUE
+	Else
+		gbIsEMailList = FALSE
+	End If
+	If Request("saveistextlist") = "yes" Then
+		gbIsTextList = TRUE
+	Else
+		gbIsTextList = FALSE
+	End If
+	If Request("savenochecks") = "yes" Then
+		gbNoChecks = TRUE
+	Else
+		gbNoChecks = FALSE
+	End If
 	
 	If gnCustomerID = 1 Then
 		gnCustomerID = AddCustomer(gsEMail, "", gsFirstName, gsLastName, gdtBirthdate, 1, gsHomePhone, gsCellPhone, gsWorkPhone, gsFAXPhone, gbIsEMailList, gbIsTextList)
@@ -115,7 +113,7 @@ If Request("action") = "savecustomer" Then
 			End If
 		End If
 	Else
-		If Not UpdateCustomer_New(gsEMail, gsFirstName, gsLastName, gsExtension, gnCustomerID) Then
+		If Not UpdateCustomer(gnCustomerID, gsEMail, gsFirstName, gsLastName, gdtBirthdate, gsHomePhone, gsCellPhone, gsWorkPhone, gsFAXPhone, gbIsEMailList, gbIsTextList, gbNoChecks) Then
 			Response.Redirect("/error.asp?err=" & Server.URLEncode(gsDBErrorMessage))
 		End If
 	End If
@@ -241,7 +239,6 @@ End If
 <link rel="stylesheet" href="/css/vitos.css" type="text/css" />
 <!-- #Include Virtual="include2/clock-server.asp" -->
 <script src="/include2/isDate.js" type="text/javascript"></script>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
 <!--
 var ie4=document.all;
@@ -339,40 +336,28 @@ function goEditInfo() {
 
 	loField = ie4? eval("document.all.firstname") : document.getElementById("firstname");
 	loField.disabled = false;
-//	alert("1");
 	loField = ie4? eval("document.all.lastname") : document.getElementById("lastname");
 	loField.disabled = false;
-//	alert("2");
-/*	loField = ie4? eval("document.all.birthdate") : document.getElementById("birthdate");
-	loField.disabled = false; */
-//	alert("3");
+	loField = ie4? eval("document.all.birthdate") : document.getElementById("birthdate");
+	loField.disabled = false;
 	loField = ie4? eval("document.all.email") : document.getElementById("email");
 	loField.disabled = false;
-/*	alert("4");
 	loField = ie4? eval("document.all.homephone") : document.getElementById("homephone");
 	loField.disabled = false;
-	alert("5");
 	loField = ie4? eval("document.all.cellphone") : document.getElementById("cellphone");
 	loField.disabled = false;
-	alert("6");
 	loField = ie4? eval("document.all.workphone") : document.getElementById("workphone");
 	loField.disabled = false;
-	alert("7");
 	loField = ie4? eval("document.all.faxphone") : document.getElementById("faxphone");
 	loField.disabled = false;
-	alert("8");
 	loField = ie4? eval("document.all.isemaillist") : document.getElementById("isemaillist");
 	loField.disabled = false;
-	alert("9");
 	loField = ie4? eval("document.all.istextlist") : document.getElementById("istextlist");
 	loField.disabled = false;
-	alert("10");
 	loField = ie4? eval("document.all.nochecks") : document.getElementById("nochecks");
-	loField.disabled = false; */
-	loField = ie4? eval("document.all.extension") : document.getElementById("extension");
 	loField.disabled = false;
+	
 	setCurrentField("firstname");
-//	alert("current field = " + setCurrentField);
 	
 	loDiv = ie4? eval("document.all.menudiv") : document.getElementById('menudiv');
 	loDiv.style.visibility = "hidden";
@@ -670,35 +655,124 @@ function shiftNotes() {
 }
 
 function saveCustomer() {
-    var loNotes, loFormNotes, loForm, lbHasPhone;
-    var loFirstName, loLastName, loEMail, loExtension;
+	var loNotes, loFormNotes, loForm, lbHasPhone;
+	
+	lbHasPhone = false;
 	
 	loNotes = ie4? eval("document.all.email") : document.getElementById('email');
-	$("#saveemail").val(loNotes.value);
-
-//	loFormNotes = ie4? eval("document.all.saveemail") : document.getElementById('saveemail');
-//	loFormNotes.value = loNotes.value;
-
+	loFormNotes = ie4? eval("document.all.saveemail") : document.getElementById('saveemail');
+	loFormNotes.value = loNotes.value;
 	loNotes = ie4? eval("document.all.firstname") : document.getElementById('firstname');
-	$('#savefirstname').val(loNotes.value);
-
-//	loFormNotes = ie4? eval("document.all.savefirstname") : document.getElementById('savefirstname');
-//	loFormNotes.value = loNotes.value;
-
+	loFormNotes = ie4? eval("document.all.savefirstname") : document.getElementById('savefirstname');
+	loFormNotes.value = loNotes.value;
 	loNotes = ie4? eval("document.all.lastname") : document.getElementById('lastname');
-	$('#savelastname').val(loNotes.value);
-
-//	loFormNotes = ie4? eval("document.all.savelastname") : document.getElementById('savelastname');
-//	loFormNotes.value = loNotes.value;
-
-	loNotes = ie4? eval("document.all.extension") : document.getElementById('extension');
-	$('#saveextension').val(loNotes.value);
-
-//	loFormNotes.value = ie4? eval("document.all.saveextension") : document.getElementById('saveextension');
-//	loFormNotes.value = loNotes;
-
-//	alert("I'm here");
-
+	loFormNotes = ie4? eval("document.all.savelastname") : document.getElementById('savelastname');
+	loFormNotes.value = loNotes.value;
+	loNotes = ie4? eval("document.all.birthdate") : document.getElementById('birthdate');
+	if (loNotes.value.length > 0) {
+		if (!isDate(loNotes.value)) {
+			setCurrentField("birthdate");
+			return false;
+		}
+	}
+	loFormNotes = ie4? eval("document.all.savebirthdate") : document.getElementById('savebirthdate');
+	loFormNotes.value = loNotes.value;
+	loNotes = ie4? eval("document.all.homephone") : document.getElementById('homephone');
+	if (isNaN(loNotes.value)) {
+		alert("Please enter numbers only for home phone.");
+		setCurrentField("homephone");
+		return false;
+	}
+	if (loNotes.value.length > 0) {
+		if (loNotes.value.length == 10) {
+			lbHasPhone = true;
+		}
+		else {
+			alert("Home phone must be 10 digits.");
+			setCurrentField("homephone");
+			return false;
+		}
+	}
+	loFormNotes = ie4? eval("document.all.savehomephone") : document.getElementById('savehomephone');
+	loFormNotes.value = loNotes.value;
+	loNotes = ie4? eval("document.all.cellphone") : document.getElementById('cellphone');
+	if (isNaN(loNotes.value)) {
+		alert("Please enter numbers only for cell phone.");
+		setCurrentField("cellphone");
+		return false;
+	}
+	if (loNotes.value.length > 0) {
+		if (loNotes.value.length == 10) {
+			lbHasPhone = true;
+		}
+		else {
+			alert("Cell phone must be 10 digits.");
+			setCurrentField("cellphone");
+			return false;
+		}
+	}
+	loFormNotes = ie4? eval("document.all.savecellphone") : document.getElementById('savecellphone');
+	loFormNotes.value = loNotes.value;
+	loNotes = ie4? eval("document.all.workphone") : document.getElementById('workphone');
+	if (isNaN(loNotes.value)) {
+		alert("Please enter numbers only for work phone.");
+		setCurrentField("workphone");
+		return false;
+	}
+	if (loNotes.value.length > 0) {
+		if (loNotes.value.length == 10) {
+			lbHasPhone = true;
+		}
+		else {
+			alert("Work phone must be 10 digits.");
+			setCurrentField("workphone");
+			return false;
+		}
+	}
+//	if (!lbHasPhone) {
+//		alert("A home, cell or work phone is required.");
+//		setCurrentField("homephone");
+//		return false;
+//	}
+	loFormNotes = ie4? eval("document.all.saveworkphone") : document.getElementById('saveworkphone');
+	loFormNotes.value = loNotes.value;
+	loNotes = ie4? eval("document.all.faxphone") : document.getElementById('faxphone');
+	if (isNaN(loNotes.value)) {
+		alert("Please enter numbers only for FAX phone.");
+		setCurrentField("faxphone");
+		return false;
+	}
+	if (loNotes.value.length > 0) {
+		if (loNotes.value.length != 10) {
+			alert("FAX phone must be 10 digits.");
+			setCurrentField("faxphone");
+			return false;
+		}
+	}
+	loFormNotes = ie4? eval("document.all.savefaxphone") : document.getElementById('savefaxphone');
+	loFormNotes.value = loNotes.value;
+	loNotes = ie4? eval("document.all.isemaillist") : document.getElementById('isemaillist');
+	loFormNotes = ie4? eval("document.all.saveisemaillist") : document.getElementById('saveisemaillist');
+	if (loNotes.checked) {
+		loFormNotes.value = "yes";
+	} else {
+		loFormNotes.value = "no";
+	}
+	loNotes = ie4? eval("document.all.istextlist") : document.getElementById('istextlist');
+	loFormNotes = ie4? eval("document.all.saveistextlist") : document.getElementById('saveistextlist');
+	if (loNotes.checked) {
+		loFormNotes.value = "yes";
+	} else {
+		loFormNotes.value = "no";
+	}
+	loNotes = ie4? eval("document.all.nochecks") : document.getElementById('nochecks');
+	loFormNotes = ie4? eval("document.all.savenochecks") : document.getElementById('savenochecks');
+	if (loNotes.checked) {
+		loFormNotes.value = "yes";
+	} else {
+		loFormNotes.value = "no";
+	}
+	
 	loForm = ie4? eval("document.all.formCustomer") : document.getElementById("formCustomer");
 	loForm.submit();
 }
@@ -739,7 +813,6 @@ function saveCustomer() {
 								<input type="hidden" id="saveemail" name="saveemail" value="<%=gsEMail%>" />
 								<input type="hidden" id="savefirstname" name="savefirstname" value="<%=gsFirstName%>" />
 								<input type="hidden" id="savelastname" name="savelastname" value="<%=gsLastName%>" />
-                                <input type="hidden" id="saveextension" name="saveextension" value="<%=gsExtension %>" />
 								<input type="hidden" id="savebirthdate" name="savebirthdate" value="<%=gdtBirthdate%>" />
 								<input type="hidden" id="savehomephone" name="savehomephone" value="<%=gsHomePhone%>" />
 								<input type="hidden" id="savecellphone" name="savecellphone" value="<%=gsCellPhone%>" />
@@ -766,8 +839,8 @@ function saveCustomer() {
                                                 <td align="left" class="auto-style3" colspan="3"><strong>Extension or Department</strong></td>
 											</tr>
 											<tr>
-												<td align="left" class="auto-style2"><input type="text" value="<%=gsEMail%>" id="email" disabled autocomplete="off" onkeydown="disableEnterKey();" onfocus="setCurrentField('email');" style="width: 427px; background-color: #cccccc; margin-left: 0px;" /></td>
-												<td align="left" class="auto-style3" colspan="3"><input type="text" value="<%=gsExtension%>" id="extension" disabled autocomplete="off" onkeydown="disableEnterKey();" onfocus="setCurrentField('extension');" style="width: 552px; background-color: #cccccc;" /></td>
+												<td align="left" class="auto-style2"><input type="text" value="<%=gsEMail%>" id="email" disabled autocomplete="off" onkeydown="disableEnterKey();" onfocus="setCurrentField('firstname');" style="width: 427px; background-color: #cccccc; margin-left: 0px;" /></td>
+												<td align="left" class="auto-style3" colspan="3"><input type="text" value="<%=gsExtension%>" id="extension" disabled autocomplete="off" onkeydown="disableEnterKey();" onfocus="setCurrentField('lastname');" style="width: 552px; background-color: #cccccc;" /></td>
                                             </tr>
                                             <tr>
                                                 <td>&nbsp</td>
@@ -782,7 +855,7 @@ function saveCustomer() {
 						<div id="menudiv" style="position: absolute; top: 150px; left: 0px; width: 1010px;">
 							<table width="450" align="center" cellpadding="0" cellspacing="0">
 								<tr>
-									<td><button style="width: 100px;" onclick="window.location = '../ordering/unitselect.asp?c=<%=gnCustomerID %>&a=<%=gnAddressID %>'">Done</button></td>
+									<td><button style="width: 100px;" onclick="window.location = '../ticket.asp?OrderID=<%=gnOrderID%>'">Done</button></td>
 									<td align="right"><button style="width: 100px;" onclick="goEditInfo();">Edit Customer Info</button></td>
 								</tr>
 							</table>
@@ -872,7 +945,7 @@ End If
 								<tr>
 									<td><button style="width: 100px;" onclick="cancelEditInfo();">Cancel</button></td>
 									<td align="center"><button style="width: 100px;" onclick="clearCurrentField()">Clear</button></td>
-									<td align="right"><button style="width: 100px;" onclick="saveCustomer()">Save</button></td>
+									<td align="right"><button style="width: 100px;" onclick="saveCustomer()">Done</button></td>
 								</tr>
 							</table>
 							<table align="center" cellpadding="0" cellspacing="0">

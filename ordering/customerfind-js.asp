@@ -273,8 +273,42 @@ function getNewPhone() {
 }
 
 function cancelNewPhone() {
-// I took the code out of here JRS 20140514
+<%
+If gnOrderTypeID = 1 And ganAddressIDs(0) = 0 Then
+%>
+  var loAreaCode, loPhone, lsValue;
+  
+  loAreaCode = ie4? eval("document.all.areacode") : document.getElementById('areacode');
+  loPhone = ie4? eval("document.all.phone") : document.getElementById('phone');
+  if (loPhone.value.length != 8)
+    return false;
+  lsValue = loAreaCode.value + loPhone.value.substr(0, 3) + loPhone.value.substr(4);
+  
+  window.location = "/custmaint/newaddress.asp?t=<%=gnOrderTypeID%>&p=" + lsValue;
+<%
+Else
+%>
+  var loDiv;
+  
+  loDiv = ie4? eval("document.all.addressdiv") : document.getElementById('addressdiv');
+  loDiv.style.visibility = "hidden";
+  loDiv = ie4? eval("document.all.postalcodediv") : document.getElementById('postalcodediv');
+  loDiv.style.visibility = "hidden";
+  loDiv = ie4? eval("document.all.namediv") : document.getElementById('namediv');
+  loDiv.style.visibility = "hidden";
+  loDiv = ie4? eval("document.all.phonediv") : document.getElementById('phonediv');
+  loDiv.style.visibility = "hidden";
+  loDiv = ie4? eval("document.all.phoneconfirmdiv") : document.getElementById('phoneconfirmdiv');
+  loDiv.style.visibility = "hidden";
+  loDiv = ie4? eval("document.all.assigndiv") : document.getElementById('assigndiv');
+  loDiv.style.visibility = "visible";
+  
+  resetRedirect();
+<%
+End If
+%>
 }
+
 
 function setFocusAreaCode(pbAreaCode) {
   var loAreaCode, loPhone;

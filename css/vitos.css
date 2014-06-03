@@ -176,3 +176,8 @@ ol#tabs li:last-child {
 	padding:1px 8px;
 	border-radius: 15px;
 }
+
+.showExtraNoteOnHover:hover:before {
+	content:"Toggle";
+	display: block;
+}

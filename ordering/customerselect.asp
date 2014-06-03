@@ -64,6 +64,7 @@ Dim gbNeedPrinterAlert
 
 gnOrderTypeID = CLng(Request("t"))
 
+Session("OrderTypeID") = gnOrderTypeID
 gsPhone = Session("CustomerPhone")
 paID = Session("CustomerPhone")
 gnCustomerID = Request("c")
