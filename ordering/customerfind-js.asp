@@ -17,6 +17,35 @@ function  showAllAddresses(el) {
   el.className = 'fadeMe'
 }
 
+
+$(function(){
+
+    $("#addressList button").each(function(){
+      $(this).data('text',$(this).text())
+    })
+  $("#livesearch").on('change',function(){
+    var $val = $(this).val()
+    if($val) {
+      document.getElementById("addressList").className = 'showAll'
+    }
+    else {
+      document.getElementById("addressList").className = ''
+      $("#addressList button").removeClass('hidden')
+    }
+    console.log('changed',$val)
+    $("#addressList button").each(function(){
+      if($(this).data('text').indexOf($val) === -1) {
+        $(this).html($(this).data('text'))
+        $(this).addClass('hidden')
+      }
+      else {
+        $(this).html($(this).data('text').replace($val, '<span class="highlight">'+$val+'</span>'))
+        $(this).removeClass('hidden')
+      }
+    })
+
+  })
+})
 function disableEnterKey() {
   var loText, loDiv;
   

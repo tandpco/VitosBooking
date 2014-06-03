@@ -134,12 +134,9 @@ Function GetAddressesByPhone(ByVal pnPhone, ByVal rowCount, ByRef panAddressIDs,
 			Loop
 		Else
 			ReDim panAddressIDs(0), panStoreIDs(0), pasAddresses(0)
-			panCustomerIDs(0) = 0
-			panPrimaryAddressIDs(0) = 0
 			panAddressIDs(0) = 0
 			panStoreIDs(0) = 0
 			pasAddresses(0) = ""
-			pasNames(0) = ""
 		End If
 		
 		DBCloseQuery loRS

@@ -1,0 +1,100 @@
+
+
+
+#virtualKeyboard {
+    width: 100%;
+    text-align: left;
+    position: fixed;
+    bottom:0;
+    left:0;
+    font-family:Arial;
+    background-color: rgba(0,0,0,0.8);
+    padding-left:20px;
+    -webkit-user-select:none;
+    /*background-color:#7b8490;*/
+    /*border-top:3px solid #000;*/
+}
+
+#keyboard{
+    padding:10px;
+    width:990px;
+    /*margin: 0 auto;*/
+    height:40px;
+    height:288;
+    display:block;
+    padding-left:25px;
+    display:block;
+/*    position:absolute;*/
+    bottom:0px; left:0px;
+ }
+#keyboard:after {content: ".";display: block;height: 0;clear: both;visibility: hidden;}
+
+#keyboardHeader {position:relative; height:40px;color:#9b9b9b;text-align: center; font-size:13px;text-transform: uppercase;font-weight: bold;line-height: 30px;margin-top:-10px;}
+#keyboardHeader > div {
+    padding-top:10px;
+}
+#keyboardHeader:hover {
+    color:#fff;
+    cursor: pointer;
+}
+#keyboardCapitalLetter {display:none;}
+#keyboardSmallLetter {display:block;}
+#keyboardNumber {display:none;}
+#keyboardSymbols {display:none;}
+
+.button
+{
+    width:80px; height:80px;
+    background-color:#fff;
+    position:relative;
+    float:left;
+    margin-right:9px;
+    margin-top:10px;
+    cursor:pointer;
+    font-size:1.9em;
+    font-weight: bold;
+
+    /*box shadow*//*
+    -webkit-box-shadow: 0px 1px 3px #000000;-moz-box-shadow: 0px 1px 3px #000000;box-shadow: 0px 1px 3px #000000;*/
+    /*box radius*/
+    /*-moz-border-radius: 5px;border-radius: 5px;*/
+    /*gradient*/
+    background: #f5a920; /* old browsers */
+    /*background: -moz-linear-gradient(top, #ffffff 0%, #e5e5e5 100%); 
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e5e5e5));*/ /* webkit */
+    /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* ie */
+}
+.buttonDown {background:none;background-color: #c9cdd5; -webkit-box-shadow:none;-moz-box-shadow: none;box-shadow: none;}
+.button_a {margin-left:26px;}
+.button_dash {margin-left:26px;}
+.button_underscore {margin-left:26px;}
+.button_enter {width:103px; font-size:1.3em; }
+.button_del{width:103px; text-transform: uppercase; background-color: #c83100;}
+.button_smallletter{font-size:1.3em;}
+/*.button_capitalletterleft{font-size:1.3em;}*/
+.button_capitalletterright{ width:129px;}
+.button_numberleft{width:172px; margin-left:26px;background-color: #009999;}
+.button_numberright{width:129px; }
+.button_space {width:410px;text-transform: uppercase;}
+.button_symbolsleft{width:172px; margin-left:26px;}
+.button_symbolsright{width:129px; }
+.button_faded{opacity:0.1;cursor: defaut; }
+
+
+.key {width:100%; height:100%; text-align:center; padding-top:26px; }
+.key_del {padding-top:26px;}
+/*.key_enter {padding-top:18px;}
+.key_smallletter {padding-top:18px;}
+.key_capitalletterleft {padding-top:18px;}
+.key_capitalletterright {padding-top:18px;}*/
+.key_number {padding-top:26px;}
+.key_symbols {padding-top:26px;}
+
+.button:hover {
+border-color: rgba(82, 168, 236, 0.8);
+outline: 0;
+outline: thin dotted 9;
+-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),0 0 8px rgba(0, 0, 0, 0.6);
+-moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(0,0,0,0.6);
+box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),0 0 8px rgba(0, 0, 0, 0.6);
+}

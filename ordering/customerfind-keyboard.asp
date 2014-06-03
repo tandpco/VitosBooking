@@ -140,10 +140,10 @@ End If
   <tr>
     <td valign="top" width="1010" height="764">
     <table cellspacing="0" cellpadding="0" width="1010">
-      <!-- #Include Virtual="ordering/top-header.asp" -->
+			<!-- #Include Virtual="ordering/top-header.asp" -->
       <tr>
         <td>
-          <div id="content-wrapper">
+        	<div id="content-wrapper">
           <div id="content" align="center" style="position: relative; width: 1010PX;  overflow: auto;">
             <div id="assigndiv" align="center" style="position: relative; top: 0px; left: 0px; width: 810PX; visibility: <%=gsAssignVisible%>;">
               <div align="center" style="font-size:18px"><strong>
@@ -173,7 +173,7 @@ If ganAddressIDs(0) <> 0 Then
         If gnOrderTypeID = 1 And ganStoreIDs(i) <> Session("StoreID") Then
           %><button onclick="window.location='otherstore.asp?t=<%=gnOrderTypeID%>&s=<%=ganStoreIDs(i)%>&a=<%=ganAddressIDs(i)%>'"><%=gasAddresses(i)%></button><%
         Else
-          %><button style="background-color:#92b930;" onclick="window.location='customerselect.asp?t=<%=gnOrderTypeID%>&a=<%=ganAddressIDs(i)%>'"><%=gasAddresses(i)%></button><%
+					%><button style="background-color:#92b930;" onclick="window.location='customerselect.asp?t=<%=gnOrderTypeID%>&a=<%=ganAddressIDs(i)%>'"><%=gasAddresses(i)%></button><%
         End If
     End If
   Next

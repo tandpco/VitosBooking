@@ -175,13 +175,13 @@ function goNext(psDigit) {
 }
 
 function back2Delivery() {
-    var lsLocation = "neworder.asp";
+    var lsLocation = "/ordering/neworder.asp";
     //    alert("Back 2 Delivery");
     window.location = lsLocation;
 }
 
 function back2Phone() {
-    var lsLocation = "neworder.asp";
+    var lsLocation = "/ordering/neworder.asp";
     //    alert("Back 2 Phone");
     window.location = lsLocation;
 }
