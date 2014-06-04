@@ -291,6 +291,7 @@ var gnOrderType = 0;
 
 var gbNameInLowerCase = false;
 var gbFocusAreaCode = false;
+var gbFocusExtension = false;
 
 function resetRedirect() {
 	var loRedirectDiv;
@@ -420,15 +421,17 @@ function setFocusAreaCode(pbAreaCode) {
 
 function addToPhone(psDigit) {
 	var loPhone, lsPhone;
-	
+
 	if (gbFocusAreaCode) {
 		loPhone = ie4? eval("document.all.areacode") : document.getElementById('areacode');
-	}
-	else {
+	} else if (gbFocusExtension) {
+		loPhone = ie4? eval("document.all.txtExtension") : document.getElementById('txtExtension');
+	} else {
 		loPhone = ie4? eval("document.all.phone") : document.getElementById('phone');
 	}
-	
+
 	lsPhone = loPhone.value;
+
 	if (gbFocusAreaCode) {
 		if (lsPhone.length < 3) {
 			lsPhone += psDigit;
@@ -437,8 +440,10 @@ function addToPhone(psDigit) {
 		if (lsPhone.length == 3) {
 			setFocusAreaCode(false);
 		}
-	}
-	else {
+	} else if(gbFocusExtension) {
+		lsPhone += psDigit;
+		loPhone.value = lsPhone;
+	} else {
 		if (lsPhone.length < 8) {
 			if (lsPhone.length == 3) {
 				lsPhone = lsPhone + "-";
@@ -475,8 +480,9 @@ function backspacePhone() {
 	
 	if (gbFocusAreaCode) {
 		loText = ie4? eval("document.all.areacode") : document.getElementById('areacode');
-	}
-	else {
+	} else if(gbFocusExtension) {
+		loText = ie4? eval("document.all.txtExtension") : document.getElementById('txtExtension');
+	} else {
 		loText = ie4? eval("document.all.phone") : document.getElementById('phone');
 	}
 	
@@ -802,6 +808,27 @@ document.getElementById("litmosiframe").contentWindow.document.body.onclick = fu
 		window.location = "/Litmos/Litmos.aspx?EmpID=<%=Session("EmpID")%>&StoreID=<%=Session("StoreID")%>";
     }
 }
+
+function showExtension() {
+	var loExtensionDiv, loExtensionBtn, loExtensionLbl, loExtension;
+	loExtensionDiv = ie4? eval("document.all.divExtension") : document.getElementById('divExtension');
+	loExtensionBtn = ie4? eval("document.all.btnExtension") : document.getElementById('btnExtension');
+	loExtensionLbl = ie4? eval("document.all.lblExtension") : document.getElementById('lblExtension');
+
+	if(loExtensionDiv.style.visibility == "hidden") {
+		loExtensionDiv.style.visibility = "visible";
+		loExtensionLbl.style.visibility = "visible";
+		loExtensionBtn.textContent = "Clear Extension";
+		gbFocusExtension = true;
+	} else {
+		loExtensionDiv.style.visibility = "hidden";
+		loExtensionLbl.style.visibility = "hidden";
+		loExtensionBtn.textContent = "Add Extension";
+		gbFocusExtension = false;
+	}
+    loExtension = ie4? eval("document.all.txtExtension") : document.getElementById('txtExtension');
+    loExtension.value = "";
+}
 //-->
 </script>
 <script src="/include2/redirect2.js" type="text/javascript"></script>
@@ -855,7 +882,7 @@ For i = 0 To UBound(ganOrderTypeIDs)
 	Select Case ganOrderTypeIDs(i)
 		Case 1, 2
 %>
-										<div style="position: relative; height: 100px;left:184px">
+										<div style="position: relative; height: 100px;margin-left:184px">
 <!--										<div style="position: absolute; top: 0px; left: 0px;"><button style="width:125px; height: 100px;" onclick="gnOrderType = <%=ganOrderTypeIDs(i)%>; getPhone();"><%=gasOrderTypeDescriptions(i)%></button></div> -->
                 							<div style="position: absolute; top: 0px; left: 0px;"><button style="width:125px; height: 100px;" ><%=gasOrderTypeDescriptions(i)%></button></div>
 
@@ -1195,10 +1222,17 @@ End If
 									</td>
                                     <td valign="top" width="75"></td>
                                     <td valign="top">
-                                        <br /><br /><br /><br />
                                         <table align="center" cellpadding="0" cellspacing="0">
+											<tr>
+												<td colspan="3"><div align="center" id="lblExtension" style="visibility: hidden;">
+													<strong>ENTER EXTENSION</strong></div></td>
+											</tr>
+											<tr>
+												<td colspan="3"><div align="center" id="divExtension" style="visibility: hidden;">
+													<input type="text" id="txtExtension" autocomplete="off" onkeydown="disableEnterKey();" onfocus="setFocusAreaCode(false);" style="width: 200px; text-align: center;" /></div></td>
+											</tr>
                                             <tr>
-                                                <td colspan="3"><button style="width: 235px;" onclick="">Add Extension</button></td>
+                                                <td colspan="3"><button style="width: 235px;" id="btnExtension" onclick="showExtension()">Add Extension</button></td>
                                             </tr>
                                             <tr>
                                                 <td colspan="3"><button style="width: 235px;" onclick="">Add Department</button></td>
