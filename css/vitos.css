@@ -156,7 +156,7 @@ ol#tabs li:last-child {
 	display: none;
 	width:810px;
 }
-#addressList > button .highlight {
+button .highlight {
 	background-color: #fff;
 }
 #addressList > button.hidden {

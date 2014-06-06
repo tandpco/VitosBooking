@@ -73,25 +73,25 @@ If Request("o").Count > 0 Then
 			If Not DuplicateOrder(CLng(Request("o")), gnOrderID, gsCouponIDs) Then
 				Response.Redirect("/error.asp?err=" & Server.URLEncode(gsDBErrorMessage))
 			End If
-			
+
 			If Not RecalculateOrderPrice(Session("StoreID"), gnOrderID) Then
 				Response.Redirect("/error.asp?err=" & Server.URLEncode(gsDBErrorMessage))
 			End If
-			
+
 			If Len(gsCouponIDs) > 0 Then
 				Session("CouponIDs") = gsCouponIDs
 				RecalculateOrderDiscounts Session("StoreID"), gnOrderID, Session("CouponIDs")
 			End If
-			
+
 			If Not RecalculateOrderTax(Session("StoreID"), gnOrderID) Then
 				Response.Redirect("/error.asp?err=" & Server.URLEncode(gsDBErrorMessage))
 			End If
-			
+
 			Session("OrderEdited") = TRUE
 			Session("NewOrder") = TRUE
 		Else
 			gnOrderID = CLng(Request("o"))
-			
+
 			If Request("zero") = "yes" Then
 				If ZeroOutOrder(gnOrderID, Request("MPOReason")) Then
 					Session("OrderEdited") = TRUE
@@ -100,17 +100,17 @@ If Request("o").Count > 0 Then
 				End If
 			End If
 		End If
-		
+
 		Session("OrderID") = gnOrderID
 		If GetOrderDetails(gnOrderID, gnSessionID, gsIPAddress, gnEmpID, gsRefID, gdtTransactionDate, gdtSubmitDate, gdtReleaseDate, gdtExpectedDate, gnStoreID, gnCustomerID, gsCustomerName, gsCustomerPhone, gnAddressID, gnOrderTypeID, gbIsPaid, gnPaymentTypeID, gsPaymentReference, gnAccountID, gdDeliveryCharge, gdDriverMoney, gdTax, gdTax2, gdTip, gnOrderStatusID, gsOrderNotes) Then
 '			If gnStoreID <> Session("StoreID") Then
 '				Response.Redirect("otherstore.asp?t=" & gnOrderTypeID & "&s=" & gnStoreID & "&c=" & gnCustomerID & "&a=" & gnAddressID)
 '			End If
-			
+
 			If gnOrderStatusID <> 2 And DateValue(gdtTransactionDate) <> DateValue(Session("TransactionDate")) Then
 				Response.Redirect("/error.asp?err=" & Server.URLEncode("Order is not From Today"))
 			End If
-			
+
 ' 2013-08-20 TAM: Allow edit order even if complete and paid
 '			If gnOrderStatusID >= 10 Then
 '				Response.Redirect("/error.asp?err=" & Server.URLEncode("Order is Complete"))
@@ -119,12 +119,12 @@ If Request("o").Count > 0 Then
 '			If gbIsPaid Then
 '				Response.Redirect("/error.asp?err=" & Server.URLEncode("Order Has Been Paid"))
 '			End If
-			
+
 			If gnEmpID = 1 And gnOrderStatusID = 1 Then
 				Session("OrderEdited") = TRUE
 				Session("NewOrder") = TRUE
 			End If
-			
+
 ' Don't replace SessionID or IPAddress
 '			Session("SessionID") = gnSessionID
 '			Session("IPAddress") = gsIPAddress
@@ -153,10 +153,10 @@ If Request("o").Count > 0 Then
 			Session("Tip") = gdTip
 			Session("OrderStatusID") = gnOrderStatusID
 			Session("OrderNotes") = gsOrderNotes
-			
+
 			gsOrderTypeDescription = GetOrderTypeDescription(gnOrderTypeID)
 			Session("OrderTypeDescription") = gsOrderTypeDescription
-			
+
 			If GetCustomerDetails(gnCustomerID, gsEMail, gsFirstName, gsLastName, gdtBirthdate, gnPrimaryAddressID, gsHomePhone, gsCellPhone, gsWorkPhone, gsFAXPhone, gbIsEMailList, gbIsTextList) Then
 				Session("EMail") = gsEMail
 				Session("FirstName") = gsFirstName
@@ -172,7 +172,7 @@ If Request("o").Count > 0 Then
 			Else
 				Response.Redirect("/error.asp?err=" & Server.URLEncode(gsDBErrorMessage))
 			End If
-			
+
 			If GetAddressDetails(gnAddressID, gnTmp, gsAddress1, gsAddress2, gsCity, gsState, gsPostalCode, gsAddressNotes) Then
 				Session("Address1") = gsAddress1
 				Session("Address2") = gsAddress2
@@ -183,7 +183,7 @@ If Request("o").Count > 0 Then
 			Else
 				Response.Redirect("/error.asp?err=" & Server.URLEncode(gsDBErrorMessage))
 			End If
-			
+
 			If gnCustomerID = 1 Then
 				' Incomplete anonymous online orders won't have an address association
 				gsAddressDescription = ""
@@ -200,7 +200,7 @@ If Request("o").Count > 0 Then
 			End If
 			Session("AddressDescription") = gsAddressDescription
 			Session("CustomerNotes") = gsCustomerNotes
-			
+
 			If Request("OrderNotes").Count > 0 Then
 				gsOrderNotes = Request("OrderNotes")
 				If SetOrderNotes(gnOrderID, gsOrderNotes) Then
@@ -240,11 +240,11 @@ Else
 	gnOrderStatusID = Session("OrderStatusID")
 	gsOrderNotes = Session("OrderNotes")
 	gsCustomerPhone = Session("CustomerPhone")
-	
+
 	If Request("q") = "yes" Then
 		gbQuickMode = TRUE
 		Session("QuickMode") = gbQuickMode
-		
+
 		Session("CustomerID") = 1
 		Session("EMail") = ""
 		Session("FirstName") = ""
@@ -268,7 +268,7 @@ Else
 		Session("AddressNotes") = ""
 		Session("AddressDescription") = ""
 		Session("CustomerNotes") = ""
-		
+
 		gnCustomerID = CLng(Session("CustomerID"))
 		gsEMail = Session("EMail")
 		gsFirstName = Session("FirstName")
@@ -291,7 +291,7 @@ Else
 		gsAddressNotes = Session("AddressNotes")
 		gsAddressDescription = Session("AddressDescription")
 		gsCustomerNotes = Session("CustomerNotes")
-		
+
 		If gnOrderID <> 0 Then
 			If Not SetOrderCustomer(gnOrderID, gnCustomerID, gsCustomerName, gsCustomerPhone) Then
 				Response.Redirect("/error.asp?err=" & Server.URLEncode(gsDBErrorMessage))
@@ -302,20 +302,20 @@ Else
 			If Not SetOrderAddress(gnOrderID, gnAddressID) Then
 				Response.Redirect("/error.asp?err=" & Server.URLEncode(gsDBErrorMessage))
 			End If
-			
+
 			Session("OrderEdited") = TRUE
 		End If
 	Else
 		gbQuickMode = Session("QuickMode")
 	End If
-	
+
 	If Request("t").Count > 0 Then
 		If IsNumeric(Request("t")) Then
 			gnOrderTypeID = CLng(Request("t"))
 			Session("OrderTypeID") = gnOrderTypeID
 			gsOrderTypeDescription = GetOrderTypeDescription(gnOrderTypeID)
 			Session("OrderTypeDescription") = gsOrderTypeDescription
-			
+
 			If Request("n").Count > 0 And Request("c").Count = 0 And Request("a").Count = 0 Then
 				gdDeliveryCharge = 0.00
 				gdDriverMoney = 0.00
@@ -329,7 +329,7 @@ Else
 		gnOrderTypeID = CLng(Session("OrderTypeID"))
 		gsOrderTypeDescription = Session("OrderTypeDescription")
 	End If
-	
+
 	If Request("c").Count > 0 Then
 		If IsNumeric(Request("c")) Then
 			gnCustomerID = CLng(Request("c"))
@@ -360,12 +360,12 @@ Else
 					End If
 				End If
 				Session("CustomerName") = gsCustomerName
-				
+
 				If gnOrderID <> 0 Then
 					If Not SetOrderCustomer(gnOrderID, gnCustomerID, gsCustomerName, gsCustomerPhone) Then
 						Response.Redirect("/error.asp?err=" & Server.URLEncode(gsDBErrorMessage))
 					End If
-					
+
 					Session("OrderEdited") = TRUE
 				End If
 			Else
@@ -389,19 +389,19 @@ Else
 		gbIsTextList = Session("IsTextList")
 		gsCustomerName = Session("CustomerName")
 	End If
-	
+
 	If Request("n").Count > 0 Then
 		gsCustomerName = Trim(Request("n"))
 		Session("CustomerName") = gsCustomerName
-		
+
 		If gnOrderID <> 0 Then
 			If Not SetOrderCustomerName(gnOrderID, gsCustomerName) Then
 				Response.Redirect("/error.asp?err=" & Server.URLEncode(gsDBErrorMessage))
 			End If
-			
+
 			Session("OrderEdited") = TRUE
 		End If
-		
+
 'Response.Write("HERE " & gnCustomerID & " " & Request("c").Count & " " & Request("newcustomer").Count & " " & Len(Session("CustomerPhone")) & " " & Len(Session("CustomerName")) & "<br>")
 'Response.End
 		If gnCustomerID = 1 And Request("c").Count = 0 And Request("newcustomer").Count = 0 And Len(gsCustomerPhone) > 0 And Len(gsCustomerName) > 0 Then
@@ -414,7 +414,7 @@ Else
 				gsFirst = Left(gsCustomerName, (InStrRev(gsCustomerName, " ") - 1))
 				gsLast = Mid(gsCustomerName, (InStrRev(gsCustomerName, " ") + 1))
 			End If
-			
+
 			gnCustomerID = AddCustomerPhoneName(gsFirst, gsLast, gsCustomerPhone)
 'Response.Write("HERE " & gnCustomerID & "<br>")
 'Response.End
@@ -426,12 +426,12 @@ Else
 	Else
 		gsCustomerName = Session("CustomerName")
 	End If
-	
+
 	If Request("a").Count > 0 Then
 		If IsNumeric(Request("a")) Then
 			gnAddressID = CLng(Request("a"))
 			Session("AddressID") = gnAddressID
-			
+
 			If GetAddressDetails(gnAddressID, gnTmp, gsAddress1, gsAddress2, gsCity, gsState, gsPostalCode, gsAddressNotes) Then
 				Session("Address1") = gsAddress1
 				Session("Address2") = gsAddress2
@@ -442,7 +442,7 @@ Else
 			Else
 				Response.Redirect("/error.asp?err=" & Server.URLEncode(gsDBErrorMessage))
 			End If
-			
+
 			If gnCustomerID <> 1 And Request("assigncustomeraddress").Count = 0 Then
 				If gnAddressID = 1 Then
 					gsAddressDescription = ""
@@ -458,7 +458,7 @@ Else
 				gsAddressDescription = Session("AddressDescription")
 				gsCustomerNotes = Session("CustomerNotes")
 			End If
-			
+
 			If gnOrderTypeID = 1 Then
 				gsTmp1 = gsAddress1
 				gsTmp2 = gsAddress2
@@ -468,11 +468,11 @@ Else
 '				If gnStoreID <> Session("StoreID") Then
 '					Response.Redirect("otherstore.asp?t=" & gnOrderTypeID & "&s=" & gnStoreID & "&c=" & gnCustomerID & "&a=" & gnAddressID)
 '				End If
-				
+
 				If gdDeliveryCharge = 0.00 Then
 					gdDeliveryCharge = GetDefaultDeliveryCharge(gnStoreID)
 				End If
-				
+
 				If gdDriverMoney = 0.00 Then
 					gdDriverMoney = GetDefaultDriverMoney(gnStoreID)
 				End If
@@ -482,12 +482,12 @@ Else
 			End If
 			Session("DeliveryCharge") = gdDeliveryCharge
 			Session("DriverMoney") = gdDriverMoney
-			
+
 			If gnOrderID <> 0 Then
 				If Not SetOrderAddress(gnOrderID, gnAddressID) Then
 					Response.Redirect("/error.asp?err=" & Server.URLEncode(gsDBErrorMessage))
 				End If
-				
+
 				Session("OrderEdited") = TRUE
 			End If
 		Else
@@ -504,17 +504,17 @@ Else
 		gsAddressDescription = Session("AddressDescription")
 		gsCustomerNotes = Session("CustomerNotes")
 	End If
-	
+
 	If Request("t").Count > 0 Then
 		If gnOrderID <> 0 Then
 			If Not SetOrderType(gnOrderID, Session("StoreID"), gnOrderTypeID, gdDeliveryCharge, gdDriverMoney) Then
 				Response.Redirect("/error.asp?err=" & Server.URLEncode(gsDBErrorMessage))
 			End If
-			
+
 			Session("OrderEdited") = TRUE
 		End If
 	End If
-	
+
 	If Request("em").Count > 0 Then
 		gsEmail = LCase(Request("em"))
 		Session("EMail") = gsEmail
@@ -542,12 +542,12 @@ If Request("newcustomer") = "yes" Then
 					gsFirst = Left(gsCustomerName, (InStrRev(gsCustomerName, " ") - 1))
 					gsLast = Mid(gsCustomerName, (InStrRev(gsCustomerName, " ") + 1))
 				End If
-				
+
 				gsHome = ""
 				gsCell = ""
 				gsWork = ""
 				gsFAX = ""
-				
+
 				Select Case CLng(Request("h"))
 					Case 1
 						gsCell = gsCustomerPhone
@@ -558,10 +558,10 @@ If Request("newcustomer") = "yes" Then
 					Case Else
 						gsHome = gsCustomerPhone
 				End Select
-				
+
 				gnCustomerID = AddCustomer(gsEmail, "", gsFirst, gsLast, DateValue("1/1/1900"), gnAddressID, gsHome, gsCell, gsWork, gsFAX, FALSE, FALSE)
 				If gnCustomerID = 0 Then
-					Response.Redirect("/error.asp?err=" & Server.URLEncode(gsDBErrorMessage))
+					Response.Redirect("/error.asp?c=cid&err=" & Server.URLEncode(gsDBErrorMessage))
 				Else
 					If Not AddCustomerAddress(gnCustomerID, gnAddressID, "Primary Address") Then
 						Response.Redirect("/error.asp?err=" & Server.URLEncode(gsDBErrorMessage))
@@ -584,7 +584,7 @@ If Request("newcustomer") = "yes" Then
 							Case Else
 								Session("HomePhone") = gsCustomerPhone
 						End Select
-						
+
 						gsFirstName = Session("FirstName")
 						gsLastName = Session("LastName")
 						gnPrimaryAddressID = CLng(Session("PrimaryAddressID"))
@@ -592,7 +592,7 @@ If Request("newcustomer") = "yes" Then
 						gsCellPhone = Session("CellPhone")
 						gsWorkPhone = Session("WorkPhone")
 						gsFAXPhone = Session("FAXPhone")
-						
+
 						If gnOrderID > 0 Then
 							If Not SetOrderCustomer(gnOrderID, gnCustomerID, gsCustomerName, gsCustomerPhone) Then
 								Response.Redirect("/error.asp?err=" & Server.URLEncode(gsDBErrorMessage))
@@ -635,7 +635,7 @@ Else
 						Response.Redirect("neworder.asp")
 					End If
 				End If
-				
+
 				If Request("u").Count = 0 Then
 					Response.Redirect("neworder.asp")
 				Else
@@ -643,7 +643,7 @@ Else
 						Response.Redirect("neworder.asp")
 					End If
 				End If
-				
+
 				If Request("SpecialtyID").Count = 0 Then
 					Response.Redirect("neworder.asp")
 				Else
@@ -651,7 +651,7 @@ Else
 						Response.Redirect("neworder.asp")
 					End If
 				End If
-				
+
 				If Request("SizeID").Count = 0 Then
 					Response.Redirect("neworder.asp")
 				Else
@@ -659,7 +659,7 @@ Else
 						Response.Redirect("neworder.asp")
 					End If
 				End If
-				
+
 				If Request("StyleID").Count = 0 Then
 					Response.Redirect("neworder.asp")
 				Else
@@ -667,7 +667,7 @@ Else
 						Response.Redirect("neworder.asp")
 					End If
 				End If
-				
+
 				If Request("Half1SauceID").Count = 0 Then
 					Response.Redirect("neworder.asp")
 				Else
@@ -675,7 +675,7 @@ Else
 						Response.Redirect("neworder.asp")
 					End If
 				End If
-				
+
 				If Request("Half2SauceID").Count = 0 Then
 					Response.Redirect("neworder.asp")
 				Else
@@ -683,7 +683,7 @@ Else
 						Response.Redirect("neworder.asp")
 					End If
 				End If
-				
+
 				If Request("Half1SauceModifierID").Count = 0 Then
 					Response.Redirect("neworder.asp")
 				Else
@@ -691,7 +691,7 @@ Else
 						Response.Redirect("neworder.asp")
 					End If
 				End If
-				
+
 				If Request("Half2SauceModifierID").Count = 0 Then
 					Response.Redirect("neworder.asp")
 				Else
@@ -699,11 +699,11 @@ Else
 						Response.Redirect("neworder.asp")
 					End If
 				End If
-				
+
 				If Request("MPOReason").Count <> 0 Then
 					gsMPOReason = Trim(Request("MPOReason"))
 				End If
-				
+
 				If gnOrderID = 0 Then
 					gnOrderID = CreateOrder(gnSessionID, gsIPAddress, Session("EmpID"), gsRefID, Session("TransactionDate"), Session("StoreID"), gnCustomerID, gsCustomerName, gsCustomerPhone, gnAddressID, gnOrderTypeID, gdDeliveryCharge, gdDriverMoney, gsOrderNotes)
 					If gnOrderID = 0 Then
@@ -719,7 +719,7 @@ Else
 						DeleteOrderLine(Request("l"))
 					End If
 				End If
-				
+
 				If Request("i").Count <> 0 Then
 					If IsNumeric(Request("i")) Then
 						gnAddQuantity = CLng(Request("i"))
@@ -729,7 +729,7 @@ Else
 				Else
 					gnAddQuantity = 1
 				End If
-				
+
 				If Request("s").Count <> 0 Then
 					If IsNumeric(Request("s")) Then
 						gdAddPrice = CDbl(Request("s"))
@@ -739,12 +739,12 @@ Else
 				Else
 					gdAddPrice = 0.00
 				End If
-				
+
 				gnOrderLineID = CreateOrderLine(gnOrderID, Request("u"), Request("SpecialtyID"), Request("SizeID"), Request("StyleID"), Request("Half1SauceID"), Request("Half2SauceID"), Request("Half1SauceModifierID"), Request("Half2SauceModifierID"), Request("OrderLineNotes"), gnAddQuantity)
 				If gnOrderLineID = 0 Then
 					Response.Redirect("/error.asp?err=" & Server.URLEncode(gsDBErrorMessage))
 				End If
-				
+
 				For i = 1 To Request("ItemID").Count
 					If InStr(Request("ItemID")(i), ",") > 0 Then
 						If IsNumeric(Left(Request("ItemID")(i), (InStr(Request("ItemID")(i), ",") - 1))) Then
@@ -757,7 +757,7 @@ Else
 						End If
 					End If
 				Next
-				
+
 				For i = 1 To Request("TopperID").Count
 					If InStr(Request("TopperID")(i), ",") > 0 Then
 						If IsNumeric(Left(Request("TopperID")(i), (InStr(Request("TopperID")(i), ",") - 1))) Then
@@ -770,7 +770,7 @@ Else
 						End If
 					End If
 				Next
-				
+
 				For i = 1 To Request("FreeSideID").Count
 					If IsNumeric(Request("FreeSideID")(i)) Then
 						gnTmp = CreateOrderLineSide(gnOrderLineID, Request("FreeSideID")(i), 1)
@@ -779,7 +779,7 @@ Else
 						End If
 					End If
 				Next
-				
+
 				For i = 1 To Request("AddSideID").Count
 					If IsNumeric(Request("AddSideID")(i)) Then
 						gnTmp = CreateOrderLineSide(gnOrderLineID, Request("AddSideID")(i), 0)
@@ -788,11 +788,11 @@ Else
 						End If
 					End If
 				Next
-				
+
 				If Not RecalculateOrderLinePrice(Session("StoreID"), gnOrderLineID, gdNewPrice) Then
 					Response.Redirect("/error.asp?err=" & Server.URLEncode(gsDBErrorMessage))
 				End If
-				
+
 				If gdAddPrice = 0 Then
 					If gdManagerPrice <> 0 And gdOriginalPrice = gdNewPrice Then
 						If Not SetManagerPriceOverride(gnOrderLineID, gdManagerPrice, gsMPOReason) Then
@@ -804,15 +804,15 @@ Else
 						Response.Redirect("/error.asp?err=" & Server.URLEncode(gsLocalErrorMsg))
 					End If
 				End If
-				
+
 				If Len(Session("CouponIDs")) > 0 Then
 					RecalculateOrderDiscounts Session("StoreID"), gnOrderID, Session("CouponIDs")
 				End If
-				
+
 				If Not RecalculateOrderTax(Session("StoreID"), gnOrderID) Then
 					Response.Redirect("/error.asp?err=" & Server.URLEncode(gsDBErrorMessage))
 				End If
-				
+
 ' Do not change EmpID now that we are tracking edits
 '				If gnEmpID <> 1 Then
 '					If SetOrderEmployee(gnOrderID, Session("EmpID")) Then
@@ -821,11 +821,11 @@ Else
 '						Response.Redirect("/error.asp?err=" & Server.URLEncode(gsDBErrorMessage))
 '					End If
 '				End If
-				
+
 				If GetOrderDetails(gnOrderID, gnSessionID, gsIPAddress, gnEmpID, gsRefID, gdtTransactionDate, gdtSubmitDate, gdtReleaseDate, gdtExpectedDate, gnStoreID, gnCustomerID, gsCustomerName, gsCustomerPhone, gnAddressID, gnOrderTypeID, gbIsPaid, gnPaymentTypeID, gsPaymentReference, gnAccountID, gdDeliveryCharge, gdDriverMoney, gdTax, gdTax2, gdTip, gnOrderStatusID, gsOrderNotes) Then
 					Session("Tax") = gdTax
 					Session("Tax2") = gdTax2
-					
+
 					' Don't replace SessionID or IPAddress
 					gnSessionID = Session("SessionID")
 					gsIPAddress = Session("IPAddress")
@@ -836,9 +836,9 @@ Else
 						Response.Redirect("/error.asp?err=" & Server.URLEncode("Invalid Order Specified"))
 					End If
 				End If
-				
+
 				Session("OrderEdited") = TRUE
-				
+
 				If Request("Another").Count <> 0 Then
 					If Request("Another") = "yes" Then
 						Response.Redirect("unitedit.asp?u=" & Request("u") & "&s=" & Request("SizeID"))
@@ -855,15 +855,15 @@ Else
 							Response.Redirect("neworder.asp")
 						End If
 					End If
-					
+
 					If Len(Session("CouponIDs")) > 0 Then
 						RecalculateOrderDiscounts Session("StoreID"), gnOrderID, Session("CouponIDs")
 					End If
-					
+
 					If Not RecalculateOrderTax(Session("StoreID"), gnOrderID) Then
 						Response.Redirect("/error.asp?err=" & Server.URLEncode(gsDBErrorMessage))
 					End If
-					
+
 ' Do not change EmpID now that we are tracking edits
 '					If gnEmpID <> 1 Then
 '						If SetOrderEmployee(gnOrderID, Session("EmpID")) Then
@@ -872,12 +872,12 @@ Else
 '							Response.Redirect("/error.asp?err=" & Server.URLEncode(gsDBErrorMessage))
 '						End If
 '					End If
-					
+
 					If GetOrderDetails(gnOrderID, gnSessionID, gsIPAddress, gnEmpID, gsRefID, gdtTransactionDate, gdtSubmitDate, gdtReleaseDate, gdtExpectedDate, gnStoreID, gnCustomerID, gsCustomerName, gsCustomerPhone, gnAddressID, gnOrderTypeID, gbIsPaid, gnPaymentTypeID, gsPaymentReference, gnAccountID, gdDeliveryCharge, gdDriverMoney, gdTax, gdTax2, gdTip, gnOrderStatusID, gsOrderNotes) Then
 						' Don't replace SessionID or IPAddress
 						gnSessionID = Session("SessionID")
 						gsIPAddress = Session("IPAddress")
-						
+
 						Session("Tax") = gdTax
 						Session("Tax2") = gdTax2
 					Else
@@ -887,30 +887,30 @@ Else
 							Response.Redirect("/error.asp?err=" & Server.URLEncode("Invalid Order Specified"))
 						End If
 					End If
-					
+
 					Session("OrderEdited") = TRUE
 				Else
 					If Request("dupe") = "yes" And Request("l").Count <> 0 Then
 						If Not IsNumeric(Request("l")) Then
 							Response.Redirect("neworder.asp")
 						End If
-						
+
 						If Not DuplicateOrderLine(gnOrderID, Request("l"), gnOrderLineID) Then
 							Response.Redirect("/error.asp?err=" & Server.URLEncode(gsDBErrorMessage))
 						End If
-						
+
 						If Not RecalculateOrderLinePrice(Session("StoreID"), gnOrderLineID, gdNewPrice) Then
 							Response.Redirect("/error.asp?err=" & Server.URLEncode(gsDBErrorMessage))
 						End If
-						
+
 						If Len(Session("CouponIDs")) > 0 Then
 							RecalculateOrderDiscounts Session("StoreID"), gnOrderID, Session("CouponIDs")
 						End If
-						
+
 						If Not RecalculateOrderTax(Session("StoreID"), gnOrderID) Then
 							Response.Redirect("/error.asp?err=" & Server.URLEncode(gsDBErrorMessage))
 						End If
-						
+
 ' Do not change EmpID now that we are tracking edits
 '						If gnEmpID <> 1 Then
 '							If SetOrderEmployee(gnOrderID, Session("EmpID")) Then
@@ -919,12 +919,12 @@ Else
 '								Response.Redirect("/error.asp?err=" & Server.URLEncode(gsDBErrorMessage))
 '							End If
 '						End If
-						
+
 						If GetOrderDetails(gnOrderID, gnSessionID, gsIPAddress, gnEmpID, gsRefID, gdtTransactionDate, gdtSubmitDate, gdtReleaseDate, gdtExpectedDate, gnStoreID, gnCustomerID, gsCustomerName, gsCustomerPhone, gnAddressID, gnOrderTypeID, gbIsPaid, gnPaymentTypeID, gsPaymentReference, gnAccountID, gdDeliveryCharge, gdDriverMoney, gdTax, gdTax2, gdTip, gnOrderStatusID, gsOrderNotes) Then
 							' Don't replace SessionID or IPAddress
 							gnSessionID = Session("SessionID")
 							gsIPAddress = Session("IPAddress")
-							
+
 							Session("Tax") = gdTax
 							Session("Tax2") = gdTax2
 						Else
@@ -934,10 +934,10 @@ Else
 								Response.Redirect("/error.asp?err=" & Server.URLEncode("Invalid Order Specified"))
 							End If
 						End If
-						
+
 						Session("OrderEdited") = TRUE
 					End If
-				End If	
+				End If
 			End If
 		End If
 	End If
@@ -1005,7 +1005,7 @@ If gnOrderStatusID = 2 Then
 	Else
 		gsHoldTime = gsHoldTime & Minute(gdtExpectedDate)
 	End If
-	
+
 	gsPrintTime = DateDiff("n", gdtReleaseDate, gdtExpectedDate)
 Else
 	gbAM = TRUE
@@ -1066,14 +1066,14 @@ var gbEditGotoPayment = false;
 
 function resetRedirect() {
 //	var loRedirectDiv;
-//	
+//
 //	loRedirectDiv = ie4? eval("document.all.redirect") : document.getElementById("redirect");
 //	loRedirectDiv.innerHTML = <%=gnRedirectTime%>;
 }
 
 function disableEnterKey() {
 	var loText, loDiv;
-	
+
 	if (event.keyCode == 13) {
 		event.cancelBubble = true;
 		event.returnValue = false;
@@ -1083,19 +1083,19 @@ function disableEnterKey() {
 
 function toggleDivs(psHideDiv, psShowDiv) {
 	var loHideDiv, loShowDiv;
-	
+
 	loHideDiv = ie4? eval("document.all." + psHideDiv) : document.getElementById(psHideDiv);
 	loShowDiv = ie4? eval("document.all." + psShowDiv) : document.getElementById(psShowDiv);
-	
+
 	loHideDiv.style.visibility = "hidden";
 	loShowDiv.style.visibility = "visible";
-	
+
 	resetRedirect();
 }
 
 function cancelOrder() {
 	var loDiv;
-	
+
 <%
 If Session("OrderLineCount") = 0 Then
 %>
@@ -1105,34 +1105,34 @@ Else
 %>
 	loDiv = ie4? eval("document.all.unitselector") : document.getElementById("unitselector");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.ordernotes") : document.getElementById("ordernotes");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.holdorder") : document.getElementById("holdorder");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.confirmholdorder") : document.getElementById("confirmholdorder");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.confirmreprint") : document.getElementById("confirmreprint");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.calendar") : document.getElementById("calendar");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.confirmdelivery") : document.getElementById("confirmdelivery");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.voidreasondiv") : document.getElementById("voidreasondiv");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.editreasondiv") : document.getElementById("editreasondiv");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.confirmcancel") : document.getElementById("confirmcancel");
 	loDiv.style.visibility = "visible";
-	
+
 	resetRedirect();
 <%
 End If
@@ -1141,132 +1141,132 @@ End If
 
 function gotoUnitSelector() {
 	var loDiv;
-	
+
 	loDiv = ie4? eval("document.all.ordernotes") : document.getElementById("ordernotes");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.holdorder") : document.getElementById("holdorder");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.confirmholdorder") : document.getElementById("confirmholdorder");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.confirmcancel") : document.getElementById("confirmcancel");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.confirmreprint") : document.getElementById("confirmreprint");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.calendar") : document.getElementById("calendar");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.confirmdelivery") : document.getElementById("confirmdelivery");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.voidreasondiv") : document.getElementById("voidreasondiv");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.editreasondiv") : document.getElementById("editreasondiv");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.unitselector") : document.getElementById("unitselector");
 	loDiv.style.visibility = "visible";
-	
+
 	resetRedirect();
 }
 
 function gotoOrderNotes() {
 	var loNotes, loDiv;
-	
+
 	loNotes = ie4? eval("document.all.notes") : document.getElementById('notes');
 	loNotes.value = gsOrderNotes;
-	
+
 	loDiv = ie4? eval("document.all.unitselector") : document.getElementById("unitselector");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.holdorder") : document.getElementById("holdorder");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.confirmholdorder") : document.getElementById("confirmholdorder");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.confirmcancel") : document.getElementById("confirmcancel");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.confirmreprint") : document.getElementById("confirmreprint");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.calendar") : document.getElementById("calendar");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.confirmdelivery") : document.getElementById("confirmdelivery");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.voidreasondiv") : document.getElementById("voidreasondiv");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.editreasondiv") : document.getElementById("editreasondiv");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.ordernotes") : document.getElementById("ordernotes");
 	loDiv.style.visibility = "visible";
-	
+
 	resetRedirect();
 }
 
 function addToNotes(psDigit) {
 	var loNotes, lsNotes;
-	
+
 	loNotes = ie4? eval("document.all.notes") : document.getElementById('notes');
 	lsNotes = loNotes.value;
-	
+
 	if (psDigit.length > 1) {
 		if (lsNotes.length > 0) {
 			lsNotes = lsNotes + " ";
 		}
 	}
-	
+
 	if (gbNotesInLowerCase) {
 		lsNotes += psDigit.toLowerCase();
 	}
 	else {
 		lsNotes += psDigit;
 	}
-	
+
 	if (lsNotes.length > 255) {
 		lsNotes = lsNotes.substr(0, 255);
 	}
-	
+
 	loNotes.value = lsNotes;
-	
+
 	resetRedirect();
 }
 
 function backspaceNotes() {
 	var loNotes, lsNotes;
-	
+
 	loNotes = ie4? eval("document.all.notes") : document.getElementById('notes');
 	lsNotes = loNotes.value;
 	if (lsNotes.length > 0) {
 		lsNotes = lsNotes.substr(0, (lsNotes.length - 1));
 		loNotes.value = lsNotes;
 	}
-	
+
 	resetRedirect();
 }
 
 function clearNotes() {
 	var loNotes;
-	
+
 	loNotes = ie4? eval("document.all.notes") : document.getElementById('notes');
 	loNotes.value = "";
-	
+
 	resetRedirect();
 }
 
 function properNotes() {
 	var loNotes, i, lsText, lbDoUpper;
-	
+
 	loNotes = ie4? eval("document.all.notes") : document.getElementById('notes');
 	if (loNotes.value.length > 0) {
 		lsText = loNotes.value.substr(0, 1).toUpperCase();
@@ -1288,13 +1288,13 @@ function properNotes() {
 		}
 		loNotes.value = lsText;
 	}
-	
+
 	resetRedirect();
 }
 
 function shiftNotes() {
 	var loObj;
-	
+
 	if (gbNotesInLowerCase) {
 		loObj = ie4? eval("document.all.key-q") : document.getElementById('key-q');
 		loObj.innerHTML = "Q";
@@ -1403,15 +1403,15 @@ function shiftNotes() {
 		loObj = ie4? eval("document.all.key-m") : document.getElementById('key-m');
 		loObj.innerHTML = "m";
 	}
-	
+
 	gbNotesInLowerCase = !gbNotesInLowerCase;
-	
+
 	resetRedirect();
 }
 
 function saveNotes() {
 	var loNotes;
-	
+
 	loNotes = ie4? eval("document.all.notes") : document.getElementById('notes');
 	gsOrderNotes = loNotes.value;
 	console.log("unitselect.asp?o=" + gnOrderID.toString() + "&OrderNotes=" + encodeURIComponent(gsOrderNotes))
@@ -1420,49 +1420,49 @@ function saveNotes() {
 
 function gotoHoldOrder() {
 	var loDiv;
-	
+
 	loDiv = ie4? eval("document.all.unitselector") : document.getElementById("unitselector");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.ordernotes") : document.getElementById("ordernotes");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.confirmholdorder") : document.getElementById("confirmholdorder");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.confirmcancel") : document.getElementById("confirmcancel");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.confirmreprint") : document.getElementById("confirmreprint");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.calendar") : document.getElementById("calendar");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.confirmdelivery") : document.getElementById("confirmdelivery");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.voidreasondiv") : document.getElementById("voidreasondiv");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.editreasondiv") : document.getElementById("editreasondiv");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.holdorder") : document.getElementById("holdorder");
 	loDiv.style.visibility = "visible";
-	
+
 	resetRedirect();
 }
 
 function cancelHoldOrder() {
 	var loField, loAMPMBtn, loDiv;
-	
+
 	loField = ie4? eval("document.all.date") : document.getElementById('date');
 	loField.value = "<%=gsHoldDate%>";
-	
+
 	loField = ie4? eval("document.all.time") : document.getElementById('time');
 	loField.value = "<%=gsHoldTime%>";
-	
+
 	gbAM = <%=LCase(gbAM)%>;
 	loAMPMBtn = ie4? eval("document.all.ampm") : document.getElementById('ampm');
 	if (<%=LCase(gbAM)%>) {
@@ -1471,69 +1471,69 @@ function cancelHoldOrder() {
 	else {
 		loAMPMBtn.innerHTML = "PM";
 	}
-	
+
 	loDiv = ie4? eval("document.all.ordernotes") : document.getElementById("ordernotes");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.holdorder") : document.getElementById("holdorder");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.confirmholdorder") : document.getElementById("confirmholdorder");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.confirmcancel") : document.getElementById("confirmcancel");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.confirmreprint") : document.getElementById("confirmreprint");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.calendar") : document.getElementById("calendar");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.confirmdelivery") : document.getElementById("confirmdelivery");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.voidreasondiv") : document.getElementById("voidreasondiv");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.editreasondiv") : document.getElementById("editreasondiv");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.unitselector") : document.getElementById("unitselector");
 	loDiv.style.visibility = "visible";
-	
+
 	resetRedirect();
 }
 
 function addToDate(psDigit) {
 	var loDate, lsDate;
-	
+
 	loDate = ie4? eval("document.all.date") : document.getElementById('date');
 	lsDate = loDate.value;
-	
+
 	lsDate += psDigit;
-	
+
 	loDate.value = lsDate;
-	
+
 	resetRedirect();
 }
 
 function backspaceDate() {
 	var loText, lsText;
-	
+
 	loText = ie4? eval("document.all.date") : document.getElementById('date');
 	lsText = loText.value;
 	if (lsText.length > 0) {
 		lsText = lsText.substr(0, (lsText.length - 1));
 		loText.value = lsText;
 	}
-	
+
 	resetRedirect();
 }
 
 function previousDate() {
 	var loText, lsText, ldtDate, ldtDate2;
-	
+
 	loText = ie4? eval("document.all.date") : document.getElementById('date');
 	lsText = loText.value;
 	if (lsText.length == 6) {
@@ -1555,13 +1555,13 @@ function previousDate() {
 		lsText += ldtDate2.getFullYear().toString().substr(2);
 		loText.value = lsText;
 	}
-	
+
 	resetRedirect();
 }
 
 function nextDate() {
 	var loText, lsText, lsMonth, lsDay, ldtDate, ldtDate2;
-	
+
 	loText = ie4? eval("document.all.date") : document.getElementById('date');
 	lsText = loText.value;
 	if (lsText.length == 6) {
@@ -1595,67 +1595,67 @@ function nextDate() {
 		lsText += ldtDate2.getFullYear().toString().substr(2);
 		loText.value = lsText;
 	}
-	
+
 	resetRedirect();
 }
 
 function addToTime(psDigit) {
 	var loTime, lsTime;
-	
+
 	loTime = ie4? eval("document.all.time") : document.getElementById('time');
 	lsTime = loTime.value;
-	
+
 	lsTime += psDigit;
-	
+
 	loTime.value = lsTime;
-	
+
 	resetRedirect();
 }
 
 function backspaceTime() {
 	var loText, lsText;
-	
+
 	loText = ie4? eval("document.all.time") : document.getElementById('time');
 	lsText = loText.value;
 	if (lsText.length > 0) {
 		lsText = lsText.substr(0, (lsText.length - 1));
 		loText.value = lsText;
 	}
-	
+
 	resetRedirect();
 }
 
 function addToMinutes(psDigit) {
 	var loTime, lsTime;
-	
+
 	loTime = ie4? eval("document.all.minutes") : document.getElementById('minutes');
 	lsTime = loTime.value;
-	
+
 	lsTime += psDigit;
-	
+
 	loTime.value = lsTime;
-	
+
 	resetRedirect();
 }
 
 function backspaceMinutes() {
 	var loText, lsText;
-	
+
 	loText = ie4? eval("document.all.minutes") : document.getElementById('minutes');
 	lsText = loText.value;
 	if (lsText.length > 0) {
 		lsText = lsText.substr(0, (lsText.length - 1));
 		loText.value = lsText;
 	}
-	
+
 	resetRedirect();
 }
 
 function toggleAMPM() {
 	var loAMPMBtn;
-	
+
 	gbAM = !gbAM;
-	
+
 	loAMPMBtn = ie4? eval("document.all.ampm") : document.getElementById('ampm');
 	if (gbAM) {
 		loAMPMBtn.innerHTML = "AM";
@@ -1667,37 +1667,37 @@ function toggleAMPM() {
 
 function gotoConfirmHoldOrder() {
 	var loDiv;
-	
+
 	loDiv = ie4? eval("document.all.unitselector") : document.getElementById("unitselector");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.ordernotes") : document.getElementById("ordernotes");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.holdorder") : document.getElementById("holdorder");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.confirmcancel") : document.getElementById("confirmcancel");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.confirmreprint") : document.getElementById("confirmreprint");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.calendar") : document.getElementById("calendar");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.confirmdelivery") : document.getElementById("confirmdelivery");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.voidreasondiv") : document.getElementById("voidreasondiv");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.editreasondiv") : document.getElementById("editreasondiv");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.confirmholdorder") : document.getElementById("confirmholdorder");
 	loDiv.style.visibility = "visible";
-	
+
 	resetRedirect();
 }
 
@@ -1706,7 +1706,7 @@ function saveHoldOrder(pbConfirm) {
 	var lnOpenMon, lnCloseMon, lnOpenTue, lnCloseTue, lnOpenWed, lnCloseWed, lnOpenThu, lnCloseThu, lnOpenFri, lnCloseFri, lnOpenSat, lnCloseSat, lnOpenSun, lnCloseSun;
 	var lnTime, lbTimeOK;
 	var lsLocation, loNotes, loMinutes;
-	
+
 	loMinutes = ie4? eval("document.all.minutes") : document.getElementById('minutes');
 	if (loMinutes.value.length == 0) {
 		return false;
@@ -1754,7 +1754,7 @@ function saveHoldOrder(pbConfirm) {
 			}
 			break;
 	}
-	
+
 	loTime = ie4? eval("document.all.time") : document.getElementById('time');
 	if (loTime.value.length != 4) {
 		return false;
@@ -1765,7 +1765,7 @@ function saveHoldOrder(pbConfirm) {
 	if (parseInt(loTime.value.substr(2, 2), 10) > 59) {
 		return false;
 	}
-	
+
 	if (gbAM) {
 		if (parseInt(loTime.value.substr(0, 2), 10) == 12) {
 			ldtDate = new Date(parseInt("20" + loDate.value.substr(4, 2), 10), (parseInt(loDate.value.substr(0, 2), 10) - 1), parseInt(loDate.value.substr(2, 2), 10), 0, parseInt(loTime.value.substr(2, 2), 10));
@@ -1781,7 +1781,7 @@ function saveHoldOrder(pbConfirm) {
 	if (ldtDate.valueOf() <= ldtNow.valueOf()) {
 		return false;
 	}
-	
+
 	if (pbConfirm) {
 		lbTimeOK = true;
 	}
@@ -1800,7 +1800,7 @@ function saveHoldOrder(pbConfirm) {
 		lnCloseSat = <%=gnCloseSat%>;
 		lnOpenSun = <%=gnOpenSun%>;
 		lnCloseSun = <%=gnCloseSun%>;
-		
+
 		lnTime = ldtDate.getHours() * 100 + ldtDate.getMinutes();
 		lbTimeOK = false;
 		switch (ldtDate.getDay()) {
@@ -1890,17 +1890,17 @@ function saveHoldOrder(pbConfirm) {
 				break;
 		}
 	}
-	
+
 	if (lbTimeOK) {
 		lsLocation = "neworder.asp?";
-		
+
 		loNotes = ie4? eval("document.all.notes") : document.getElementById('notes');
 		if (loNotes.value.length > 0) {
 			lsLocation = lsLocation + "OrderNotes=" + loNotes.value + "&";
 		}
-		
+
 		lsLocation = lsLocation + "d=" + loMinutes.value;
-		
+
 		lsLocation = lsLocation + "&e=" + loDate.value + "&g=" + loTime.value;
 		if (gbAM) {
 			lsLocation = lsLocation + "1";
@@ -1908,7 +1908,7 @@ function saveHoldOrder(pbConfirm) {
 		else {
 			lsLocation = lsLocation + "2";
 		}
-		
+
 		window.location = lsLocation;
 	}
 	else {
@@ -1918,132 +1918,132 @@ function saveHoldOrder(pbConfirm) {
 
 function gotoConfirmReprint() {
 	var loDiv;
-	
+
 	loDiv = ie4? eval("document.all.unitselector") : document.getElementById("unitselector");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.ordernotes") : document.getElementById("ordernotes");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.confirmholdorder") : document.getElementById("confirmholdorder");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.confirmcancel") : document.getElementById("confirmcancel");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.holdorder") : document.getElementById("holdorder");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.calendar") : document.getElementById("calendar");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.confirmdelivery") : document.getElementById("confirmdelivery");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.voidreasondiv") : document.getElementById("voidreasondiv");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.editreasondiv") : document.getElementById("editreasondiv");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.confirmreprint") : document.getElementById("confirmreprint");
 	loDiv.style.visibility = "visible";
-	
+
 	resetRedirect();
 }
 
 function gotoVoidReason() {
 	var loNotes, loDiv;
-	
+
 	loNotes = ie4? eval("document.all.voidreason") : document.getElementById('voidreason');
 	loNotes.value = "";
-	
+
 	loDiv = ie4? eval("document.all.unitselector") : document.getElementById("unitselector");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.ordernotes") : document.getElementById("ordernotes");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.confirmholdorder") : document.getElementById("confirmholdorder");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.confirmcancel") : document.getElementById("confirmcancel");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.holdorder") : document.getElementById("holdorder");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.calendar") : document.getElementById("calendar");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.confirmdelivery") : document.getElementById("confirmdelivery");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.confirmreprint") : document.getElementById("confirmreprint");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.editreasondiv") : document.getElementById("editreasondiv");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.voidreasondiv") : document.getElementById("voidreasondiv");
 	loDiv.style.visibility = "visible";
-	
+
 	resetRedirect();
 }
 
 function addToVoidReason(psDigit) {
 	var loNotes, lsNotes;
-	
+
 	loNotes = ie4? eval("document.all.voidreason") : document.getElementById('voidreason');
 	lsNotes = loNotes.value;
-	
+
 	if (psDigit.length > 1) {
 		if (lsNotes.length > 0) {
 			lsNotes = lsNotes + " ";
 		}
 	}
-	
+
 	if (gbVoidReasonInLowerCase) {
 		lsNotes += psDigit.toLowerCase();
 	}
 	else {
 		lsNotes += psDigit;
 	}
-	
+
 	if (lsNotes.length > 255) {
 		lsNotes = lsNotes.substr(0, 255);
 	}
-	
+
 	loNotes.value = lsNotes;
-	
+
 	resetRedirect();
 }
 
 function backspaceVoidReason() {
 	var loNotes, lsNotes;
-	
+
 	loNotes = ie4? eval("document.all.voidreason") : document.getElementById('voidreason');
 	lsNotes = loNotes.value;
 	if (lsNotes.length > 0) {
 		lsNotes = lsNotes.substr(0, (lsNotes.length - 1));
 		loNotes.value = lsNotes;
 	}
-	
+
 	resetRedirect();
 }
 
 function clearVoidReason() {
 	var loNotes;
-	
+
 	loNotes = ie4? eval("document.all.voidreason") : document.getElementById('voidreason');
 	loNotes.value = "";
-	
+
 	resetRedirect();
 }
 
 function properVoidReason() {
 	var loNotes, i, lsText, lbDoUpper;
-	
+
 	loNotes = ie4? eval("document.all.voidreason") : document.getElementById('voidreason');
 	if (loNotes.value.length > 0) {
 		lsText = loNotes.value.substr(0, 1).toUpperCase();
@@ -2065,13 +2065,13 @@ function properVoidReason() {
 		}
 		loNotes.value = lsText;
 	}
-	
+
 	resetRedirect();
 }
 
 function shiftVoidReason() {
 	var loObj;
-	
+
 	if (gbVoidReasonInLowerCase) {
 		loObj = ie4? eval("document.all.vkey-q") : document.getElementById('vkey-q');
 		loObj.innerHTML = "Q";
@@ -2180,15 +2180,15 @@ function shiftVoidReason() {
 		loObj = ie4? eval("document.all.vkey-m") : document.getElementById('vkey-m');
 		loObj.innerHTML = "m";
 	}
-	
+
 	gbVoidReasonInLowerCase = !gbVoidReasonInLowerCase;
-	
+
 	resetRedirect();
 }
 
 function saveVoidReason() {
 	var loNotes;
-	
+
 	loNotes = ie4? eval("document.all.voidreason") : document.getElementById('voidreason');
 	gsOrderNotes = loNotes.value;
 	if (gsOrderNotes.length > 0) {
@@ -2198,98 +2198,98 @@ function saveVoidReason() {
 
 function gotoEditReason(pbGotoPayment) {
 	var loNotes, loDiv;
-	
+
 	gbEditGotoPayment = pbGotoPayment;
-	
+
 	loNotes = ie4? eval("document.all.editreason") : document.getElementById('editreason');
 	loNotes.value = "";
-	
+
 	loDiv = ie4? eval("document.all.unitselector") : document.getElementById("unitselector");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.ordernotes") : document.getElementById("ordernotes");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.confirmholdorder") : document.getElementById("confirmholdorder");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.confirmcancel") : document.getElementById("confirmcancel");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.holdorder") : document.getElementById("holdorder");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.calendar") : document.getElementById("calendar");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.confirmdelivery") : document.getElementById("confirmdelivery");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.confirmreprint") : document.getElementById("confirmreprint");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.voidreasondiv") : document.getElementById("voidreasondiv");
 	loDiv.style.visibility = "hidden";
-	
+
 	loDiv = ie4? eval("document.all.editreasondiv") : document.getElementById("editreasondiv");
 	loDiv.style.visibility = "visible";
-	
+
 	resetRedirect();
 }
 
 function addToEditReason(psDigit) {
 	var loNotes, lsNotes;
-	
+
 	loNotes = ie4? eval("document.all.editreason") : document.getElementById('editreason');
 	lsNotes = loNotes.value;
-	
+
 	if (psDigit.length > 1) {
 		if (lsNotes.length > 0) {
 			lsNotes = lsNotes + " ";
 		}
 	}
-	
+
 	if (gbEditReasonInLowerCase) {
 		lsNotes += psDigit.toLowerCase();
 	}
 	else {
 		lsNotes += psDigit;
 	}
-	
+
 	if (lsNotes.length > 255) {
 		lsNotes = lsNotes.substr(0, 255);
 	}
-	
+
 	loNotes.value = lsNotes;
-	
+
 	resetRedirect();
 }
 
 function backspaceEditReason() {
 	var loNotes, lsNotes;
-	
+
 	loNotes = ie4? eval("document.all.editreason") : document.getElementById('editreason');
 	lsNotes = loNotes.value;
 	if (lsNotes.length > 0) {
 		lsNotes = lsNotes.substr(0, (lsNotes.length - 1));
 		loNotes.value = lsNotes;
 	}
-	
+
 	resetRedirect();
 }
 
 function clearEditReason() {
 	var loNotes;
-	
+
 	loNotes = ie4? eval("document.all.editreason") : document.getElementById('editreason');
 	loNotes.value = "";
-	
+
 	resetRedirect();
 }
 
 function properEditReason() {
 	var loNotes, i, lsText, lbDoUpper;
-	
+
 	loNotes = ie4? eval("document.all.editreason") : document.getElementById('editreason');
 	if (loNotes.value.length > 0) {
 		lsText = loNotes.value.substr(0, 1).toUpperCase();
@@ -2311,13 +2311,13 @@ function properEditReason() {
 		}
 		loNotes.value = lsText;
 	}
-	
+
 	resetRedirect();
 }
 
 function shiftEditReason() {
 	var loObj;
-	
+
 	if (gbEditReasonInLowerCase) {
 		loObj = ie4? eval("document.all.ekey-q") : document.getElementById('ekey-q');
 		loObj.innerHTML = "Q";
@@ -2426,15 +2426,15 @@ function shiftEditReason() {
 		loObj = ie4? eval("document.all.ekey-m") : document.getElementById('ekey-m');
 		loObj.innerHTML = "m";
 	}
-	
+
 	gbEditReasonInLowerCase = !gbEditReasonInLowerCase;
-	
+
 	resetRedirect();
 }
 
 function saveEditReason() {
 	var loNotes;
-	
+
 	loNotes = ie4? eval("document.all.editreason") : document.getElementById('editreason');
 	gsEditReason = loNotes.value;
 	if (gsEditReason.length > 0) {
@@ -2503,7 +2503,7 @@ If gnOrderStatusID <= 10 Then
 											<button style="width: 167px" onclick="cancelOrder()">Void Order</button>
 <%
 					End If
-					
+
 					If gnOrderID <> 0 Then
 %>
 											<button style="width: 167px" onclick="gotoOrderNotes();">Order Notes</button>
@@ -2529,7 +2529,7 @@ If gnOrderStatusID <= 10 Then
 											<button style="width: 340px" onclick="window.location = 'unitedit.asp?u=<%=ganUnitIDs(i)%>'"><%=gasShortDescriptions(i)%></button><br/>
 <%
 		Next
-		
+
 		' Add hidden buttons here
 		If ((UBound(ganUnitIDs) + 1) Mod 7) > 0 And UBound(ganUnitIDs) <> 7 Then
 			For i = ((UBound(ganUnitIDs) + 1) Mod 7) To 6
@@ -2538,7 +2538,7 @@ If gnOrderStatusID <= 10 Then
 <%
 			Next
 		End If
-	
+
 		If UBound(ganUnitIDs) > 7 Then
 			If UBound(ganUnitIDs) <> 7 Then
 %>
@@ -2570,7 +2570,7 @@ Else
 											<button style="width: 167px" onclick="cancelOrder()">Void Order</button>
 <%
 End If
-					
+
 ' 2013-08-20 TAM: Allow edit order even if complete and paid
 'If gnOrderID <> 0 And gnOrderStatusID < 7 Then
 If gnOrderID <> 0 And gnOrderStatusID <= 10 Then
@@ -2630,7 +2630,7 @@ Else
 										<%=gsAddress1%> #<%=gsAddress2%><br/>
 <%
 	End If
-	
+
 	If Len(gsCity) > 0 Or Len(gsState) > 0 Or Len(gsPostalCode) > 0 Then
 %>
 										<%=gsCity%>, <%=gsState%>&nbsp;<%=gsPostalCode%><br/>
@@ -2645,14 +2645,14 @@ Else
 										&nbsp;<br/>
 <%
 	End If
-	
+
 	If Len(gsCustomerPhone) > 0 Then
 %>
 										Phone: <%="(" & Left(gsCustomerPhone, 3) & ") " & Mid(gsCustomerPhone, 4, 3) & "-" & Mid(gsCustomerPhone, 7)%><br/>
 										&nbsp;<br/>
 <%
 	End If
-	
+
 	If Len(gsCustomerNotes) > 0 Then
 %>
 										Customer Notes: <%=gsCustomerNotes%><br/>
@@ -2812,7 +2812,7 @@ If ganOrderLineIDs(0) <> 0 Then
 												</div>
 <%
 	Next
-	
+
 	' Add hidden divs here
 	If ((UBound(ganOrderLineIDs) + 1) Mod 4) > 0 Then
 		For i = ((UBound(ganOrderLineIDs) + 1) Mod 4) To 3
@@ -2821,7 +2821,7 @@ If ganOrderLineIDs(0) <> 0 Then
 <%
 		Next
 	End If
-	
+
 	If UBound(ganOrderLineIDs) > 3 Then
 %>
 												<button style="width: 320px; color: #FFFFFF; background-color: #FF0000;" onclick="toggleDivs('itemdiv<%=Int(UBound(ganOrderLineIDs)/4)%>', 'itemdiv0')">Page <%=Int(UBound(ganOrderLineIDs)/4)+1%> of <%=Int(UBound(ganOrderLineIDs)/4)+1%><br/>(Next)</button>
@@ -3072,7 +3072,7 @@ If Len(gasVoidReasons(0)) > 0 Then
 			Exit For
 		End If
 	Next
-	
+
 	If UBound(gasVoidReasons) < 5 Then
 		For i = 4 To UBound(gasVoidReasons) Step -1
 %>
@@ -3106,7 +3106,7 @@ If UBound(gasVoidReasons) > 5 Then
 			Exit For
 		End If
 	Next
-	
+
 	If UBound(gasVoidReasons) < 14 Then
 		For i = 13 To UBound(gasVoidReasons) Step -1
 %>
@@ -3178,7 +3178,7 @@ If Len(gasEditReasons(0)) > 0 Then
 			Exit For
 		End If
 	Next
-	
+
 	If UBound(gasEditReasons) < 5 Then
 		For i = 4 To UBound(gasEditReasons) Step -1
 %>
@@ -3212,7 +3212,7 @@ If UBound(gasEditReasons) > 5 Then
 			Exit For
 		End If
 	Next
-	
+
 	If UBound(gasEditReasons) < 14 Then
 		For i = 13 To UBound(gasEditReasons) Step -1
 %>

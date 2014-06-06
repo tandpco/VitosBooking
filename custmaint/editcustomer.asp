@@ -212,7 +212,7 @@ If gnCustomerID = 1 Then
 		gbIsTextList = TRUE
 	End If
 Else
-	If Not GetCustomerDetails(gnCustomerID, gsEMail, gsFirstName, gsLastName, gdtBirthdate, gnPrimaryAddressID, gsHomePhone, gsCellPhone, gsWorkPhone, gsFAXPhone, gbIsEMailList, gbIsTextList) Then
+	If Not GetCustomerDetails2(gnCustomerID, gsEMail, gsFirstName, gsLastName, gdtBirthdate, gnPrimaryAddressID, gsHomePhone, gsCellPhone, gsWorkPhone, gsFAXPhone, gbIsEMailList, gbIsTextList,gsExtension) Then
 		Response.Redirect("/error.asp?err=" & Server.URLEncode(gsDBErrorMessage))
 	End If
 	

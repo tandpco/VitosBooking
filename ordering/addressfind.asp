@@ -444,7 +444,7 @@ Else
 <%
 End If
 %>
-	
+	// console.log(lsLocation)
 	window.location = lsLocation;
 }
 //-->

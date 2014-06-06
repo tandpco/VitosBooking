@@ -62,4 +62,5 @@ Session("OrderLineCount") = 0
 Session("CouponIDs") = ""
 Session("DEBUGIDEALCOST") = FALSE
 Session("EditReason") = ""
+Session("Extension") = ""
 %>

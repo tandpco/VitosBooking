@@ -25,9 +25,10 @@ End If
 <%
 Dim gbShowMenuButtons
 Dim gnOrderTypeID, gsPhone, ganCustomerIDs(), ganPrimaryAddressIDs(), ganAddressIDs(), ganStoreIDs(), gasAddresses(), gasNames(), i, rowCnt, paID
-Dim ganOrderIDs(), gsLocalErrorMsg, gasEMails()
+Dim ganOrderIDs(), gsLocalErrorMsg, gasEMails(),extensions()
 Dim gsAssignVisible, gsPostalVisible, gsPhoneVisible
 Dim gasPostalCodes(), ganAreaCodes()
+Dim gnAddressZip, gnAddressString
 
 If Session("OrderID") = 0 Then
   gbShowMenuButtons = TRUE
@@ -84,7 +85,10 @@ End If
 Session("ReturnURL") = "/ordering/customerfind.asp?t=" & gnOrderTypeID & "&p=" & gsPhone
 Session("SaveURL") = "/ordering/addressfind.asp?t=" & gnOrderTypeID & "&p=" & gsPhone
 
-If GetCustomerPrimaryAddressDetails(gnAddressID, gasNames, ganCustomerIDs, gasEMails) Then
+If GetAddressDetails2(gnAddressID, gnAddressString, gnAddressZip) Then
+End If
+
+If GetCustomerPrimaryAddressDetails(gnAddressID, gasNames, ganCustomerIDs, gasEMails,extensions) Then
 '    Response.Write("Customer Count = " & UBound(ganCustomerIDs) + 1 & "<br>")
 '    For i = 0 to UBound(ganCustomerIDs)
 '        Response.Write("CustomerID = " & ganCustomerIDs(i) & "<br>")
@@ -133,6 +137,18 @@ End If
 <link rel="stylesheet" href="/css/vitos.css" type="text/css" />
 <!-- #Include Virtual="include2/clock-server.asp" -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<link rel="stylesheet" href="/Scripts/keyboard/css/jsKeyboard.css" type="text/css" media="screen"/>
+<script type="text/javascript" src="/Scripts/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="/Scripts/keyboard/jsKeyboard.js"></script>
+<script type="text/javascript">     $(function () {
+         jsKeyboard.init("virtualKeyboard");
+         jsKeyboard.hide();
+
+         //first input focus
+         var $firstInput = $('#livesearch').focus();
+         jsKeyboard.currentElement = $firstInput;
+         jsKeyboard.currentElementCursorPosition = 0;
+     });</script>
 <script type="text/javascript">
 
 var ie4=document.all;
@@ -590,11 +606,35 @@ function back2Adx() {
     window.location = lsLocation;
 }
 
+
+$(function(){
+
+    $("#nameList .buttonLine").each(function(){
+      $(this).data('text',$(this).find('.nameButton .name').text().toUpperCase())
+    })
+  $("#livesearch").on('change',function(){
+    $("#content-wrapper").scrollTop(0)
+    var $val = $(this).val()
+    console.log('changed',$val)
+    $("#nameList .buttonLine").each(function(){
+      if($(this).data('text').indexOf($val) === -1) {
+        $(this).find('.nameButton .name').html($(this).data('text'))
+        $(this).hide()
+      }
+      else {
+        $(this).find('.nameButton .name').html($(this).data('text').replace($val, '<span class="highlight">'+$val+'</span>'))
+        $(this).show()
+      }
+    })
+
+  })
+})
+
 //-->
 </script>
 </head>
 
-<body onload="clockInit(clockLocalStartTime, clockServerStartTime); clockOnLoad();" onunload="clockOnUnload()" onkeypress="checkKey()">
+<body onload="clockInit(clockLocalStartTime, clockServerStartTime); clockOnLoad();" onunload="clockOnUnload()" onkeypress="checkKey()" style="padding-bottom:0">
 
 <div id="mainwindow" style="position: absolute; top: 0px; left: 0px; width=810PX; height: 968px; overflow: hidden;">
     <input type="hidden" id="txtCustID" value="<%=gnCustomerID %>" />
@@ -619,7 +659,7 @@ End If
                 <asp:TextBox ID="txtMaintCost" onkeypress="calculateFinanceDetail(); return false;" runat="server"></asp:TextBox>
         <td valign="top" width="1010">
           <div id="content-wrapper">
-          <div id="content" align="center" style="position: relative; width: 1010PX; height: <%= 150 * adxCnt %>px; overflow: hidden;">
+          <div id="content" align="center" style="position: relative;padding-bottom:400px">
                         <div id="assigndiv" align="center" style="position: relative; top: 0px; left: 0px; width: 810PX; visibility: <%=gsAssignVisible%>;">
 <%
 If gnOrderTypeID = 1 Then
@@ -632,18 +672,27 @@ Else
 <%
 End If
 %>
+<input type="text" id="livesearch" style="position:absolute;left:-1000px" />
+<div id="virtualKeyboard"></div>
                             <div align="center"><strong>Most Recent Names</strong></div><br/>
+                            <div id="nameList">
 <%
 If ganCustomerIDs(0) <> 0 Then
 ' Dim lnLastCustomer
 ' lnLastCustomer = ganCustomerIDs(0)
     For i = 0 to UBound(ganCustomerIDs)
 %>
-              <button style="width: 730px; text-align:left"  onclick="window.location='unitselect.asp?t=<%=gnOrderTypeID%>&c=<%=ganCustomerIDs(i)%>&a=<%=gnAddressID%>'"><%=gasNames(i)%><span style="float:right;display:inline-block;margin-right:10px;font-size:14px"><%=IIf(gasEmails(i) <> "",gasEmails(i),"No Email Yet") %></span></button><button style="width: 20px;" onclick="window.location='../custmaint/editcustomer.asp?c=<%=ganCustomerIDs(i)%>&a=<%=gnAddressID%>&o=0'" >Edit</button>
+  <div class="buttonLine" style="<%=IIf(extensions(i) <> "" and Session("Extension") <> "" and extensions(i) <> Session("Extension"),"opacity:0.5","") %>">
+              <button style="width: 730px; text-align:left;"  onclick="window.location='unitselect.asp?t=<%=gnOrderTypeID%>&c=<%=ganCustomerIDs(i)%>&a=<%=gnAddressID%>'" class="nameButton"><span class="name"><%=gasNames(i)%></span><%=IIf(extensions(i) <> ""," (ext. / bld. "+extensions(i)+")","") %><span style="float:right;display:inline-block;margin-right:10px;font-size:14px"><%=IIf(gasEmails(i) <> "",gasEmails(i),"No Email Yet") %></span></button><button style="width: 20px;" onclick="window.location='../custmaint/editcustomer.asp?c=<%=ganCustomerIDs(i)%>&a=<%=gnAddressID%>&o=0'" >Edit</button></div>
 <%
     Next
 End If
 %>
+<div>
+<button style="width:300px" onclick="window.location='addressfind.asp?t=<%=gnOrderTypeID%>&z=<%=gnAddressZip%>&b=<%=Server.URLEncode(gnAddressString)%>'">Add New Customer Name</button>
+</div>
+
+</div>
             </div>
             <div id="postalcodediv" style="position: absolute; top: 0px; left: 0px; width: 810PX; visibility: <%=gsPostalVisible%>;">
               <table align="center" cellpadding="0" cellspacing="0">

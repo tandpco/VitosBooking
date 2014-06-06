@@ -22,7 +22,7 @@ var jsKeyboard = {
         jsKeyboard.changeToCapitalLetter();
 
         // jsKeyboard.show();
-        $(':input').not('[type="reset"]').not('[type="submit"]').on('focus, click', function (e) {
+        $(':input').not('[type="reset"]').not('[type="submit"]').not('button').on('focus, click', function (e) {
             jsKeyboard.currentElement = $(this);
             jsKeyboard.currentElementCursorPosition = $(this).getCursorPosition();
             console.log('keyboard is now focused on ' + jsKeyboard.currentElement.attr('name') + ' at pos(' + jsKeyboard.currentElementCursorPosition + ')');

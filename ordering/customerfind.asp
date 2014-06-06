@@ -77,7 +77,9 @@ gbNeedPrinterAlert = FALSE
 
 gnOrderTypeID = CLng(Request("t"))
 Session("OrderTypeID") = gnOrderTypeID
-
+If(Request("x")) Then
+Session("Extension") = Request("x")
+End If
 gsPhone = Request("p")
 
 If (Request("r")) Then
@@ -133,7 +135,7 @@ End If
 
 </head>
 
-<body onload="clockInit(clockLocalStartTime, clockServerStartTime); clockOnLoad();" onunload="clockOnUnload()">
+<body onload="clockInit(clockLocalStartTime, clockServerStartTime); clockOnLoad();" onunload="clockOnUnload()" style="padding-bottom:0">
 
 <div id="mainwindow" style="position: absolute; top: 0px; left: 0px; height: 768px; overflow: hidden;">
 <table cellspacing="0" cellpadding="0" width="1010" height="764" border="1">
@@ -144,7 +146,7 @@ End If
       <tr>
         <td>
           <div id="content-wrapper">
-          <div id="content" align="center" style="position: relative; width: 1010PX;  overflow: auto;">
+          <div id="content" align="center" style="position: relative; width: 1010PX; padding-bottom:400px">
             <div id="assigndiv" align="center" style="position: relative; top: 0px; left: 0px; width: 810PX; visibility: <%=gsAssignVisible%>;">
               <div align="center" style="font-size:18px"><strong>
 <%

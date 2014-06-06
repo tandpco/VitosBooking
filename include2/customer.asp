@@ -9,11 +9,11 @@
 '		GetCustomerDetails, GetCustomerAddressDetails, GetCustomersByAddress
 '		AddCustomerAddress, AssignCustomerPhone, AddCustomer, IsCustomerCheckOK,
 '		GetLastCustomerOrderDate, GetCustomerAccounts, GetCustomerStoreAccounts,
-'		GetStoreAccounts, GetAllAccounts, DebitAccountLedger, CreditAccountLedger, CustomerLogin, 
+'		GetStoreAccounts, GetAllAccounts, DebitAccountLedger, CreditAccountLedger, CustomerLogin,
 '		LogWebActivity, UpdateWebActivityOrder, UpdateWebActivityStore, GetAccountName,
 '		UpdateCustomerAddressNotes, UpdateCustomer, GetCustomerAddresses,
-'		SetPrimaryAddress, DeleteCustomerAddress, GetAccountDetails, AddAccount, 
-'		AddStoreAccount, UpdateAccount, GetAccountContact, AddCustomerPhoneName, 
+'		SetPrimaryAddress, DeleteCustomerAddress, GetAccountDetails, AddAccount,
+'		AddStoreAccount, UpdateAccount, GetAccountContact, AddCustomerPhoneName,
 '		IsAccountCollegeDebit, GetLastCustomerOrder
 '
 ' Revision History:
@@ -34,20 +34,20 @@
 ' **************************************************************************
 Function GetCustomersByPhone(ByVal pnPhone, ByRef panCustomerIDs, ByRef panPrimaryAddressIDs, ByRef panAddressIDs, ByRef panStoreIDs, ByRef pasAddresses, ByRef pasNames, ByRef rowCount)
 	Dim lbRet, lsSQL, loRS, lnPos
-	
+
 	lbRet = FALSE
-	
+
 '	lsSQL = "SELECT tblCustomers.CustomerID, PrimaryAddressID, tblAddresses.AddressID, StoreID, AddressLine1, AddressLine2, FirstName, LastName from tblCustomers left outer join trelCustomerAddresses on tblCustomers.CustomerID = trelCustomerAddresses.CustomerID left outer join tblAddresses on trelCustomerAddresses.AddressID = tblAddresses.AddressID where HomePhone = '" & pnPhone & "' or CellPhone = '" & pnPhone & "' or WorkPhone = '" & pnPhone & "' or FAXPhone = '" & pnPhone & "' order by tblCustomers.CustomerID, tblAddresses.AddressID"
     lsSQL = "SELECT TOP " + rowCount + " tblCustomers.CustomerID,PrimaryAddressID,tblAddresses.AddressID,tOrders.StoreID,AddressLine1,AddressLine2,FirstName,LastName FROM tblCustomers OUTER APPLY (SELECT TOP 1 * FROM tblOrders WHERE (tblOrders.CustomerID = tblCustomers.CustomerID) ORDER BY tblOrders.TransactionDate) tOrders LEFT OUTER JOIN trelCustomerAddresses ON tOrders.CustomerID = trelCustomerAddresses.CustomerID LEFT OUTER JOIN tblAddresses on trelCustomerAddresses.AddressID = tblAddresses.AddressID WHERE HomePhone = '" & pnPhone & "' or CellPhone = '" & pnPhone & "' or WorkPhone = '" & pnPhone & "' or FAXPhone = '" & pnPhone & "' ORDER BY tOrders.TransactionDate DESC"
 	If DBOpenQuery(lsSQL, FALSE, loRS) Then
 		lbRet = TRUE
-		
+
 		If Not loRS.bof And Not loRS.eof Then
 			lnPos = 0
-			
+
 			Do While Not loRS.eof
 				ReDim Preserve panCustomerIDs(lnPos), panPrimaryAddressIDs(lnPos), panAddressIDs(lnPos), panStoreIDs(lnPos), pasAddresses(lnPos), pasNames(lnPos)
-				
+
 				panCustomerIDs(lnPos) = loRS("CustomerID")
 				panPrimaryAddressIDs(lnPos) = loRS("PrimaryAddressID")
 				If IsNull(loRS("AddressID")) Then
@@ -78,7 +78,7 @@ Function GetCustomersByPhone(ByVal pnPhone, ByRef panCustomerIDs, ByRef panPrima
 						End If
 					End If
 				End If
-				
+
 				lnPos = lnPos + 1
 				loRS.MoveNext
 			Loop
@@ -91,28 +91,28 @@ Function GetCustomersByPhone(ByVal pnPhone, ByRef panCustomerIDs, ByRef panPrima
 			pasAddresses(0) = ""
 			pasNames(0) = ""
 		End If
-		
+
 		DBCloseQuery loRS
 	End If
-	
+
 	GetCustomersByPhone = lbRet
 End Function
 
 Function GetAddressesByPhone(ByVal pnPhone, ByVal rowCount, ByRef panAddressIDs, ByRef panStoreIDs, ByRef pasAddresses)
 	Dim lbRet, lsSQL, loRS, lnPos
-	
+
 	lbRet = FALSE
   lsSQL = "SELECT TOP " + rowCount + " tblAddresses.AddressID,MAX(tblAddresses.StoreID) as StoreID,MAX(AddressLine1) as AddressLine1,MAX(AddressLine2) as AddressLine2		  FROM tblCustomers		  OUTER APPLY (SELECT TOP 1 * FROM tblOrders WHERE (tblOrders.CustomerID = tblCustomers.CustomerID) ORDER BY tblOrders.TransactionDate) tOrders 		  LEFT OUTER JOIN trelCustomerAddresses ON tOrders.CustomerID = trelCustomerAddresses.CustomerID 		  LEFT OUTER JOIN tblAddresses on trelCustomerAddresses.AddressID = tblAddresses.AddressID 		  WHERE HomePhone = '" & pnPhone & "' or CellPhone = '" & pnPhone & "' or WorkPhone = '" & pnPhone & "' or FAXPhone = '" & pnPhone & "' 		  GROUP BY tblAddresses.AddressID		  ORDER BY MAX(tOrders.TransactionDate) DESC"
 
 	If DBOpenQuery(lsSQL, FALSE, loRS) Then
 		lbRet = TRUE
-		
+
 		If Not loRS.bof And Not loRS.eof Then
 			lnPos = 0
-			
+
 			Do While Not loRS.eof
 				ReDim Preserve panAddressIDs(lnPos), panStoreIDs(lnPos), pasAddresses(lnPos)
-				
+
 				If IsNull(loRS("AddressID")) Then
 					panAddressIDs(lnPos) = 0
 				Else
@@ -128,7 +128,7 @@ Function GetAddressesByPhone(ByVal pnPhone, ByVal rowCount, ByRef panAddressIDs,
 						End If
 					End If
 				End If
-				
+
 				lnPos = lnPos + 1
 				loRS.MoveNext
 			Loop
@@ -138,10 +138,10 @@ Function GetAddressesByPhone(ByVal pnPhone, ByVal rowCount, ByRef panAddressIDs,
 			panStoreIDs(0) = 0
 			pasAddresses(0) = ""
 		End If
-		
+
 		DBCloseQuery loRS
 	End If
-	
+
 	GetAddressesByPhone = lbRet
 End Function
 
@@ -167,14 +167,14 @@ End Function
 ' **************************************************************************
 Function GetCustomerDetails(ByVal pnCustomerID, ByRef psEMail, ByRef psFirstName, ByRef psLastName, ByRef pdtBirthdate, ByRef pnPrimaryAddressID, ByRef psHomePhone, ByRef psCellPhone, ByRef psWorkPhone, ByRef psFAXPhone, ByRef pbIsEMailList, ByRef pbIsTextList)
 	Dim lbRet, lsSQL, loRS
-	
+
 	lbRet = FALSE
-	
+
 	lsSQL = "select EMail, FirstName, LastName, Birthdate, PrimaryAddressID, HomePhone, CellPhone, WorkPhone, FAXPhone, IsEMailList, IsTextList from tblCustomers where CustomerID = " & pnCustomerID
 	If DBOpenQuery(lsSQL, FALSE, loRS) Then
 		If Not loRS.bof And Not loRS.eof Then
 			lbRet = TRUE
-			
+
 			If IsNull(loRS("EMail")) Then
 				psEMail = ""
 			Else
@@ -227,11 +227,84 @@ Function GetCustomerDetails(ByVal pnCustomerID, ByRef psEMail, ByRef psFirstName
 				pbIsTextList = FALSE
 			End If
 		End If
-		
+
 		DBCloseQuery loRS
 	End If
-	
+
 	GetCustomerDetails = lbRet
+End Function
+Function GetCustomerDetails2(ByVal pnCustomerID, ByRef psEMail, ByRef psFirstName, ByRef psLastName, ByRef pdtBirthdate, ByRef pnPrimaryAddressID, ByRef psHomePhone, ByRef psCellPhone, ByRef psWorkPhone, ByRef psFAXPhone, ByRef pbIsEMailList, ByRef pbIsTextList,ByRef psExtension)
+	Dim lbRet, lsSQL, loRS
+
+	lbRet = FALSE
+
+	lsSQL = "select EMail, FirstName, LastName, Birthdate, PrimaryAddressID, HomePhone, CellPhone, WorkPhone, FAXPhone,extension, IsEMailList, IsTextList from tblCustomers where CustomerID = " & pnCustomerID
+	If DBOpenQuery(lsSQL, FALSE, loRS) Then
+		If Not loRS.bof And Not loRS.eof Then
+			lbRet = TRUE
+
+			If IsNull(loRS("EMail")) Then
+				psEMail = ""
+			Else
+				psEMail = Trim(loRS("EMail"))
+			End If
+			If IsNull(loRS("FirstName")) Then
+				psFirstName = ""
+			Else
+				psFirstName = Trim(loRS("FirstName"))
+			End If
+			If IsNull(loRS("LastName")) Then
+				psLastName = ""
+			Else
+				psLastName = Trim(loRS("LastName"))
+			End If
+			If IsNull(loRS("extension")) Then
+				psExtension = ""
+			Else
+				psExtension = Trim(loRS("extension"))
+			End If
+			If IsNull(loRS("Birthdate")) Then
+				pdtBirthdate = DateValue("1/1/1900")
+			Else
+				pdtBirthdate = loRS("Birthdate")
+			End If
+			pnPrimaryAddressID = loRS("PrimaryAddressID")
+			If IsNull(loRS("HomePhone")) Then
+				psHomePhone = ""
+			Else
+				psHomePhone = Trim(loRS("HomePhone"))
+			End If
+			If IsNull(loRS("CellPhone")) Then
+				psCellPhone = ""
+			Else
+				psCellPhone = Trim(loRS("CellPhone"))
+			End If
+			If IsNull(loRS("WorkPhone")) Then
+				psWorkPhone = ""
+			Else
+				psWorkPhone = Trim(loRS("WorkPhone"))
+			End If
+			If IsNull(loRS("FAXPhone")) Then
+				psFAXPhone = ""
+			Else
+				psFAXPhone = Trim(loRS("FAXPhone"))
+			End If
+			If loRS("IsEMailList") <> 0 Then
+				pbIsEMailList = TRUE
+			Else
+				pbIsEMailList = FALSE
+			End If
+			If loRS("IsTextList") <> 0 Then
+				pbIsTextList = TRUE
+			Else
+				pbIsTextList = FALSE
+			End If
+		End If
+
+		DBCloseQuery loRS
+	End If
+
+	GetCustomerDetails2 = lbRet
 End Function
 
 ' **************************************************************************
@@ -245,14 +318,14 @@ End Function
 ' **************************************************************************
 Function GetCustomerAddressDetails(ByVal pnCustomerID, ByVal pnAddressID, ByRef psCustomerAddressDescription, ByRef psCustomerAddressNotes)
 	Dim lbRet, lsSQL, loRS
-	
+
 	lbRet = FALSE
-	
+
 	lsSQL = "select CustomerAddressDescription, CustomerAddressNotes from trelCustomerAddresses where CustomerID = " & pnCustomerID & " and AddressID = " & pnAddressID
 	If DBOpenQuery(lsSQL, FALSE, loRS) Then
 		If Not loRS.bof And Not loRS.eof Then
 			lbRet = TRUE
-			
+
 			psCustomerAddressDescription = Trim(loRS("CustomerAddressDescription"))
 			If IsNull(loRS("CustomerAddressNotes")) Then
 				psCustomerAddressNotes = ""
@@ -260,10 +333,10 @@ Function GetCustomerAddressDetails(ByVal pnCustomerID, ByVal pnAddressID, ByRef 
 				psCustomerAddressNotes = Trim(loRS("CustomerAddressNotes"))
 			End If
 		End If
-		
+
 		DBCloseQuery loRS
 	End If
-	
+
 	GetCustomerAddressDetails = lbRet
 End Function
 
@@ -276,21 +349,24 @@ End Function
 '				psLastName - The last name
 ' Return: True if sucessful, False if not
 ' **************************************************************************
-Function GetCustomerPrimaryAddressDetails(ByVal pnPrimaryAddressID, ByRef pasNames, ByRef panCustomerIDs, ByRef pasEMails)
+Function GetCustomerPrimaryAddressDetails(ByVal pnPrimaryAddressID, ByRef pasNames, ByRef panCustomerIDs, ByRef pasEMails, ByRef extensions)
 	Dim lbRet, lsSQL, loRS, lnPos
-	
+
 	lbRet = FALSE
-	
-    lsSQL = "SELECT DISTINCT CustomerID,* FROM tblCustomers WHERE PrimaryAddressID = "&pnPrimaryAddressID
+
+    'lsSQL = "SELECT DISTINCT CustomerID,* FROM tblCustomers WHERE PrimaryAddressID = "&pnPrimaryAddressID
+
+
+	lsSQL = "select tblCustomers.CustomerID, FirstName,extension, LastName,Email from tblCustomers left join trelCustomerAddresses on tblCustomers.CustomerID = trelCustomerAddresses.CustomerID where AddressID = " & pnPrimaryAddressID & " order by tblCustomers.CustomerID"
 	If DBOpenQuery(lsSQL, FALSE, loRS) Then
 		lbRet = TRUE
-		
+
 		If Not loRS.bof And Not loRS.eof Then
 			lnPos = 0
-			
+
 			Do While Not loRS.eof
-				ReDim Preserve panCustomerIDs(lnPos),pasNames(lnPos),pasEMails(lnPos),panAddressIDs(lnPos)
-				
+				ReDim Preserve panCustomerIDs(lnPos),pasNames(lnPos),pasEMails(lnPos),panAddressIDs(lnPos),extensions(lnPos)
+
 				panCustomerIDs(lnPos) = loRS("CustomerID")
 
 				If IsNull(loRS("FirstName")) Then
@@ -300,20 +376,22 @@ Function GetCustomerPrimaryAddressDetails(ByVal pnPrimaryAddressID, ByRef pasNam
 				End If
 
 				pasEMails(lnPos) = Trim(loRS("EMail"))
+				extensions(lnPos) = Trim(loRS("extension"))
 
 				lnPos = lnPos + 1
 				loRS.MoveNext
 			Loop
 		Else
-			ReDim panCustomerIDs(0),pasNames(0)
+			ReDim panCustomerIDs(0),pasNames(0),pasEMails(0),extensions(0)
 			pasNames(0) = 0
-			pasEmails(0) = ""
+			pasEMails(0) = ""
+			extensions(0) = ""
       panCustomerIDs(0) = 0
 		End If
-		
+
 		DBCloseQuery loRS
 	End If
-	
+
 	GetCustomerPrimaryAddressDetails = lbRet
 End Function
 
@@ -327,19 +405,19 @@ End Function
 ' **************************************************************************
 Function GetCustomersByAddress(ByVal pnAddressID, ByRef panCustomerIDs, ByRef pasNames)
 	Dim lbRet, lsSQL, loRS, lnPos
-	
+
 	lbRet = FALSE
-	
+
 	lsSQL = "select tblCustomers.CustomerID, FirstName, LastName from trelCustomerAddresses inner join tblCustomers on tblCustomers.CustomerID = trelCustomerAddresses.CustomerID where AddressID = " & pnAddressID & " order by tblCustomers.CustomerID"
 	If DBOpenQuery(lsSQL, FALSE, loRS) Then
 		lbRet = TRUE
-		
+
 		If Not loRS.bof And Not loRS.eof Then
 			lnPos = 0
-			
+
 			Do While Not loRS.eof
 				ReDim Preserve panCustomerIDs(lnPos), pasNames(lnPos)
-				
+
 				panCustomerIDs(lnPos) = loRS("CustomerID")
 				If IsNull(loRS("FirstName")) Then
 					pasNames(lnPos) = ""
@@ -354,7 +432,7 @@ Function GetCustomersByAddress(ByVal pnAddressID, ByRef panCustomerIDs, ByRef pa
 						End If
 					End If
 				End If
-				
+
 				lnPos = lnPos + 1
 				loRS.MoveNext
 			Loop
@@ -363,10 +441,10 @@ Function GetCustomersByAddress(ByVal pnAddressID, ByRef panCustomerIDs, ByRef pa
 			panCustomerIDs(0) = 0
 			pasNames(0) = ""
 		End If
-		
+
 		DBCloseQuery loRS
 	End If
-	
+
 	GetCustomersByAddress = lbRet
 End Function
 
@@ -380,14 +458,14 @@ End Function
 ' **************************************************************************
 Function AddCustomerAddress(ByVal pnCustomerID, ByVal pnAddressID, psCustomerAddressDescription)
 	Dim lbRet, lsSQL
-	
+
 	lbRet = FALSE
-	
+
 	lsSQL = "insert into trelCustomerAddresses (CustomerID, AddressID, CustomerAddressDescription) values (" & pnCustomerID & ", " & pnAddressID & ", '" & DBCleanLiteral(psCustomerAddressDescription) & "')"
 	If DBExecuteSQL(lsSQL) Then
 		lbRet = TRUE
 	End If
-	
+
 	AddCustomerAddress = lbRet
 End Function
 
@@ -401,9 +479,9 @@ End Function
 ' **************************************************************************
 Function AssignCustomerPhone(ByVal pnCustomerID, ByVal psPhoneNumber, pnPhoneType)
 	Dim lbRet, lsSQL
-	
+
 	lbRet = FALSE
-	
+
 	lsSQL = "update tblCustomers set "
 	Select Case pnPhoneType
 		Case 1
@@ -416,11 +494,11 @@ Function AssignCustomerPhone(ByVal pnCustomerID, ByVal psPhoneNumber, pnPhoneTyp
 			lsSQL = lsSQL & "HomePhone = '"
 	End Select
 	lsSQL = lsSQL & DBCleanLiteral(psPhoneNumber) & "' where CustomerID = " & pnCustomerID
-	
+
 	If DBExecuteSQL(lsSQL) Then
 		lbRet = TRUE
 	End If
-	
+
 	AssignCustomerPhone = lbRet
 End Function
 
@@ -443,9 +521,9 @@ End Function
 ' **************************************************************************
 Function AddCustomer(ByVal psEMail, ByVal psPassword, ByVal psFirstName, ByVal psLastName, ByVal pdtBirthdate, ByVal pnPrimaryAddressID, ByVal psHomePhone, ByVal psCellPhone, ByVal psWorkPhone, ByVal psFAXPhone, ByVal pbIsEMailList, ByVal pbIsTextList)
 	Dim lnRet, lsSQL, loRS
-	
+
 	lnRet = 0
-	
+
 	lsSQL = "EXEC AddCustomer @pEMail = "
 	If Len(psEMail) = 0 Then
 		lsSQL = lsSQL & "NULL"
@@ -515,10 +593,10 @@ Function AddCustomer(ByVal psEMail, ByVal psPassword, ByVal psFirstName, ByVal p
 		If Not loRS.bof And Not loRS.eof Then
 			lnRet = CLng(loRS(0))
 		End If
-		
+
 		DBCloseQuery loRS
 	End If
-	
+
 	AddCustomer = lnRet
 End Function
 
@@ -528,19 +606,19 @@ End Function
 ' Parameters:	psEMail - The e-mail address
 '				psFirstName - The first name
 '				psLastName - The last name
-'                psExtension - The Customers Phone Extension 
+'                psExtension - The Customers Phone Extension
 ' Return: True/False
 ' **************************************************************************
 Function UpdateCustomer_New(ByVal psEMail, ByVal psFirstName, ByVal psLastName, ByVal psExtension, ByVal custID)
 	Dim lnRet, lsSQL, loRS
-	
+
 	lnRet = FALSE
-	
+
 	lsSQL = "UPDATE tblCustomers SET EMail = '" & psEMail & "', firstName = '" & psFirstName & "',  lastName = '" & psLastname & "', extension = '" & psExtension & "' WHERE CustomerID = " & custID
 	If DBExecuteSQL(lsSQL) Then
 		lnRet = TRUE
 	End If
-	
+
 	UpdateCustomer_New = lnRet
 End Function
 
@@ -553,9 +631,9 @@ End Function
 ' **************************************************************************
 Function IsCustomerCheckOK(ByVal pnCustomerID)
 	Dim lbRet, lsSQL, loRS, lnPos
-	
+
 	lbRet = FALSE
-	
+
 	lsSQL = "select NoChecks from tblCustomers where CustomerID = " & pnCustomerID
 	If DBOpenQuery(lsSQL, FALSE, loRS) Then
 		If Not loRS.bof And Not loRS.eof Then
@@ -563,10 +641,10 @@ Function IsCustomerCheckOK(ByVal pnCustomerID)
 				lbRet = TRUE
 			End If
 		End If
-		
+
 		DBCloseQuery loRS
 	End If
-	
+
 	IsCustomerCheckOK = lbRet
 End Function
 
@@ -578,9 +656,9 @@ End Function
 ' **************************************************************************
 Function GetLastCustomerOrderDate(ByVal pnCustomerID)
 	Dim ldtRet, lsSQL, loRS, lnPos
-	
+
 	ldtRet = DateValue("1/1/1900")
-	
+
 	lsSQL = "select MAX(ReleaseDate) as LastOrderDate from tblOrders where CustomerID = " & pnCustomerID & " and IsPaid <> 0 and OrderStatusID = 10"
 	If DBOpenQuery(lsSQL, FALSE, loRS) Then
 		If Not loRS.bof And Not loRS.eof Then
@@ -588,10 +666,10 @@ Function GetLastCustomerOrderDate(ByVal pnCustomerID)
 				ldtRet = loRS("LastOrderDate")
 			End If
 		End If
-		
+
 		DBCloseQuery loRS
 	End If
-	
+
 	GetLastCustomerOrderDate = ldtRet
 End Function
 
@@ -606,19 +684,19 @@ End Function
 ' **************************************************************************
 Function GetCustomerAccounts(ByVal pnCustomerID, ByRef panAccountIDs, ByRef pasAccountNames, ByRef pabAccountOnHolds)
 	Dim lbRet, lsSQL, loRS, lnPos
-	
+
 	lbRet = FALSE
-	
+
 	lsSQL = "select trelAccountsCustomers.AccountID, AccountName, OnHold from trelAccountsCustomers inner join tblAccounts on trelAccountsCustomers.AccountID = tblAccounts.AccountID where trelAccountsCustomers.CustomerID = " & pnCustomerID & " and tblAccounts.IsActive <> 0"
 	If DBOpenQuery(lsSQL, FALSE, loRS) Then
 		lbRet = TRUE
-		
+
 		If Not loRS.bof And Not loRS.eof Then
 			lnPos = 0
-			
+
 			Do While Not loRS.eof
 				ReDim Preserve panAccountIDs(lnPos), pasAccountNames(lnPos), pabAccountOnHolds(lnPos)
-				
+
 				panAccountIDs(lnPos) = loRS("AccountID")
 				If IsNull(loRS("AccountName")) Then
 					pasAccountNames(lnPos) = ""
@@ -630,7 +708,7 @@ Function GetCustomerAccounts(ByVal pnCustomerID, ByRef panAccountIDs, ByRef pasA
 				Else
 					pabAccountOnHolds(lnPos) = FALSE
 				End If
-				
+
 				lnPos = lnPos + 1
 				loRS.MoveNext
 			Loop
@@ -640,10 +718,10 @@ Function GetCustomerAccounts(ByVal pnCustomerID, ByRef panAccountIDs, ByRef pasA
 			pasAccountNames(0) = ""
 			pabAccountOnHolds(0) = FALSE
 		End If
-		
+
 		DBCloseQuery loRS
 	End If
-	
+
 	GetCustomerAccounts = lbRet
 End Function
 
@@ -659,9 +737,9 @@ End Function
 ' **************************************************************************
 Function GetCustomerStoreAccounts(ByVal pnCustomerID, ByVal pnStoreID, ByRef panAccountIDs, ByRef pasAccountNames, ByRef pabAccountOnHolds)
 	Dim lbRet, lsSQL, loRS, lnPos
-	
+
 	lbRet = FALSE
-	
+
 	lsSQL = "select trelAccountsCustomers.AccountID, AccountName, OnHold from trelAccountsCustomers inner join tblAccounts on trelAccountsCustomers.AccountID = tblAccounts.AccountID inner join trelAccountsStores on tblAccounts.AccountID = trelAccountsStores.AccountID where trelAccountsCustomers.CustomerID = " & pnCustomerID & " and trelAccountsStores.StoreID = " & pnStoreID & " and tblAccounts.IsActive <> 0 and tblAccounts.CollegeDebitStoreID is null"
 	lsSQL = lsSQL & " union all select AccountID, AccountName, OnHold from tblAccounts where tblAccounts.IsActive <> 0 and tblAccounts.CollegeDebitStoreID = " & pnStoreID
 If Session("SecurityID") > 1 Then
@@ -670,13 +748,13 @@ If Session("SecurityID") > 1 Then
 End If
 	If DBOpenQuery(lsSQL, FALSE, loRS) Then
 		lbRet = TRUE
-		
+
 		If Not loRS.bof And Not loRS.eof Then
 			lnPos = 0
-			
+
 			Do While Not loRS.eof
 				ReDim Preserve panAccountIDs(lnPos), pasAccountNames(lnPos), pabAccountOnHolds(lnPos)
-				
+
 				panAccountIDs(lnPos) = loRS("AccountID")
 				If IsNull(loRS("AccountName")) Then
 					pasAccountNames(lnPos) = ""
@@ -688,7 +766,7 @@ End If
 				Else
 					pabAccountOnHolds(lnPos) = FALSE
 				End If
-				
+
 				lnPos = lnPos + 1
 				loRS.MoveNext
 			Loop
@@ -698,10 +776,10 @@ End If
 			pasAccountNames(0) = ""
 			pabAccountOnHolds(0) = FALSE
 		End If
-		
+
 		DBCloseQuery loRS
 	End If
-	
+
 	GetCustomerStoreAccounts = lbRet
 End Function
 
@@ -716,19 +794,19 @@ End Function
 ' **************************************************************************
 Function GetStoreAccounts(ByVal pnStoreID, ByRef panAccountIDs, ByRef pasAccountNames, ByRef pabAccountOnHolds)
 	Dim lbRet, lsSQL, loRS, lnPos
-	
+
 	lbRet = FALSE
-	
+
 	lsSQL = "select StoreID, tblAccounts.AccountID, AccountName, OnHold from tblAccounts inner join trelAccountsStores on tblAccounts.AccountID = trelAccountsStores.AccountID and trelAccountsStores.StoreID = " & pnStoreID & " where IsActive <> 0 and (CollegeDebitStoreID is null or CollegeDebitStoreID = " & pnStoreID & ") order by CollegeDebitStoreID desc, AccountName"
 	If DBOpenQuery(lsSQL, FALSE, loRS) Then
 		lbRet = TRUE
-		
+
 		If Not loRS.bof And Not loRS.eof Then
 			lnPos = 0
-			
+
 			Do While Not loRS.eof
 				ReDim Preserve panAccountIDs(lnPos), pasAccountNames(lnPos), pabAccountOnHolds(lnPos)
-				
+
 				panAccountIDs(lnPos) = loRS("AccountID")
 				If IsNull(loRS("AccountName")) Then
 					pasAccountNames(lnPos) = ""
@@ -740,7 +818,7 @@ Function GetStoreAccounts(ByVal pnStoreID, ByRef panAccountIDs, ByRef pasAccount
 				Else
 					pabAccountOnHolds(lnPos) = FALSE
 				End If
-				
+
 				lnPos = lnPos + 1
 				loRS.MoveNext
 			Loop
@@ -750,10 +828,10 @@ Function GetStoreAccounts(ByVal pnStoreID, ByRef panAccountIDs, ByRef pasAccount
 			pasAccountNames(0) = ""
 			pabAccountOnHolds(0) = FALSE
 		End If
-		
+
 		DBCloseQuery loRS
 	End If
-	
+
 	GetStoreAccounts = lbRet
 End Function
 
@@ -768,19 +846,19 @@ End Function
 ' **************************************************************************
 Function GetStoreCollegeDebitAccounts(ByVal pnStoreID, ByRef panAccountIDs, ByRef pasAccountNames, ByRef pabAccountOnHolds)
 	Dim lbRet, lsSQL, loRS, lnPos
-	
+
 	lbRet = FALSE
-	
+
 	lsSQL = "select StoreID, tblAccounts.AccountID, AccountName, OnHold from tblAccounts inner join trelAccountsStores on tblAccounts.AccountID = trelAccountsStores.AccountID and trelAccountsStores.StoreID = " & pnStoreID & " where IsActive <> 0 and CollegeDebitStoreID = " & pnStoreID & " order by AccountName"
 	If DBOpenQuery(lsSQL, FALSE, loRS) Then
 		lbRet = TRUE
-		
+
 		If Not loRS.bof And Not loRS.eof Then
 			lnPos = 0
-			
+
 			Do While Not loRS.eof
 				ReDim Preserve panAccountIDs(lnPos), pasAccountNames(lnPos), pabAccountOnHolds(lnPos)
-				
+
 				panAccountIDs(lnPos) = loRS("updateAccountID")
 				If IsNull(loRS("AccountName")) Then
 					pasAccountNames(lnPos) = ""
@@ -792,7 +870,7 @@ Function GetStoreCollegeDebitAccounts(ByVal pnStoreID, ByRef panAccountIDs, ByRe
 				Else
 					pabAccountOnHolds(lnPos) = FALSE
 				End If
-				
+
 				lnPos = lnPos + 1
 				loRS.MoveNext
 			Loop
@@ -802,10 +880,10 @@ Function GetStoreCollegeDebitAccounts(ByVal pnStoreID, ByRef panAccountIDs, ByRe
 			pasAccountNames(0) = ""
 			pabAccountOnHolds(0) = FALSE
 		End If
-		
+
 		DBCloseQuery loRS
 	End If
-	
+
 	GetStoreCollegeDebitAccounts = lbRet
 End Function
 
@@ -820,19 +898,19 @@ End Function
 ' **************************************************************************
 Function GetAllAccounts(ByVal pnStoreID, ByRef panAllAccountIDs, ByRef pasAllAccountNames, ByRef pabAllAccountOnHolds)
 	Dim lbRet, lsSQL, loRS, lnPos
-	
+
 	lbRet = FALSE
-	
+
 	lsSQL = "select AccountID, AccountName, OnHold from tblAccounts where IsActive <> 0 and (CollegeDebitStoreID is null or CollegeDebitStoreID = " & pnStoreID & ") order by AccountName"
 	If DBOpenQuery(lsSQL, FALSE, loRS) Then
 		lbRet = TRUE
-		
+
 		If Not loRS.bof And Not loRS.eof Then
 			lnPos = 0
-			
+
 			Do While Not loRS.eof
 				ReDim Preserve panAllAccountIDs(lnPos), pasAllAccountNames(lnPos), pabAllAccountOnHolds(lnPos)
-				
+
 				panAllAccountIDs(lnPos) = loRS("AccountID")
 				If IsNull(loRS("AccountName")) Then
 					pasAllAccountNames(lnPos) = ""
@@ -844,7 +922,7 @@ Function GetAllAccounts(ByVal pnStoreID, ByRef panAllAccountIDs, ByRef pasAllAcc
 				Else
 					pabAllAccountOnHolds(lnPos) = FALSE
 				End If
-				
+
 				lnPos = lnPos + 1
 				loRS.MoveNext
 			Loop
@@ -854,10 +932,10 @@ Function GetAllAccounts(ByVal pnStoreID, ByRef panAllAccountIDs, ByRef pasAllAcc
 			pasAllAccountNames(0) = ""
 			pabAllAccountOnHolds(0) = FALSE
 		End If
-		
+
 		DBCloseQuery loRS
 	End If
-	
+
 	GetAllAccounts = lbRet
 End Function
 
@@ -874,9 +952,9 @@ End Function
 ' **************************************************************************
 Function DebitAccountLedger(ByVal pnStoreID, ByVal pdtTransactionDate, ByVal pnAccountID, ByVal pnOrderID, ByVal psLedgerDescription, ByVal pdDebit)
 	Dim lbRet, lsSQL, loRS
-	
+
 	lbRet = FALSE
-	
+
 	' Ensure not already entered
 	If pnOrderID = 0 Then
 		lsSQL = "select LedgerID from tblLedger where LedgerDate = '" & pdtTransactionDate & "' and StoreID = " & pnStoreID & " and AccountID = " & pnAccountID & " and LedgerDescription = '" & DBCleanLiteral(psLedgerDescription) & "' and Debit = " & pdDebit & ""
@@ -894,15 +972,15 @@ Function DebitAccountLedger(ByVal pnStoreID, ByVal pdtTransactionDate, ByVal pnA
 			End If
 			If DBExecuteSQL(lsSQL) Then
 				lbRet = TRUE
-				
+
 				lsSQL = "insert into trelAccountsStores (AccountID, StoreID) values (" & pnAccountID & ", " & pnStoreID & ")"
 				DBExecuteSQL lsSQL
 			End If
 		End If
-		
+
 		DBCloseQuery loRS
 	End If
-	
+
 	DebitAccountLedger = lbRet
 End Function
 
@@ -917,9 +995,9 @@ End Function
 ' **************************************************************************
 Function CreditAccountLedger(ByVal pnAccountID, ByVal pnOrderID, ByVal psLedgerDescription, ByVal pdCredit)
 	Dim lbRet, lsSQL
-	
+
 	lbRet = FALSE
-	
+
 	If pnOrderID = 0 Then
 		lsSQL = "insert into tblLedger (AccountID, LedgerDescription, Credit) values (" & pnAccountID & ", '" & DBCleanLiteral(psLedgerDescription) & "', " & pdCredit & ")"
 	Else
@@ -928,7 +1006,7 @@ Function CreditAccountLedger(ByVal pnAccountID, ByVal pnOrderID, ByVal psLedgerD
 	If DBExecuteSQL(lsSQL) Then
 		lbRet = TRUE
 	End If
-	
+
 	CreditAccountLedger = lbRet
 End Function
 
@@ -950,14 +1028,14 @@ End Function
 ' **************************************************************************
 Function CustomerLogin(ByVal psEMail, ByVal psPassword, ByRef pnCustomerID, ByRef psFirstName, ByRef psLastName, ByRef pnPrimaryAddressID, ByRef psHomePhone, ByRef psCellPhone, ByRef psWorkPhone, ByRef psFAXPhone, ByRef pdtBirthdate)
 	Dim lbRet, lsSQL, loRS
-	
+
 	lbRet = FALSE
-	
+
 	lsSQL = "select CustomerID, FirstName, LastName, PrimaryAddressID, HomePhone, CellPhone, WorkPhone, FAXPhone, Birthdate from tblCustomers where EMail = '" & DBCleanLiteral(psEMail) & "' and Password = '" & DBCleanLiteral(MD5(psPassword)) & "'"
 	If DBOpenQuery(lsSQL, FALSE, loRS) Then
 		If Not loRS.bof And Not loRS.eof Then
 			lbRet = TRUE
-			
+
 			pnCustomerID = Trim(loRS("CustomerID"))
 			If IsNull(loRS("FirstName")) Then
 				psFirstName = ""
@@ -996,10 +1074,10 @@ Function CustomerLogin(ByVal psEMail, ByVal psPassword, ByRef pnCustomerID, ByRe
 				pdtBirthdate = loRS("Birthdate")
 			End If
 		End If
-		
+
 		DBCloseQuery loRS
 	End If
-	
+
 	CustomerLogin = lbRet
 End Function
 
@@ -1017,18 +1095,18 @@ End Function
 ' **************************************************************************
 Function LogWebActivity(ByVal psEmail, ByVal psAddress1, ByVal psAddress2, ByVal psCity, ByVal psState, ByVal pnPostalCode, ByVal pnStoreID)
 	Dim lnRet, lsSQL, loRS
-	
+
 	lnRet = 0
-	
+
 	lsSQL = "EXEC LogWebActivity @pSessionID = " & Session.SessionID & ", @pEMail = '" & psEmail & "', @pAddress1 = '" & psAddress1 & "', @pAddress2 = '" & psAddress2 & "', @pCity = '" & psCity & "', @pState = '" & psState & "', @pPostalCode = '" & pnPostalCode & "', @pStoreID = " & pnStoreID & ", @pIPAddress = '" & Request.ServerVariables("REMOTE_ADDR") & "', @pRefID = '" & Session("RefID") & "'"
 	If DBOpenQuery(lsSQL, FALSE, loRS) Then
 		If Not loRS.bof And Not loRS.eof Then
 			lnRet = CLng(loRS(0))
 		End If
-		
+
 		DBCloseQuery loRS
 	End If
-	
+
 	LogWebActivity = lnRet
 End Function
 
@@ -1041,14 +1119,14 @@ End Function
 ' **************************************************************************
 Function UpdateWebActivityOrder(ByVal pnActivityID, ByVal pnOrderID)
 	Dim lbRet, lsSQL
-	
+
 	lbRet = FALSE
-	
+
 	lsSQL = "update tblWebActivity set OrderID = " & pnOrderID & " where WebActivityID = " & pnActivityID
 	If DBExecuteSQL(lsSQL) Then
 		lbRet = TRUE
 	End If
-	
+
 	UpdateWebActivityOrder = lbRet
 End Function
 
@@ -1062,14 +1140,14 @@ End Function
 ' **************************************************************************
 Function UpdateWebActivityStore(ByVal pnActivityID, ByVal pnStoreID, ByVal pnOrderType)
 	Dim lbRet, lsSQL
-	
+
 	lbRet = FALSE
-	
+
 	lsSQL = "update tblWebActivity set StoreID = " & pnStoreID & ", OrderTypeID = " & pnOrderType & " where WebActivityID = " & pnActivityID
 	If DBExecuteSQL(lsSQL) Then
 		lbRet = TRUE
 	End If
-	
+
 	UpdateWebActivityStore = lbRet
 End Function
 
@@ -1081,18 +1159,18 @@ End Function
 ' **************************************************************************
 Function GetAccountName(ByVal pnAccountID)
 	Dim lsRet, lsSQL, loRS
-	
+
 	lsRet = ""
-	
+
 	lsSQL = "select AccountName from tblAccounts where AccountID = " & pnAccountID
 	If DBOpenQuery(lsSQL, FALSE, loRS) Then
 		If Not loRS.bof And Not loRS.eof Then
 			lsRet = loRS("AccountName")
 		End If
-		
+
 		DBCloseQuery loRS
 	End If
-	
+
 	GetAccountName = lsRet
 End Function
 
@@ -1106,14 +1184,14 @@ End Function
 ' **************************************************************************
 Function UpdateCustomerAddressNotes(ByVal pnCustomerID, ByVal pnAddressID, ByVal psCustomerAddressNotes)
 	Dim lbRet, lsSQL, loRS
-	
+
 	lbRet = FALSE
-	
+
 	lsSQL = "update trelCustomerAddresses set CustomerAddressNotes = '" & DBCleanLiteral(psCustomerAddressNotes) & "' where CustomerID = " & pnCustomerID & " and AddressID = " & pnAddressID
 	If DBExecuteSQL(lsSQL) Then
 		lbRet = TRUE
 	End If
-	
+
 	UpdateCustomerAddressNotes = lbRet
 End Function
 
@@ -1136,9 +1214,9 @@ End Function
 ' **************************************************************************
 Function UpdateCustomer(ByVal pnCustomerID, ByVal psEMail, ByVal psFirstName, ByVal psLastName, ByVal pdtBirthdate, ByVal psHomePhone, ByVal psCellPhone, ByVal psWorkPhone, ByVal psFAXPhone, ByVal pbIsEMailList, ByVal pbIsTextList, ByVal pbNoChecks)
 	Dim lbRet, lsSQL, loRS
-	
+
 	lbRet = FALSE
-	
+
 	lsSQL = "update tblCustomers set "
 	If Len(Trim(psEMail)) = 0 Then
 		lsSQL = lsSQL & "EMail = NULL"
@@ -1199,7 +1277,7 @@ Function UpdateCustomer(ByVal pnCustomerID, ByVal psEMail, ByVal psFirstName, By
 	If DBExecuteSQL(lsSQL) Then
 		lbRet = TRUE
 	End If
-	
+
 	UpdateCustomer = lbRet
 End Function
 
@@ -1213,19 +1291,19 @@ End Function
 ' **************************************************************************
 Function GetCustomerAddresses(ByVal pnCustomerID, ByRef panAddressIDs, ByRef pasAddresses)
 	Dim lbRet, lsSQL, loRS, lnPos
-	
+
 	lbRet = FALSE
-	
+
 	lsSQL = "select tblAddresses.AddressID, AddressLine1, AddressLine2, City, State, PostalCode from trelCustomerAddresses inner join tblAddresses on tblAddresses.AddressID = trelCustomerAddresses.AddressID where CustomerID = " & pnCustomerID & " order by tblAddresses.AddressID"
 	If DBOpenQuery(lsSQL, FALSE, loRS) Then
 		lbRet = TRUE
-		
+
 		If Not loRS.bof And Not loRS.eof Then
 			lnPos = 0
-			
+
 			Do While Not loRS.eof
 				ReDim Preserve panAddressIDs(lnPos), pasAddresses(lnPos)
-				
+
 				panAddressIDs(lnPos) = loRS("AddressID")
 				If IsNull(loRS("AddressLine2")) Then
 					pasAddresses(lnPos) = Trim(loRS("AddressLine1"))
@@ -1237,7 +1315,7 @@ Function GetCustomerAddresses(ByVal pnCustomerID, ByRef panAddressIDs, ByRef pas
 					End If
 				End If
 				pasAddresses(lnPos) = pasAddresses(lnPos) & ", " & Trim(loRS("City")) & ", " & Trim(loRS("State")) & " " & Trim(loRS("PostalCode"))
-				
+
 				lnPos = lnPos + 1
 				loRS.MoveNext
 			Loop
@@ -1246,11 +1324,57 @@ Function GetCustomerAddresses(ByVal pnCustomerID, ByRef panAddressIDs, ByRef pas
 			panAddressIDs(0) = 0
 			pasAddresses(0) = ""
 		End If
-		
+
 		DBCloseQuery loRS
 	End If
-	
+
 	GetCustomerAddresses = lbRet
+End Function
+' **************************************************************************
+' Function: GetCustomerAddresses
+' Purpose: Finds addresses associated with a customer
+' Parameters:	pnCustomerID - The CustomerID to search for
+'				panAddressIDs - Array of AddressIDs found
+'				pasAddresses - Array of addresses found
+' Return: True if sucessful, False if not
+' **************************************************************************
+Function GetAddressDetails2(ByVal addressID, ByRef addressStreet, ByRef addressZip)
+	Dim lbRet, lsSQL, loRS, lnPos
+
+	lbRet = FALSE
+	lsSQL = "select TOP 1 * from tblAddresses where AddressID = " & addressID
+
+	If DBOpenQuery(lsSQL, FALSE, loRS) Then
+		lbRet = TRUE
+
+		If Not loRS.bof And Not loRS.eof Then
+			lnPos = 0
+
+			Do While Not loRS.eof
+
+				addressZip= Trim(loRS("PostalCode"))
+				If IsNull(loRS("AddressLine2")) Then
+					addressStreet = Trim(loRS("AddressLine1"))
+				Else
+					If Len(loRS("AddressLine2")) = 0 Then
+						addressStreet = Trim(loRS("AddressLine1"))
+					Else
+						addressStreet = Trim(loRS("AddressLine1")) & " #" & Trim(loRS("AddressLine2"))
+					End If
+				End If
+
+				lnPos = lnPos + 1
+				loRS.MoveNext
+			Loop
+		Else
+			addressStreet = ""
+			addressZip = ""
+		End If
+
+		DBCloseQuery loRS
+	End If
+
+	GetAddressDetails2 = lbRet
 End Function
 
 ' **************************************************************************
@@ -1262,14 +1386,14 @@ End Function
 ' **************************************************************************
 Function SetPrimaryAddress(ByVal pnCustomerID, ByVal pnAddressID)
 	Dim lbRet, lsSQL, loRS
-	
+
 	lbRet = FALSE
-	
+
 	lsSQL = "update tblCustomers set PrimaryAddressID = " & pnAddressID & " where CustomerID = " & pnCustomerID
 	If DBExecuteSQL(lsSQL) Then
 		lbRet = TRUE
 	End If
-	
+
 	SetPrimaryAddress = lbRet
 End Function
 
@@ -1282,14 +1406,14 @@ End Function
 ' **************************************************************************
 Function DeleteCustomerAddress(ByVal pnCustomerID, ByVal pnAddressID)
 	Dim lbRet, lsSQL, loRS
-	
+
 	lbRet = FALSE
-	
+
 	lsSQL = "delete from trelCustomerAddresses where CustomerID = " & pnCustomerID & " and AddressID = " & pnAddressID
 	If DBExecuteSQL(lsSQL) Then
 		lbRet = TRUE
 	End If
-	
+
 	DeleteCustomerAddress = lbRet
 End Function
 
@@ -1319,14 +1443,14 @@ End Function
 ' **************************************************************************
 Function GetAccountDetails(ByVal pnAccountID, ByRef pbIsActive, ByRef pbOnHold, ByRef psAccountName, ByRef psPrimaryContactName, ByRef psPrimaryContactTelephone, ByRef pnCellPhoneCarrierID, ByRef psPrimaryContactEmail, ByRef pnNotificationTypeID, ByRef psAccountAddressLine1, ByRef psAccountAddressLine2, ByRef psAccountCity, ByRef psAccountStateID, ByRef psAccountZip, ByRef psAccountTelephone, ByRef psAccountFax, ByRef pnPaymentTermsID, ByRef pdCreditLimit, ByRef psAccountNotes)
 	Dim lbRet, lsSQL, loRS
-	
+
 	lbRet = FALSE
-	
+
 	lsSQL = "select IsActive, OnHold, AccountName, PrimaryContactName, PrimaryContactTelephone, CellPhoneCarrierID, PrimaryContactEmail, NotificationTypeID, AccountAddressLine1, AccountAddressLine2, AccountCity, AccountStateID, AccountZip, AccountTelephone, AccountFax, PaymentTermsID, CreditLimit, AccountNotes from tblAccounts where AccountID = " & pnAccountID
 	If DBOpenQuery(lsSQL, FALSE, loRS) Then
 		If Not loRS.bof And Not loRS.eof Then
 			lbRet = TRUE
-			
+
 			If loRS("IsActive") <> 0 Then
 				pbIsActive = TRUE
 			Else
@@ -1378,10 +1502,10 @@ Function GetAccountDetails(ByVal pnAccountID, ByRef pbIsActive, ByRef pbOnHold, 
 				psAccountNotes = loRS("AccountNotes")
 			End If
 		End If
-		
+
 		DBCloseQuery loRS
 	End If
-	
+
 	GetAccountDetails = lbRet
 End Function
 
@@ -1410,9 +1534,9 @@ End Function
 ' **************************************************************************
 Function AddAccount(ByVal pbIsActive, ByVal pbOnHold, ByVal psAccountName, ByVal psPrimaryContactName, ByVal psPrimaryContactTelephone, ByVal pnCellPhoneCarrierID, ByVal psPrimaryContactEmail, ByVal pnNotificationTypeID, ByVal psAccountAddressLine1, ByVal psAccountAddressLine2, ByVal psAccountCity, ByVal psAccountStateID, ByVal psAccountZip, ByVal psAccountTelephone, ByVal psAccountFax, ByVal pnPaymentTermsID, ByVal pdCreditLimit, ByVal psAccountNotes)
 	Dim lnRet, lsSQL, loRS
-	
+
 	lnRet = 0
-	
+
 	lsSQL = "EXEC AddAccount "
 	If pbIsActive Then
 		lsSQL = lsSQL & "@pbIsActive = 1"
@@ -1468,10 +1592,10 @@ Function AddAccount(ByVal pbIsActive, ByVal pbOnHold, ByVal psAccountName, ByVal
 		If Not loRS.bof And Not loRS.eof Then
 			lnRet = CLng(loRS(0))
 		End If
-		
+
 		DBCloseQuery loRS
 	End If
-	
+
 	AddAccount = lnRet
 End Function
 
@@ -1484,14 +1608,14 @@ End Function
 ' **************************************************************************
 Function AddStoreAccount(ByVal pnStoreID, ByVal pnAccountID)
 	Dim lbRet, lsSQL
-	
+
 	lbRet = FALSE
-	
+
 	lsSQL = "insert into trelAccountsStores (AccountID, StoreID) values (" & pnAccountID & ", " & pnStoreID & ")"
 	If DBExecuteSQL(lsSQL) Then
 		lbRet = TRUE
 	End If
-	
+
 	AddStoreAccount = lbRet
 End Function
 
@@ -1521,9 +1645,9 @@ End Function
 ' **************************************************************************
 Function UpdateAccount(ByVal pnAccountID, ByVal pbIsActive, ByVal pbOnHold, ByVal psAccountName, ByVal psPrimaryContactName, ByVal psPrimaryContactTelephone, ByVal pnCellPhoneCarrierID, ByVal psPrimaryContactEmail, ByVal pnNotificationTypeID, ByVal psAccountAddressLine1, ByVal psAccountAddressLine2, ByVal psAccountCity, ByVal psAccountStateID, ByVal psAccountZip, ByVal psAccountTelephone, ByVal psAccountFax, ByVal pnPaymentTermsID, ByVal pdCreditLimit, ByVal psAccountNotes)
 	Dim lbRet, lsSQL
-	
+
 	lbRet = FALSE
-	
+
 	lsSQL = "update tblAccounts set "
 	If pbIsActive Then
 		lsSQL = lsSQL & "IsActive = 1"
@@ -1579,7 +1703,7 @@ Function UpdateAccount(ByVal pnAccountID, ByVal pbIsActive, ByVal pbOnHold, ByVa
 	If DBExecuteSQL(lsSQL) Then
 		lbRet = TRUE
 	End If
-	
+
 	UpdateAccount = lbRet
 End Function
 
@@ -1595,18 +1719,18 @@ End Function
 ' **************************************************************************
 Function GetAccountContact(ByVal pnAccountID, ByRef psAccountName, ByRef psPrimaryContactName, ByRef psPrimaryContactEmail, ByRef psSMSEmail)
 	Dim lbRet, lsSQL, loRS, loRS2
-	
+
 	lbRet = FALSE
-	
+
 	lsSQL = "select AccountName, PrimaryContactName, PrimaryContactEmail, CellPhoneCarrierID, NotificationTypeID, PrimaryContactTelephone from tblAccounts where AccountID = " & pnAccountID
 	If DBOpenQuery(lsSQL, FALSE, loRS) Then
 		If Not loRS.bof And Not loRS.eof Then
 			lbRet = TRUE
-			
+
 			psAccountName = loRS("AccountName")
 			psPrimaryContactName = loRS("PrimaryContactName")
 			psPrimaryContactEmail = loRS("PrimaryContactEmail")
-			
+
 			If Not IsNull(loRS("CellPhoneCarrierID")) And Not IsNull(loRS("NotificationTypeID")) Then
 				If loRS("NotificationTypeID") = 3 Then
 					lsSQL = "select CellPhoneCarrierEmail from tlkpCellPhoneCarriers where CellPhoneCarrierID = " & loRS("CellPhoneCarrierID")
@@ -1632,10 +1756,10 @@ Function GetAccountContact(ByVal pnAccountID, ByRef psAccountName, ByRef psPrima
 				End If
 			End If
 		End If
-		
+
 		DBCloseQuery loRS
 	End If
-	
+
 	GetAccountContact = lbRet
 End Function
 
@@ -1649,9 +1773,9 @@ End Function
 ' **************************************************************************
 Function AddCustomerPhoneName(ByVal psFirstName, ByVal psLastName, ByVal psCellPhone)
 	Dim lnRet, lsSQL, loRS
-	
+
 	lnRet = 0
-	
+
 	lsSQL = "select CustomerID from tblCustomers where CellPhone = '" & DBCleanLiteral(psCellPhone) & "' And FirstName "
 	If Len(psFirstName) = 0 Then
 		lsSQL = lsSQL & "IS NULL"
@@ -1669,7 +1793,7 @@ Function AddCustomerPhoneName(ByVal psFirstName, ByVal psLastName, ByVal psCellP
 			lnRet = loRS("CustomerID")
 		Else
 			loRS.Close
-			
+
 			lsSQL = "EXEC AddCustomer @pEMail = "
 			lsSQL = lsSQL & "NULL"
 			lsSQL = lsSQL & ", @pPassword = "
@@ -1703,12 +1827,12 @@ Function AddCustomerPhoneName(ByVal psFirstName, ByVal psLastName, ByVal psCellP
 				If Not loRS.bof And Not loRS.eof Then
 					lnRet = CLng(loRS(0))
 				End If
-				
+
 				DBCloseQuery loRS
 			End If
 		End If
 	End If
-	
+
 	AddCustomerPhoneName = lnRet
 End Function
 
@@ -1720,18 +1844,18 @@ End Function
 ' **************************************************************************
 Function IsAccountCollegeDebit(ByVal pnAccountID)
 	Dim lbRet, lsSQL, loRS
-	
+
 	lbRet = FALSE
-	
+
 	lsSQL = "select CollegeDebitStoreID from tblAccounts where CollegeDebitStoreID is not null and AccountID = " & pnAccountID
 	If DBOpenQuery(lsSQL, FALSE, loRS) Then
 		If Not loRS.bof And Not loRS.eof Then
 			lbRet = TRUE
 		End If
-		
+
 		DBCloseQuery loRS
 	End If
-	
+
 	IsAccountCollegeDebit = lbRet
 End Function
 
@@ -1743,9 +1867,9 @@ End Function
 ' **************************************************************************
 Function GetLastCustomerOrder(ByVal pnCustomerID)
 	Dim lnRet, lsSQL, loRS, lnPos
-	
+
 	lnRet = 0
-	
+
 	lsSQL = "select MAX(OrderID) as LastOrderID from tblOrders where CustomerID = " & pnCustomerID & " and IsPaid <> 0 and OrderStatusID = 10"
 	If DBOpenQuery(lsSQL, FALSE, loRS) Then
 		If Not loRS.bof And Not loRS.eof Then
@@ -1753,10 +1877,10 @@ Function GetLastCustomerOrder(ByVal pnCustomerID)
 				lnRet = loRS("LastOrderID")
 			End If
 		End If
-		
+
 		DBCloseQuery loRS
 	End If
-	
+
 	GetLastCustomerOrder = lnRet
 End Function
 %>
