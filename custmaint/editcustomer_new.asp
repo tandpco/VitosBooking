@@ -373,7 +373,7 @@ Else
 %>
 	var loField, loDiv;
 
-	loField = ie4? eval("document.all.firstname") : document.getElementById("firstname");
+/*	loField = ie4? eval("document.all.firstname") : document.getElementById("firstname");
 	loField.disabled = true;
 	loField.value = "<%=gsFirstName%>";
 	loField = ie4? eval("document.all.lastname") : document.getElementById("lastname");
@@ -399,6 +399,7 @@ Else
 	loField.value = "<%=gsFAXPhone%>";
 	loField = ie4? eval("document.all.isemaillist") : document.getElementById("isemaillist");
 	loField.disabled = true;
+
 <%
 If gbIsEMailList Then
 %>
@@ -451,7 +452,27 @@ End If
 <%
 End If
 %>
-}
+*/
+
+	loField = ie4? eval("document.all.firstname") : document.getElementById("firstname");
+	loField.disabled = true;
+	loField = ie4? eval("document.all.lastname") : document.getElementById("lastname");
+	loField.disabled = true;
+	loField = ie4? eval("document.all.email") : document.getElementById("email");
+	loField.disabled = true;
+	loField = ie4? eval("true.all.extension") : document.getElementById("extension");
+	loField.disabled = false;
+	setCurrentField("firstname");
+	
+	loDiv = ie4? eval("document.all.menudiv") : document.getElementById('menudiv');
+	loDiv.style.visibility = "visible";
+	loDiv = ie4? eval("document.all.confirmdiv") : document.getElementById('confirmdiv');
+	loDiv.style.visibility = "visible";
+	loDiv = ie4? eval("document.all.kbdiv") : document.getElementById('kbdiv');
+	loDiv.style.visibility = "hidden";
+	
+	resetRedirect();
+
 
 function addToNotes(psDigit) {
 	var loNotes, lsNotes;
