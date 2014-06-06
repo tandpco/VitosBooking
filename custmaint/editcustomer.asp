@@ -339,40 +339,13 @@ function goEditInfo() {
 
 	loField = ie4? eval("document.all.firstname") : document.getElementById("firstname");
 	loField.disabled = false;
-//	alert("1");
 	loField = ie4? eval("document.all.lastname") : document.getElementById("lastname");
 	loField.disabled = false;
-//	alert("2");
-/*	loField = ie4? eval("document.all.birthdate") : document.getElementById("birthdate");
-	loField.disabled = false; */
-//	alert("3");
 	loField = ie4? eval("document.all.email") : document.getElementById("email");
 	loField.disabled = false;
-/*	alert("4");
-	loField = ie4? eval("document.all.homephone") : document.getElementById("homephone");
-	loField.disabled = false;
-	alert("5");
-	loField = ie4? eval("document.all.cellphone") : document.getElementById("cellphone");
-	loField.disabled = false;
-	alert("6");
-	loField = ie4? eval("document.all.workphone") : document.getElementById("workphone");
-	loField.disabled = false;
-	alert("7");
-	loField = ie4? eval("document.all.faxphone") : document.getElementById("faxphone");
-	loField.disabled = false;
-	alert("8");
-	loField = ie4? eval("document.all.isemaillist") : document.getElementById("isemaillist");
-	loField.disabled = false;
-	alert("9");
-	loField = ie4? eval("document.all.istextlist") : document.getElementById("istextlist");
-	loField.disabled = false;
-	alert("10");
-	loField = ie4? eval("document.all.nochecks") : document.getElementById("nochecks");
-	loField.disabled = false; */
 	loField = ie4? eval("document.all.extension") : document.getElementById("extension");
 	loField.disabled = false;
 	setCurrentField("firstname");
-//	alert("current field = " + setCurrentField);
 	
 	loDiv = ie4? eval("document.all.menudiv") : document.getElementById('menudiv');
 	loDiv.style.visibility = "hidden";
@@ -394,7 +367,7 @@ Else
 %>
 	var loField, loDiv;
 
-	loField = ie4? eval("document.all.firstname") : document.getElementById("firstname");
+/*	loField = ie4? eval("document.all.firstname") : document.getElementById("firstname");
 	loField.disabled = true;
 	loField.value = "<%=gsFirstName%>";
 	loField = ie4? eval("document.all.lastname") : document.getElementById("lastname");
@@ -420,6 +393,7 @@ Else
 	loField.value = "<%=gsFAXPhone%>";
 	loField = ie4? eval("document.all.isemaillist") : document.getElementById("isemaillist");
 	loField.disabled = true;
+
 <%
 If gbIsEMailList Then
 %>
@@ -472,6 +446,27 @@ End If
 <%
 End If
 %>
+*/
+
+	loField = ie4? eval("document.all.firstname") : document.getElementById("firstname");
+	loField.disabled = true;
+	loField = ie4? eval("document.all.lastname") : document.getElementById("lastname");
+	loField.disabled = true;
+	loField = ie4? eval("document.all.email") : document.getElementById("email");
+	loField.disabled = true;
+	loField = ie4? eval("true.all.extension") : document.getElementById("extension");
+	loField.disabled = false;
+	setCurrentField("firstname");
+	
+	loDiv = ie4? eval("document.all.menudiv") : document.getElementById('menudiv');
+	loDiv.style.visibility = "visible";
+	loDiv = ie4? eval("document.all.confirmdiv") : document.getElementById('confirmdiv');
+	loDiv.style.visibility = "visible";
+	loDiv = ie4? eval("document.all.kbdiv") : document.getElementById('kbdiv');
+	loDiv.style.visibility = "hidden";
+	
+	resetRedirect();
+
 }
 
 function addToNotes(psDigit) {
@@ -718,7 +713,7 @@ function saveCustomer() {
     </style>
 </head>
 
-<body onload="clockInit(clockLocalStartTime, clockServerStartTime); clockOnLoad();" onunload="clockOnUnload()">
+<body onload="clockInit(clockLocalStartTime, clockServerStartTime); clockOnLoad(); goEditInfo();" onunload="clockOnUnload()">
 
 <div id="mainwindow" style="position: absolute; top: 0px; left: 0px; width=1010px; height: 768px; overflow: hidden;">
 <table cellspacing="0" cellpadding="0" width="1010" height="764" border="1">
