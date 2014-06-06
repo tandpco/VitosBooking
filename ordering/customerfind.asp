@@ -160,7 +160,7 @@ SELECT CUSTOMER FOR PICKUP
 End If
 %><input type="text" id="livesearch" style="position:absolute;left:-1000px" />
 <% If UBound(ganAddressIDs) > 3 Then %>
-                            <div align="center" style="font-size:14px;font-family:Arial"><strong>3 Most Recently Used Addresses (<%=UBound(ganAddressIDs)%> total)</strong></div>
+                            <div align="center" style="font-size:14px;font-family:Arial"><strong>3 Most Recently Used Addresses (<%=UBound(ganAddressIDs)%> total)</strong> <span style="color:green">*Green Addresses Deliverable</span></div>
 <% End If %>
                           </strong></div><br/>  
                             <div id="addressList">
@@ -182,10 +182,13 @@ If ganAddressIDs(0) <> 0 Then
 End If
 %></div>
                         <br /><br />
+                        <div id="toggleAddresssButtons">
+                          
                         <% If UBound(gasAddresses) > 3 Then %><button style="width: 400PX;" onclick="showAllAddresses(this)">All Addresses</button>
 
                         <% End If %>
-                        <button style="width: 400PX;" onclick="window.location='../custmaint/newaddress.asp?o=0&a=0'">Add New Address</button><br />
+                        <button style="width: 400PX;" onclick="window.location='../custmaint/newaddress.asp?o=0&a=0'">Add New Address</button>
+                        </div>
 
 <div id="virtualKeyboard"></div>
 
@@ -557,7 +560,7 @@ End If
                 </tr>
                 <tr>
                   <td valign="top" width="25">&nbsp;</td>
-                  <td valign="top" align="center"><button style="width: 235px;" onclick="cancelNewPhone()">Yes</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<button style="width: 235px;" onclick="getNewPhone()">No</button></td>
+                  <td valign="top" align="center"><button style="width: 235px;" onclick="cancelNewPhone()">Yes</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<button style="width: 235px;" onclick="window.location='/ordering/neworder.asp?p=new&amp;tt=<%=Request("t")%>'">No</button></td>
                   <td valign="top" width="25">&nbsp;</td>
                 </tr>
               </table>

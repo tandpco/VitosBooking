@@ -451,7 +451,7 @@ End If
 </script>
 </head>
 
-<body onload="clockInit(clockLocalStartTime, clockServerStartTime); clockOnLoad();" onunload="clockOnUnload()">
+<body onload="clockInit(clockLocalStartTime, clockServerStartTime); clockOnLoad();<%=Iif(Request("nn") = "yes", "getName();", "")%>" onunload="clockOnUnload()">
 
 <div id="mainwindow" style="position: absolute; top: 0px; left: 0px; width=1010px; height: 768px; overflow: hidden;">
 <table cellspacing="0" cellpadding="0" width="1010" height="764" border="1">

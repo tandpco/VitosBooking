@@ -689,7 +689,7 @@ If ganCustomerIDs(0) <> 0 Then
 End If
 %>
 <div>
-<button style="width:300px" onclick="window.location='addressfind.asp?t=<%=gnOrderTypeID%>&z=<%=gnAddressZip%>&b=<%=Server.URLEncode(gnAddressString)%>'">Add New Customer Name</button>
+<button style="width:300px" onclick="window.location='addressfind.asp?t=<%=gnOrderTypeID%>&z=<%=gnAddressZip%>&b=<%=Server.URLEncode(gnAddressString)%>&nn=yes'">Add New Customer Name</button>
 </div>
 
 </div>

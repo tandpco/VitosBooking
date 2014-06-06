@@ -13,8 +13,14 @@ function resetRedirect() {
 }
 
 function  showAllAddresses(el) {
-  document.getElementById("addressList").className = 'showAll'
-  el.className = 'fadeMe'
+  if(el.innerHTML == "All Addresses") {
+    document.getElementById("addressList").className = 'showAll'
+    el.innerHTML = 'Top 3 Only'
+  } else {
+    document.getElementById("addressList").className = ''
+    el.innerHTML = 'All Addresses'
+    $(el).closest('#content-wrapper').scrollTop('0')
+  }
 }
 
 
@@ -27,10 +33,13 @@ $(function(){
     var $val = $(this).val()
     if($val) {
       document.getElementById("addressList").className = 'showAll'
+      $("#toggleAddresssButtons").hide();
     }
     else {
       document.getElementById("addressList").className = ''
       $("#addressList button").removeClass('hidden')
+      $("#content-wrapper").scrollTop('0')
+      $("#toggleAddresssButtons").show();
     }
     console.log('changed',$val)
     $("#addressList button").each(function(){

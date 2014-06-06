@@ -835,7 +835,7 @@ function showExtension() {
 <script src="/include2/redirect2.js" type="text/javascript"></script>
 </head>
 
-<body onload="clockInit(clockLocalStartTime, clockServerStartTime); clockOnLoad(); redirect('/default.asp')" onunload="clockOnUnload()">
+<body onload="clockInit(clockLocalStartTime, clockServerStartTime); clockOnLoad(); redirect('/default.asp');<%=Iif(Request("p") = "new","gnOrderType="&Request("tt")&";goCallerID('');","")%>" onunload="clockOnUnload()">
 
 <div id="mainwindow" style="position: absolute; top: 0px; left: 0px; width=1010px; height: 768px; overflow: hidden;">
 <table cellspacing="0" cellpadding="0" width="1010" height="764" border="1">
