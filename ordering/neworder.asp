@@ -883,7 +883,7 @@ For i = 0 To UBound(ganOrderTypeIDs)
 	Select Case ganOrderTypeIDs(i)
 		Case 1, 2
 %>
-										<div style="position: relative; height: 100px;margin-left:184px">
+										<div style="position: relative; height: 100px;">
 <!--										<div style="position: absolute; top: 0px; left: 0px;"><button style="width:125px; height: 100px;" onclick="gnOrderType = <%=ganOrderTypeIDs(i)%>; getPhone();"><%=gasOrderTypeDescriptions(i)%></button></div> -->
                 							<div style="position: absolute; top: 0px; left: 0px;"><button style="width:125px; height: 100px;" ><%=gasOrderTypeDescriptions(i)%></button></div>
 
@@ -904,10 +904,16 @@ For i = 0 To UBound(ganOrderTypeIDs)
 								</tr>
 								<tr>
 									<td valign="top">
+
 <%
 	End Select
 Next
+%>
 
+									<button onclick="gnOrderType=3;goQuick()" style="width:125px;height:100px">Dine-In</button><br>
+									<button onclick="gnOrderType=4;goQuick()" style="width:125px;height:100px">Walk-In</button><br>
+									<button onclick="gnOrderType=0;goQuick()" style="width:125px;height:100px">Quick Ticket</button>
+<%
 If Not gbShowMenuButtons Then
 %>
 										<button style="width:125px;" onclick="window.location = 'unitselect.asp';">Return To Order</button><br/>

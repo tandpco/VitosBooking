@@ -349,7 +349,7 @@ End Function
 '				psLastName - The last name
 ' Return: True if sucessful, False if not
 ' **************************************************************************
-Function GetCustomerPrimaryAddressDetails(ByVal pnPrimaryAddressID, ByRef pasNames, ByRef panCustomerIDs, ByRef pasEMails, ByRef extensions)
+Function GetCustomerPrimaryAddressDetails(ByVal pnPrimaryAddressID, ByRef pasNames, ByRef panCustomerIDs, ByRef pasEMails, ByRef extensions, ByRef pasPhones)
 	Dim lbRet, lsSQL, loRS, lnPos
 
 	lbRet = FALSE
@@ -357,7 +357,7 @@ Function GetCustomerPrimaryAddressDetails(ByVal pnPrimaryAddressID, ByRef pasNam
     'lsSQL = "SELECT DISTINCT CustomerID,* FROM tblCustomers WHERE PrimaryAddressID = "&pnPrimaryAddressID
 
 
-	lsSQL = "select tblCustomers.CustomerID, FirstName,extension, LastName,Email from tblCustomers left join trelCustomerAddresses on tblCustomers.CustomerID = trelCustomerAddresses.CustomerID where AddressID = " & pnPrimaryAddressID & " order by tblCustomers.CustomerID"
+	lsSQL = "select tblCustomers.CustomerID, HomePhone,CellPhone,WorkPhone,FirstName,extension, LastName,Email from tblCustomers left join trelCustomerAddresses on tblCustomers.CustomerID = trelCustomerAddresses.CustomerID where AddressID = " & pnPrimaryAddressID & " order by tblCustomers.CustomerID"
 	If DBOpenQuery(lsSQL, FALSE, loRS) Then
 		lbRet = TRUE
 
@@ -365,7 +365,7 @@ Function GetCustomerPrimaryAddressDetails(ByVal pnPrimaryAddressID, ByRef pasNam
 			lnPos = 0
 
 			Do While Not loRS.eof
-				ReDim Preserve panCustomerIDs(lnPos),pasNames(lnPos),pasEMails(lnPos),panAddressIDs(lnPos),extensions(lnPos)
+				ReDim Preserve panCustomerIDs(lnPos),pasNames(lnPos),pasEMails(lnPos),panAddressIDs(lnPos),extensions(lnPos),pasPhones(lnPos)
 
 				panCustomerIDs(lnPos) = loRS("CustomerID")
 
@@ -376,15 +376,17 @@ Function GetCustomerPrimaryAddressDetails(ByVal pnPrimaryAddressID, ByRef pasNam
 				End If
 
 				pasEMails(lnPos) = Trim(loRS("EMail"))
+				pasPhones(lnPos) = Trim(loRS("HomePhone")&" "&loRS("CellPhone")&" "&loRS("WorkPhone"))
 				extensions(lnPos) = Trim(loRS("extension"))
 
 				lnPos = lnPos + 1
 				loRS.MoveNext
 			Loop
 		Else
-			ReDim panCustomerIDs(0),pasNames(0),pasEMails(0),extensions(0)
+			ReDim panCustomerIDs(0),pasNames(0),pasEMails(0),extensions(0),pasPhones(0)
 			pasNames(0) = 0
 			pasEMails(0) = ""
+			pasPhones(0) = ""
 			extensions(0) = ""
       panCustomerIDs(0) = 0
 		End If

@@ -2467,9 +2467,9 @@ function back2Phone() {
 </script>
 </head>
 
-<body onload="clockInit(clockLocalStartTime, clockServerStartTime); clockOnLoad();" onunload="clockOnUnload()">
+<body onload="clockInit(clockLocalStartTime, clockServerStartTime); clockOnLoad();" onunload="clockOnUnload()" class="order-select">
 
-<div id="mainwindow" style="position: absolute; top: 0px; left: 0px; width=1010px; height: 768px; overflow: hidden;">
+<div id="mainwindow" style="position: absolute; top: 0px; left: 0px; width=1010px; height: 768px;">
 <table cellspacing="0" cellpadding="0" width="1010" height="764" border="1">
 	<tr>
 		<td valign="top" width="1010" height="764">
@@ -2605,7 +2605,7 @@ Else
 <%
 End If
 %>
-										<div style="height: 375px; padding: 10px;">
+										<div style="height: 355px; padding: 10px;">
 										<%=gsCustomerName%><br/>
 <%
 If gnAddressID = 1 Then
@@ -2777,7 +2777,7 @@ End If
 %>
 									</td>
 									<td align="right" valign="top" width="330">
-										<div style="position: relative; width: 320px; height: 691px; text-align: left; background-color: #FFFFFF;">
+										<div style="position: relative; width: 320px; height: 712px; text-align: left; background-color: #FFFFFF;" class="pageShadow">
 <%
 If ganOrderLineIDs(0) <> 0 Then
 	For i = 0 To UBound(ganOrderLineIDs)
@@ -2829,9 +2829,9 @@ If ganOrderLineIDs(0) <> 0 Then
 	End If
 End If
 %>
+										<div style="width: 320px; text-align: center; font-weight:bold;padding-top:10px;position:absolute;bottom:0;padding:10px;border-top:1px dashed #dadada;font-family:Arial;">Tax: <%=FormatCurrency(gdTax + gdTax2)%>&nbsp; Delivery: <%=FormatCurrency(gdDeliveryCharge)%>&nbsp; Total: <%=FormatCurrency(gdOrderTotal - gdOrderDiscountTotal)%></div>
 											</div>
 										</div>
-										<div style="width: 320px; text-align: center; background-color: #FFFFFF;">Tax: <%=FormatCurrency(gdTax + gdTax2)%>&nbsp; Delivery: <%=FormatCurrency(gdDeliveryCharge)%>&nbsp; Total: <%=FormatCurrency(gdOrderTotal - gdOrderDiscountTotal)%></div>
 									</td>
 								</tr>
 							</table>
