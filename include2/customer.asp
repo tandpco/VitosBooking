@@ -624,7 +624,79 @@ Function UpdateCustomer_New(ByVal psEMail, ByVal psFirstName, ByVal psLastName, 
 	UpdateCustomer_New = lnRet
 End Function
 
+Function UpdateCustomer_New2(ByVal pnCustomerID, ByVal psEMail, ByVal psFirstName, ByVal psLastName, ByVal pdtBirthdate, ByVal psHomePhone, ByVal psCellPhone, ByVal psWorkPhone, ByVal psFAXPhone, ByVal pbIsEMailList, ByVal pbIsTextList, ByVal pbNoChecks, ByVal psExtension)
+	Dim lbRet, lsSQL, loRS
 
+	lbRet = FALSE
+
+	lsSQL = "update tblCustomers set "
+	If Len(Trim(psEMail)) = 0 Then
+		lsSQL = lsSQL & "EMail = NULL"
+	Else
+		lsSQL = lsSQL & "EMail = '" & DBCleanLiteral(psEMail) & "'"
+	End If
+	If Len(Trim(psFirstName)) = 0 Then
+		lsSQL = lsSQL & ", FirstName = NULL"
+	Else
+		lsSQL = lsSQL & ", FirstName = '" & DBCleanLiteral(psFirstName) & "'"
+	End If
+	If Len(Trim(psLastName)) = 0 Then
+		lsSQL = lsSQL & ", LastName = NULL"
+	Else
+		lsSQL = lsSQL & ", LastName = '" & DBCleanLiteral(psLastName) & "'"
+	End If
+	If Len(Trim(pdtBirthdate)) = 0 Then
+		lsSQL = lsSQL & ", BirthDate = NULL"
+	Else
+		lsSQL = lsSQL & ", BirthDate = '" & DBCleanLiteral(pdtBirthdate) & "'"
+	End If
+	If Len(Trim(psHomePhone)) = 0 Then
+		lsSQL = lsSQL & ", HomePhone = NULL"
+	Else
+		lsSQL = lsSQL & ", HomePhone = '" & DBCleanLiteral(psHomePhone) & "'"
+	End If
+	If Len(Trim(psCellPhone)) = 0 Then
+		lsSQL = lsSQL & ", CellPhone = NULL"
+	Else
+		lsSQL = lsSQL & ", CellPhone = '" & DBCleanLiteral(psCellPhone) & "'"
+	End If
+	If Len(Trim(psWorkPhone)) = 0 Then
+		lsSQL = lsSQL & ", WorkPhone = NULL"
+	Else
+		lsSQL = lsSQL & ", WorkPhone = '" & DBCleanLiteral(psWorkPhone) & "'"
+	End If
+	If Len(Trim(psExtension)) = 0 Then
+		lsSQL = lsSQL & ", extension = NULL"
+	Else
+		lsSQL = lsSQL & ", extension = '" & DBCleanLiteral(psExtension) & "'"
+	End If
+	If Len(Trim(psFAXPhone)) = 0 Then
+		lsSQL = lsSQL & ", FAXPhone = NULL"
+	Else
+		lsSQL = lsSQL & ", FAXPhone = '" & DBCleanLiteral(psFAXPhone) & "'"
+	End If
+	If pbIsEMailList Then
+		lsSQL = lsSQL & ", IsEMailList = 1"
+	Else
+		lsSQL = lsSQL & ", IsEMailList = 0"
+	End If
+	If pbIsTextList Then
+		lsSQL = lsSQL & ", IsTextList = 1"
+	Else
+		lsSQL = lsSQL & ", IsTextList = 0"
+	End If
+	If pbNoChecks Then
+		lsSQL = lsSQL & ", NoChecks= 1"
+	Else
+		lsSQL = lsSQL & ", NoChecks= 0"
+	End If
+	lsSQL = lsSQL & " where CustomerID = " & pnCustomerID
+	If DBExecuteSQL(lsSQL) Then
+		lbRet = TRUE
+	End If
+
+	UpdateCustomer_New2 = lbRet
+End Function
 ' **************************************************************************
 ' Function: IsCustomerCheckOK
 ' Purpose: Determines if a check can be accepted from a customer.

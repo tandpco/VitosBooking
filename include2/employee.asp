@@ -23,23 +23,23 @@
 ' **************************************************************************
 Function GetAllStoreManagers(ByVal pnStoreID, ByRef panEmpIDs, ByRef panEmployeeIDs, ByRef pasCardIDs)
 	Dim lbRet, lsSQL, loRS, lnPos
-	
+
 	lbRet = FALSE
-	
+
 	lsSQL = "select EmpID, EmployeeID, CardID from tblEmployee where (StoreID = 0 or StoreID = " & pnStoreID & ") and SystemRoleID > 1 and IsActive <> 0"
 	If DBOpenQuery(lsSQL, FALSE, loRS) Then
 		lbRet = TRUE
-		
+
 		If Not loRS.bof And Not loRS.eof Then
 			lnPos = 0
-			
+
 			Do While Not loRS.eof
 				ReDim Preserve panEmpIDs(lnPos), panEmployeeIDs(lnPos), pasCardIDs(lnPos)
-				
+
 				panEmpIDs(lnPos) = loRS("EmpID")
 				panEmployeeIDs(lnPos) = loRS("EmployeeID")
 				pasCardIDs(lnPos) = Trim(loRS("CardID"))
-				
+
 				lnPos = lnPos + 1
 				loRS.MoveNext
 			Loop
@@ -49,10 +49,10 @@ Function GetAllStoreManagers(ByVal pnStoreID, ByRef panEmpIDs, ByRef panEmployee
 			panEmployeeIDs(0) = 0
 			pasCardIDs(0) = ""
 		End If
-		
+
 		DBCloseQuery loRS
 	End If
-	
+
 	GetAllStoreManagers = lbRet
 End Function
 
@@ -64,18 +64,18 @@ End Function
 ' **************************************************************************
 Function GetEmployeeName(ByVal pnEmpID)
 	Dim lsRet, lsSQL, loRS
-	
+
 	lsRet = ""
-	
+
 	lsSQL = "select FirstName, LastName from tblEmployee where EmpID = " & pnEmpID
 	If DBOpenQuery(lsSQL, FALSE, loRS) Then
 		If Not loRS.bof And Not loRS.eof Then
 			lsRet = loRS("FirstName") & " " & loRS("LastName")
 		End If
-		
+
 		DBCloseQuery loRS
 	End If
-	
+
 	GetEmployeeName = lsRet
 End Function
 
@@ -87,18 +87,18 @@ End Function
 ' **************************************************************************
 Function GetEmployeeShortName(ByVal pnEmpID)
 	Dim lsRet, lsSQL, loRS
-	
+
 	lsRet = ""
-	
+
 	lsSQL = "select FirstName, LastName from tblEmployee where EmpID = " & pnEmpID
 	If DBOpenQuery(lsSQL, FALSE, loRS) Then
 		If Not loRS.bof And Not loRS.eof Then
 			lsRet = loRS("FirstName") & " " & Left(Trim(loRS("LastName")), 1)
 		End If
-		
+
 		DBCloseQuery loRS
 	End If
-	
+
 	GetEmployeeShortName = lsRet
 End Function
 %>

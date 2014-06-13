@@ -1142,6 +1142,8 @@ End If
 function gotoUnitSelector() {
 	var loDiv;
 
+document.getElementById('notesNav').className = ''
+document.getElementById('orderNav').className = 'active'
 	loDiv = ie4? eval("document.all.ordernotes") : document.getElementById("ordernotes");
 	loDiv.style.visibility = "hidden";
 
@@ -1177,7 +1179,8 @@ function gotoUnitSelector() {
 
 function gotoOrderNotes() {
 	var loNotes, loDiv;
-
+document.getElementById('notesNav').className = 'active'
+document.getElementById('orderNav').className = ''
 	loNotes = ie4? eval("document.all.notes") : document.getElementById('notes');
 	loNotes.value = gsOrderNotes;
 
@@ -2467,7 +2470,7 @@ function back2Phone() {
 </script>
 </head>
 
-<body onload="clockInit(clockLocalStartTime, clockServerStartTime); clockOnLoad();" onunload="clockOnUnload()" class="order-select">
+<body onload="clockInit(clockLocalStartTime, clockServerStartTime); clockOnLoad();<%=Iif(Request("onotes").Count > 0,"gotoOrderNotes()","") %>" onunload="clockOnUnload()" class="order-select">
 
 <div id="mainwindow" style="position: absolute; top: 0px; left: 0px; width=1010px; height: 768px;">
 <table cellspacing="0" cellpadding="0" width="1010" height="764" border="1">

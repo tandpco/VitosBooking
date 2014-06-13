@@ -22,9 +22,10 @@ var jsKeyboard = {
         jsKeyboard.changeToCapitalLetter();
 
         // jsKeyboard.show();
-        $(':input').not('[type="reset"]').not('[type="submit"]').not('button').on('focus, click', function (e) {
+        $(':input').not('[type="reset"]').not('[type="submit"]').not('[type="button"]').not('button').on('focus click keyup', function (e) {
             jsKeyboard.currentElement = $(this);
-            jsKeyboard.currentElementCursorPosition = $(this).getCursorPosition();
+            jsKeyboard.currentElementCursorPosition = $(this).val().length;
+            jsKeyboard.updateCursor();
             console.log('keyboard is now focused on ' + jsKeyboard.currentElement.attr('name') + ' at pos(' + jsKeyboard.currentElementCursorPosition + ')');
         });
     },
@@ -174,7 +175,7 @@ var jsKeyboard = {
     show: function () {
         $("#keyboard #hideButton").show();
         $("#keyboard #showButton").hide();
-        $("#keyboard").animate({ "height": "408px" }, "slow", function () { });
+        $("#keyboard").animate({ "height": "370px" }, "slow", function () { });
     },
     hide: function () {
         $("#keyboard #hideButton").hide();
@@ -194,7 +195,7 @@ var jsKeyboard = {
         // 3rd row
                [
                // {value: "abc", isChar: "false", buttonClass: "button button_smallletter", onclick: "jsKeyboard.changeToSmallLetter();", keyClass: "key key_smallletter" },
-                { value: '',buttonClass:'button button_faded' },
+                { value: 64 },
                { value: 90 }, { value: 88 }, { value: 67 }, { value: 86 }, { value: 66 }, { value: 78 },
                { value: 77 }, { value: 44 }, { value: 46 }],
         // 4th row

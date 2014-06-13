@@ -1,7 +1,6 @@
 <%
 Option Explicit
 Response.buffer = TRUE
-Dim gnCustomerID,gnAddressID
 
 If Session("SecurityID") = "" Then
   Response.Redirect("/default.asp")
@@ -9,58 +8,25 @@ End If
 
 
 %>
-<!-- #Include Virtual="include2/globals.asp" -->
-<!-- #Include Virtual="include2/math.asp" -->
-<!-- #Include Virtual="include2/db-connect.asp" -->
-<!-- #Include Virtual="include2/order.asp" -->
-<!-- #Include Virtual="include2/customer.asp" -->
-<!-- #Include Virtual="include2/address.asp" -->
-<!-- #Include Virtual="include2/menu.asp" -->
-<!-- #Include Virtual="include2/store.asp" -->
-<!-- #Include Virtual="include2/pricing.asp" -->
-<!-- #Include Virtual="include2/inventory.asp" -->
-<!-- #Include Virtual="include2/printing.asp" -->
-<!-- #Include Virtual="include2/coupons.asp" -->
-<!-- #Include Virtual="include2/employee.asp" -->
+<!-- #Include Virtual="include2/globals.asp" --> <!-- #Include Virtual="include2/math.asp" --> <!-- #Include Virtual="include2/db-connect.asp" --> <!-- #Include Virtual="include2/customer.asp" --> <!-- #Include Virtual="include2/employee.asp" -->
 <%
-Dim gbShowMenuButtons
-Dim gnOrderTypeID, gsPhone, ganCustomerIDs(), ganPrimaryAddressIDs(), ganAddressIDs(), ganStoreIDs(), gasAddresses(), gasNames(), i, rowCnt, paID
-Dim ganOrderIDs(), gsLocalErrorMsg, gasEMails(),extensions()
-Dim gsAssignVisible, gsPostalVisible, gsPhoneVisible
-Dim gasPostalCodes(), ganAreaCodes(), gasPhones()
-Dim gnAddressZip, gnAddressString, currentTab, gbNeedPrinterAlert
-
-If Session("OrderID") = 0 Then
-  gbShowMenuButtons = TRUE
-Else
-  gbShowMenuButtons = FALSE
-End If
-
+Dim gnOrderTypeID,  gsPhone,      ganCustomerIDs(), gasNames(),   i,                gnCustomerID, gnAddressID
+Dim gasEMails(),    extensions(), gasPhones(),      gnAddressZip, gnAddressString,  currentTab
 
 currentTab              = "customer-name"
-gsAssignVisible         = "visible"
-gsPostalVisible         = "hidden"
-gsPhoneVisible          = "hidden"
-gbNeedPrinterAlert      = FALSE
 gnOrderTypeID           = CLng(Request("t"))
 gsPhone                 = Session("CustomerPhone")
-paID                    = Session("CustomerPhone")
-gnCustomerID            = Request("c")
 gnAddressID             = Request("a")
 Session("AddressID")    = gnAddressID
 Session("OrderTypeID")  = gnOrderTypeID
 Session("ReturnURL")    = "/ordering/customerfind.asp?t=" & gnOrderTypeID & "&p=" & gsPhone
 Session("SaveURL")      = "/ordering/addressfind.asp?t=" & gnOrderTypeID & "&p=" & gsPhone
 
-
-
 Call GetAddressDetails2(gnAddressID, gnAddressString, gnAddressZip)
 Call GetCustomerPrimaryAddressDetails(gnAddressID, gasNames, ganCustomerIDs, gasEMails,extensions,gasPhones)
-
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-
   <head>
     <meta content="en-us" http-equiv="Content-Language" />
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
@@ -69,7 +35,6 @@ Call GetCustomerPrimaryAddressDetails(gnAddressID, gasNames, ganCustomerIDs, gas
     <!-- #Include Virtual="include2/clock-server.asp" -->
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
     <link rel="stylesheet" href="/Scripts/keyboard/css/jsKeyboard.css" type="text/css" media="screen"/>
-    <script type="text/javascript" src="/Scripts/jquery-1.8.2.min.js"></script>
     <script type="text/javascript" src="/Scripts/keyboard/jsKeyboard.js"></script>
     <script type="text/javascript">
       function showAll(el) {
@@ -131,7 +96,7 @@ Call GetCustomerPrimaryAddressDetails(gnAddressID, gasNames, ganCustomerIDs, gas
                 <td valign="top" width="1010">
                   <div id="content-wrapper">
                     <div id="content" align="center" style="position: relative;padding-bottom:400px">
-                      <div id="assigndiv" align="center" style="position: relative; top: 0px; left: 0px; width: 810PX; visibility: <%=gsAssignVisible%>;">
+                      <div id="assigndiv" align="center" style="position: relative; top: 0px; left: 0px; width: 810PX;">
                         <% If gnOrderTypeID = 1 Then %>
                           <div align="center"><strong>SELECT CUSTOMER FOR DELIVERY</strong></div><br/>
                         <% Else %>
@@ -145,19 +110,21 @@ Call GetCustomerPrimaryAddressDetails(gnAddressID, gasNames, ganCustomerIDs, gas
                           <% If ganCustomerIDs(0) <> 0 Then
                             For i = 0 to UBound(ganCustomerIDs) %>
                             <div class="buttonLine" style="<%=IIf(extensions(i) <> "" and Session("Extension") <> "" and extensions(i) <> Session("Extension"),"opacity:0.5","") %>" data-phones="<%=gasPhones(i)%>">
-                              <button style="width: 730px; text-align:left;"  onclick="window.location='unitselect.asp?t=<%=gnOrderTypeID%>&c=<%=ganCustomerIDs(i)%>&a=<%=gnAddressID%>'" class="nameButton">
+                              <button style="width: 730px; text-align:left;"  onclick="window.location='unitselect.asp?t=<%=gnOrderTypeID%>&amp;c=<%=ganCustomerIDs(i)%>&amp;a=<%=gnAddressID%>'" class="nameButton">
                                 <span class="name"><%=gasNames(i)%></span>
                                 <%=IIf(extensions(i) <> ""," (ext. / bld. "+extensions(i)+")","") %>
                                 <span style="float:right;display:inline-block;margin-right:10px;font-size:14px"><%=IIf(gasEmails(i) <> "",gasEmails(i),"No Email Yet") %></span>
                               </button>
-                              <button style="width: 20px;" onclick="window.location='../custmaint/editcustomer.asp?c=<%=ganCustomerIDs(i)%>&a=<%=gnAddressID%>&o=0'" >Edit</button>
+                              <button style="width: 20px;" onclick="window.location='../custmaint/editcustomer.asp?c=<%=ganCustomerIDs(i)%>&amp;a=<%=gnAddressID%>&amp;o=0&amp;afterEdit=<%=Server.URLEncode(Request.ServerVariables("SCRIPT_NAME")& "?" & Request.QueryString)%>'" >Edit</button>
                             </div>
                           <% Next
                           End If %>
                         </div>
                         <div>
+                          <% If UBound(ganCustomerIDs) > 3 Then %>
                           <button style="width:300px" onclick="showAll(this)">Show All</button>
-                          <button style="width:300px" onclick="window.location='addressfind.asp?t=<%=gnOrderTypeID%>&z=<%=gnAddressZip%>&b=<%=Server.URLEncode(gnAddressString)%>&nn=yes'">Add New Customer Name</button>
+                          <% End If %>
+                          <button style="width:300px" onclick="window.location='addressfind.asp?t=<%=gnOrderTypeID%>&amp;z=<%=gnAddressZip%>&amp;b=<%=Server.URLEncode(gnAddressString)%>&amp;nn=yes'">Add New Customer Name</button>
                         </div>
                       </div>
                     </div>

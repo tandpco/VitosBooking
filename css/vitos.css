@@ -246,6 +246,96 @@ button .highlight {
 	border-radius: 15px;
 }
 
+.newInput {
+	background-color:  #fff;
+	border-width:0;
+	height:60px;
+	box-sizing:border-box;
+	padding: 0 20px;
+	display: block;
+	width: 100%;
+	font-size:16px;
+}
+input[type="button"].newInput {
+	background-color: orange;
+	font-weight:bold;
+}
+.row {
+	margin:10px;
+}
+.row:after {
+	visibility: hidden;
+	display: block;
+	content: "";
+	clear: both;
+	height: 0;
+	}
+.row * {
+	box-sizing:border-box;
+}
+.row .col {
+	float:left;
+	width:25%;
+	padding:0 10px;
+}
+.row .col.width-50 {
+	width:50%;
+}
+button.tabs {
+	display: block;
+	box-sizing:border-box;
+	width:100%;
+	background-color: #c1c1c1;
+}
+button.active {
+	background-color: #f5a920;
+}
+.row .col label {
+	font-weight:bold;
+	margin-bottom:5px;
+	display:  block;
+	text-transform: uppercase;
+}
+.row .col input[type="text"] {
+	background-color:  #fff;
+	border-width:0;
+	height:60px;
+	box-sizing:border-box;
+	padding: 0 20px;
+	width:100%;
+	display: block;
+	text-transform: uppercase;
+}
+.row .col input[type="text"]:focus {
+	outline:0;
+	border:2px solid black;
+}
+.toggleButton {
+	height:60px;
+	background-color:red;
+	font-size:20px;
+	font-weight: bold;
+	text-transform:  uppercase;
+	font-family: Arial;
+	color:#fff;
+	line-height: 60px;
+	text-align:center;
+}
+.toggleButton:after {
+	content:"Off";
+}
+.toggleButton.active {
+	background-color: green;
+}
+.toggleButton.disabled {
+	background-color: gray;
+}
+.toggleButton.active:after {
+	content:"On";
+}
+.toggleButton.disabled:after {
+	content:"n/a";
+}
 .showExtraNoteOnHover:hover:before {
 	content:"Toggle";
 	display: block;

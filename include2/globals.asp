@@ -121,17 +121,17 @@ gnCloseOutThreshold = 4
 
 ' **************************************************************************
 ' Function for checking if an array is initialized
-Function IsArrayInitialized(ByVal pa)    
+Function IsArrayInitialized(ByVal pa)
 	Dim lbRet
-	
+
 	lbRet = FALSE
 	Err.Clear
 	On Error Resume Next
 	UBound(pa)
-	If (Err.Number = 0) Then 
+	If (Err.Number = 0) Then
 		lbRet = TRUE
 	End If
-	
+
 	IsArrayInitialized = lbRet
 End Function
 
@@ -139,13 +139,13 @@ End Function
 ' Function for centering text within a field width
 Function CenterText(ByVal psText, ByVal pnFieldWidth)
 	Dim lsRet, lnLen
-	
+
 	lsRet = ""
 	lnLen = Int((pnFieldWidth - Len(psText)) / 2)
 	If lnLen > 0 Then
 		lsRet = String(lnLen, " ") + psText
 	End If
-	
+
 	CenterText = lsRet
 End Function
 

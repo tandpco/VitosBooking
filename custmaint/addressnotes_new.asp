@@ -199,7 +199,7 @@ $(function(){
 									<td><button style="width: 100px;" onclick="window.location = '<%=gsReturnURL%>'">Cancel</button><button style="width: 100px;" onclick="clearCurrentField()">Clear</button><button style="width: 100px;" onclick="saveNotes()">Done</button></td>
 									<td align="right">
 							      <% If Session("CustomerID") > 1 AND Session("AddressID") > 1 Then %>
-							      <button style="width: 300px;" onclick="window.location='/ordering/unitselect.asp?t=<%=Session("OrderTypeID")%>&c=<%=Session("CustomerID")%>&a=<%=Session("AddressID")%>&amp;onotes=1'">Edit Order Notes</button>
+							      <button style="width: 300px;" onclick="window.location='/ordering/unitselect.asp?t=<%=Session("OrderTypeID")%>&c=<%=Session("CustomerID")%>&a=<%=Session("AddressID")%>&amp;ordernotes=1'">Edit Order Notes</button>
 							      <% End If %>
 							    </td>
 								</tr>

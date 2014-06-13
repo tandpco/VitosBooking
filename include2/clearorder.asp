@@ -63,4 +63,5 @@ Session("CouponIDs") = ""
 Session("DEBUGIDEALCOST") = FALSE
 Session("EditReason") = ""
 Session("Extension") = ""
+Session("optRedirect") = ""
 %>

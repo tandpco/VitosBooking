@@ -2,7 +2,7 @@
 
 
 #virtualKeyboard {
-    width: 100%;
+    width: 994px;
     text-align: left;
     position: fixed;
     bottom:0;
@@ -20,7 +20,6 @@
     width:990px;
     /*margin: 0 auto;*/
     height:40px;
-    height:288;
     display:block;
     padding-left:25px;
     display:block;
@@ -44,7 +43,7 @@
 
 .button
 {
-    width:80px; height:80px;
+    width:80px; height:70px;
     background-color:#fff;
     position:relative;
     float:left;
@@ -81,14 +80,14 @@
 .button_faded{opacity:0.1;cursor: defaut; }
 
 
-.key {width:100%; height:100%; text-align:center; padding-top:26px; }
-.key_del {padding-top:26px;}
+.key {width:100%; height:100%; text-align:center; padding-top:22px; }
+.key_del {padding-top:22px;}
 /*.key_enter {padding-top:18px;}
 .key_smallletter {padding-top:18px;}
 .key_capitalletterleft {padding-top:18px;}
 .key_capitalletterright {padding-top:18px;}*/
-.key_number {padding-top:26px;}
-.key_symbols {padding-top:26px;}
+.key_number {padding-top:22px;}
+.key_symbols {padding-top:22px;}
 
 .button:hover {
 border-color: rgba(82, 168, 236, 0.8);

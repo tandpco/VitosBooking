@@ -43,8 +43,13 @@
         Customer Name
         <% End If %>
       </li>
-      <li class="<%=IIf(currentTab = "order","active","")%>">Order</li>
-      <li class="<%=IIf(currentTab = "notes","active","")%>" onclick="gotoOrderNotes()">Notes</li>
+      <% If Session("CustomerID") > 1 AND Session("AddressID") > 1 Then %>
+      <li id="orderNav" class="<%=IIf(currentTab = "order","active","")%>"><a href="/ordering/unitselect.asp?t=<%=Session("OrderTypeID")%>&c=<%=Session("CustomerID")%>&a=<%=Session("AddressID")%>">Order</a></li>
+      <li id="notesNav" class="<%=IIf(currentTab = "notes","active","")%>"><a href="/custmaint/addressnotes.asp?CustomerID=<%=Session("CustomerID")%>&AddressID=<%=Session("AddressID")%>&o=<%=Session("OrderID")%>">Notes</a></li>
+      <% Else %>
+      <li id="orderNav" class="<%=IIf(currentTab = "order"," active","")%>"><a href="/ordering/unitselect.asp?t=<%=Session("OrderTypeID")%>">Order</a></li>
+      <li id="notesNav"><a href="/ordering/unitselect.asp?t=<%=Session("OrderTypeID")%>&onotes=1">Notes</a></li>
+      <% End If %>
     </ol>
   </td>
 </tr>
