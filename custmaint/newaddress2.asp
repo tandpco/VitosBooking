@@ -277,9 +277,9 @@ function cancelApt() {
 }
 
 function saveAddress() {
-	var lsLocation, loText;
-	
-	lsLocation = "<%=Session("SaveURL")%>&Action=SaveAddress&z=" + gsPostalCode + "&b=";
+	var lsLocation, loText,toPage;
+	topage = "<%=Iif(gnCustomerID <> 0, Session("SaveURL"), "addcustomer.asp?o="&gnOrderID)%>"
+	lsLocation = topage+"&action=SaveAddress&z=" + gsPostalCode + "&b=";
 <%
 If gbHalfAddress Then
 %>
@@ -319,7 +319,7 @@ If Request("c").Count > 0 And InStr(Session("SaveURL"), "&c=") = 0 Then
 <%
 End If
 %>
-	
+	// console.log(lsLocation)
 	window.location = lsLocation;
 }
 

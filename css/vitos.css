@@ -336,7 +336,7 @@ button.active {
 .toggleButton.disabled:after {
 	content:"n/a";
 }
-.showExtraNoteOnHover:hover:before {
-	content:"Toggle";
+/*.showExtraNoteOnHover:hover:before {
+	content:"Switch to";
 	display: block;
-}
+}*/

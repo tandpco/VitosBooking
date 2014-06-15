@@ -61,21 +61,33 @@ Call GetCustomerPrimaryAddressDetails(gnAddressID, gasNames, ganCustomerIDs, gas
         $("#addressList .buttonLine").each(function(){
           console.log($(this).data('phones').toString())
           if($(this).data('phones').toString().indexOf(Phone) !== -1) {
-            $(this).prependTo("#addressList").find('button').css('background-color','green')
+            $(this).prependTo("#addressList").find('button').css('background-color','#92b930')
           }
           $(this).data('text',$(this).find('.nameButton .name').text().toUpperCase())
         })
+
+        $(document).bind("keydown keypress", function(e){
+            if( e.which == 8 ){ // 8 == backspace
+              e.preventDefault();
+              jsKeyboard.del()
+            }
+        });
+        $(document).keypress(function(e){
+          e.preventDefault()
+          e.stopPropagation()
+          console.log(e.which)
+          jsKeyboard.write(e.which)
+        })
         $("#livesearch").on('change',function(){
           $("#content-wrapper").scrollTop(0)
-          var $val = $(this).val()
-          console.log('changed',$val)
+          var $val = $(this).val().toUpperCase()
           $("#addressList .buttonLine").each(function(){
-            if($(this).data('text').indexOf($val) === -1) {
-              $(this).find('.nameButton .name').html($(this).data('text'))
+            if($(this).data('text').toUpperCase().indexOf($val) === -1) {
+              $(this).find('.nameButton .name').html($(this).data('text').toUpperCase())
               $(this).hide()
             }
             else {
-              $(this).find('.nameButton .name').html($(this).data('text').replace($val, '<span class="highlight">'+$val+'</span>'))
+              $(this).find('.nameButton .name').html($(this).data('text').toUpperCase().replace($val, '<span class="highlight">'+$val+'</span>'))
               $(this).show()
             }
           })
@@ -124,7 +136,7 @@ Call GetCustomerPrimaryAddressDetails(gnAddressID, gasNames, ganCustomerIDs, gas
                           <% If UBound(ganCustomerIDs) > 3 Then %>
                           <button style="width:300px" onclick="showAll(this)">Show All</button>
                           <% End If %>
-                          <button style="width:300px" onclick="window.location='addressfind.asp?t=<%=gnOrderTypeID%>&amp;z=<%=gnAddressZip%>&amp;b=<%=Server.URLEncode(gnAddressString)%>&amp;nn=yes'">Add New Customer Name</button>
+                          <button style="width:300px" onclick="window.location='/custmaint/addcustomer.asp?a=<%=gnAddressID%>'">Add New Customer Name</button>
                         </div>
                       </div>
                     </div>

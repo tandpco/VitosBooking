@@ -26,11 +26,25 @@ function  showAllAddresses(el) {
 
 $(function(){
 
+
+        $(document).bind("keydown keypress", function(e){
+            if( e.which == 8 ){ // 8 == backspace
+              e.preventDefault();
+              jsKeyboard.del()
+            }
+        });
+        $(document).keypress(function(e){
+          e.preventDefault()
+          e.stopPropagation()
+          console.log(e.which)
+          jsKeyboard.write(e.which)
+        })
+
     $("#addressList button").each(function(){
       $(this).data('text',$(this).text())
     })
   $("#livesearch").on('change',function(){
-    var $val = $(this).val()
+    var $val = $(this).val().toUpperCase()
     if($val) {
       document.getElementById("addressList").className = 'showAll'
       $("#toggleAddresssButtons").hide();
@@ -43,12 +57,12 @@ $(function(){
     }
     console.log('changed',$val)
     $("#addressList button").each(function(){
-      if($(this).data('text').indexOf($val) === -1) {
+      if($(this).data('text').toUpperCase().indexOf($val) === -1) {
         $(this).html($(this).data('text'))
         $(this).addClass('hidden')
       }
       else {
-        $(this).html($(this).data('text').replace($val, '<span class="highlight">'+$val+'</span>'))
+        $(this).html($(this).data('text').toUpperCase().replace($val.toUpperCase(), '<span class="highlight">'+$val+'</span>'))
         $(this).removeClass('hidden')
       }
     })

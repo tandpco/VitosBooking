@@ -372,7 +372,7 @@ Function GetCustomerPrimaryAddressDetails(ByVal pnPrimaryAddressID, ByRef pasNam
 				If IsNull(loRS("FirstName")) Then
 					pasNames(lnPos) = "Unknown"
 				Else
-					pasNames(lnPos) = Trim(loRS("FirstName"))
+					pasNames(lnPos) = Trim(loRS("FirstName") & " " & loRS("LastName"))
 				End If
 
 				pasEMails(lnPos) = Trim(loRS("EMail"))

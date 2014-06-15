@@ -1,9 +1,16 @@
 <script type="text/javascript">
+  function toggleDeliveryTypeHover(el,off) {
+    console.log('test',el.innerHTML)
+    var $s = window.location.search;
+    if($s.indexOf('t=1') !== -1) {
+      el.innerHTML = off && 'Delivery' || 'Switch to Pickup'
+    }
+
+    else if($s.indexOf('t=2') !== -1) {
+      el.innerHTML = off && 'Pickup' || 'Switch to Delivery'
+    }
+  }
   function changeDeliveryType(el) {
-    if(el.className != 'showExtraNoteOnHover')
-      return;
-    if(!confirm('Would you like to toggle pickup/delivery?'))
-      return;
     var $s = window.location.search;
     if($s.indexOf('t=1') !== -1) {
       $s = $s.replace('t=1','t=2')
@@ -11,6 +18,8 @@
 
     else if($s.indexOf('t=2') !== -1) {
       $s = $s.replace('t=2','t=1')
+    } else {
+      return
     }
     window.location = window.location.pathname+$s
   }
@@ -25,7 +34,7 @@
       <span id="ClockTime" onclick="clockToggleSeconds()"><%=clockTimeString(Hour(gDate), Minute(gDate), Second(gDate))%></span></div>
     </div>
     <ol id="tabs">
-      <li class="<%=IIf(currentTab = "start","active","")%>"><a onclick="changeDeliveryType(this);" title="Delivery" class="<%=IIf(Session("OrderTypeID") = 2 or Session("OrderTypeID") = 1,"showExtraNoteOnHover","")%>"><%= Iif(Session("OrderTypeID") = 2,"Pickup", Iif(Session("OrderTypeID") = 3,"Dine-In", Iif(Session("OrderTypeID") = 4,"Walk-In", Iif(Session("OrderTypeID") = 1,"Delivery", "Quick Ticket"))))%></a></li>
+      <li class="<%=IIf(currentTab = "start","active","")%>"><a onclick="changeDeliveryType(this);" title="Delivery" onmouseover="toggleDeliveryTypeHover(this)" onmouseout="toggleDeliveryTypeHover(this,true)"><%= Iif(Session("OrderTypeID") = 2,"Pickup", Iif(Session("OrderTypeID") = 3,"Dine-In", Iif(Session("OrderTypeID") = 4,"Walk-In", Iif(Session("OrderTypeID") = 1,"Delivery", "Quick Ticket"))))%></a></li>
       <li class="<%=IIf(Session("CustomerPhone") <> "" and currentTab <> "phone","","disabled")%> <%=IIf(currentTab = "phone","active","")%>"><a onclick="if(confirm('Are you sure? You will lose any data you have entered so far.')) window.location = '/ordering/neworder.asp'" title="Phone">Phone</a></li>
 
       <li class="<%=IIf(Session("AddressID") <= 1 and currentTab <> "address","disabled","")%>  <%=IIf(currentTab = "address"," active","")%>">
@@ -48,7 +57,7 @@
       <li id="notesNav" class="<%=IIf(currentTab = "notes","active","")%>"><a href="/custmaint/addressnotes.asp?CustomerID=<%=Session("CustomerID")%>&AddressID=<%=Session("AddressID")%>&o=<%=Session("OrderID")%>">Notes</a></li>
       <% Else %>
       <li id="orderNav" class="<%=IIf(currentTab = "order"," active","")%>"><a href="/ordering/unitselect.asp?t=<%=Session("OrderTypeID")%>">Order</a></li>
-      <li id="notesNav"><a href="/ordering/unitselect.asp?t=<%=Session("OrderTypeID")%>&onotes=1">Notes</a></li>
+      <li id="notesNav" class="disabled">Notes</li>
       <% End If %>
     </ol>
   </td>
