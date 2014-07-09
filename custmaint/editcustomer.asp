@@ -22,13 +22,13 @@ Else
 	Response.Redirect("../ticket.asp?OrderID=" & Request("o"))
 End If
 
-If Request("a").Count > 0 Then
-	If Not IsNumeric(Request("a")) Then
-		Response.Redirect("../ticket.asp?OrderID=" & Request("o"))
-	End If
-Else
-	Response.Redirect("../ticket.asp?OrderID=" & Request("o"))
-End If
+'If Request("a").Count > 0 Then
+'	If Not IsNumeric(Request("a")) Then
+'		Response.Redirect("../ticket.asp?OrderID=" & Request("o"))
+'	End If
+'Else
+'	Response.Redirect("../ticket.asp?OrderID=" & Request("o"))
+'End If
 
 If Request("action") = "SaveAddress" Then
 	If Request("b").Count = 0 Then
@@ -109,10 +109,10 @@ If Request("action") = "savecustomer" Then
 		gnCustomerID = AddCustomer(gsEMail, "", gsFirstName, gsLastName, gdtBirthdate, 1, gsHomePhone, gsCellPhone, gsWorkPhone, gsFAXPhone, gbIsEMailList, gbIsTextList)
 		
 		If gnCustomerID = 0 Then
-			Response.Redirect("/error.asp?err=" & Server.URLEncode(gsDBErrorMessage))
+			Response.Redirect("/error.asp?nocustomer&err=" & Server.URLEncode(gsDBErrorMessage))
 		Else
 			If Not SetOrderCustomerID(gnOrderID, gnCustomerID) Then
-				Response.Redirect("/error.asp?err=" & Server.URLEncode(gsDBErrorMessage))
+				Response.Redirect("/error.asp?notsetorder&err=" & Server.URLEncode(gsDBErrorMessage))
 			End If
 		End If
 	Else
@@ -234,11 +234,11 @@ Else
 End If
 
 If Not GetAddressDetails(gnAddressID, gnOrderStoreID, gsOrderAddress1, gsOrderAddress2, gsOrderCity, gsOrderState, gsOrderPostalCode, gsOrderAddressNotes) Then
-	Response.Redirect("/error.asp?err=" & Server.URLEncode(gsDBErrorMessage))
+	'Response.Redirect("/error.asp?err=" & Server.URLEncode(gsDBErrorMessage))
 End If
 
 If Not GetCustomerAddresses(gnCustomerID, ganAddressIDs, gasAddresses) Then
-	Response.Redirect("/error.asp?err=" & Server.URLEncode(gsDBErrorMessage))
+	'Response.Redirect("/error.asp?err=" & Server.URLEncode(gsDBErrorMessage))
 End If
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

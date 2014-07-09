@@ -56,6 +56,7 @@ Session("PostalCode") = ""
 Session("AddressNotes") = ""
 Session("AddressDescription") = ""
 Session("CustomerNotes") = ""
+Session("CustomerAddressNotes") = ""
 Session("OrderEdited") = FALSE
 Session("NewOrder") = FALSE
 Session("OrderLineCount") = 0

@@ -751,8 +751,13 @@ function goNext() {
 		if (loPhone.value.replace(/[^\d.]/g,'').length != 7)
 			return false;
 		lsValue = loAreaCode.value + loPhone.value.replace(/[^\d.]/g,'')
-		
-		lsLocation = "customerfind.asp?t=" + gnOrderType.toString() + "&p=" + lsValue + "&r=3"+(loExt.value.length > 0 && '&x=' +loExt.value || '');
+		if(gnOrderType == 2) {
+
+			lsLocation = "customerselect.asp?t=" + gnOrderType.toString() + "&a=0&p=" + lsValue + "&r=3"+(loExt.value.length > 0 && '&x=' +loExt.value || '');
+		} else {
+
+			lsLocation = "customerfind.asp?t=" + gnOrderType.toString() + "&p=" + lsValue + "&r=3"+(loExt.value.length > 0 && '&x=' +loExt.value || '');
+		}
 	}
 	else {
 		loName = ie4? eval("document.all.name") : document.getElementById('name');
@@ -794,7 +799,13 @@ function goCallerID(psPhone) {
 			getPhone();
 		} else {
 			lsLocation = "customerfind.asp?t=" + gnOrderType.toString() + "&p=" + psPhone + "&r=3";
-			
+			if(gnOrderType == 2) {
+
+				lsLocation = "customerselect.asp?t=" + gnOrderType.toString() + "&a=0&p=" + psPhone + "&r=3"
+			} else {
+
+				lsLocation = "customerfind.asp?t=" + gnOrderType.toString() + "&p=" + psPhone + "&r=3"
+			}
 			window.location = lsLocation;
 		}
 	}

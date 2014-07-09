@@ -336,6 +336,14 @@ button.active {
 .toggleButton.disabled:after {
 	content:"n/a";
 }
+button.disabled {
+	background-color:  gray;
+	border-style: inset;
+}
+button.active {
+	border-style: inset;
+	
+}
 /*.showExtraNoteOnHover:hover:before {
 	content:"Switch to";
 	display: block;

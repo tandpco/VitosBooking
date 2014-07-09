@@ -10,20 +10,33 @@ End If
 %>
 <!-- #Include Virtual="include2/globals.asp" --> <!-- #Include Virtual="include2/math.asp" --> <!-- #Include Virtual="include2/db-connect.asp" --> <!-- #Include Virtual="include2/customer.asp" --> <!-- #Include Virtual="include2/employee.asp" -->
 <%
-Dim gnOrderTypeID,  gsPhone,      ganCustomerIDs(), gasNames(),   i,                gnCustomerID, gnAddressID
+Dim gnOrderTypeID,  gsPhone,      ganCustomerIDs(), gasNames(),   i,                gnCustomerID, gnAddressID,gnPrimaryAddressIds(),gnAddressIDs(),gnStoreIds(),gnAddresses(),rowCount
 Dim gasEMails(),    extensions(), gasPhones(),      gnAddressZip, gnAddressString,  currentTab
 
 currentTab              = "customer-name"
 gnOrderTypeID           = CLng(Request("t"))
-gsPhone                 = Session("CustomerPhone")
-gnAddressID             = Request("a")
+If(Request("p").Count <> 0) Then
+  gsPhone = Request("p")
+  Session("CustomerPhone") = gsPhone
+Else
+  gsPhone                 = Session("CustomerPhone")
+End If
+gnAddressID             = Iif(Request("a") <> "",Clng(Request("a")),0)
+rowCount = "1000"
 Session("AddressID")    = gnAddressID
 Session("OrderTypeID")  = gnOrderTypeID
 Session("ReturnURL")    = "/ordering/customerfind.asp?t=" & gnOrderTypeID & "&p=" & gsPhone
 Session("SaveURL")      = "/ordering/addressfind.asp?t=" & gnOrderTypeID & "&p=" & gsPhone
 
-Call GetAddressDetails2(gnAddressID, gnAddressString, gnAddressZip)
-Call GetCustomerPrimaryAddressDetails(gnAddressID, gasNames, ganCustomerIDs, gasEMails,extensions,gasPhones)
+'Call GetAddressDetails2(gnAddressID, gnAddressString, gnAddressZip)
+'Call GetCustomerPrimaryAddressDetails(gnAddressID, gasNames, ganCustomerIDs, gasEMails,extensions,gasPhones)
+If gnAddressID <> 0 Then
+  Call GetCustomerPrimaryAddressDetails(gnAddressID, gasNames, ganCustomerIDs, gasEMails,extensions,gasPhones)
+Else
+  Call GetCustomersByPhone(gsPhone, ganCustomerIDs, gnPrimaryAddressIds, gnAddressIDs,gnStoreIds, gnAddresses, gasNames, rowCount,gasEMails,extensions,gasPhones)  
+
+End If
+
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -122,12 +135,12 @@ Call GetCustomerPrimaryAddressDetails(gnAddressID, gasNames, ganCustomerIDs, gas
                           <% If ganCustomerIDs(0) <> 0 Then
                             For i = 0 to UBound(ganCustomerIDs) %>
                             <div class="buttonLine" style="<%=IIf(extensions(i) <> "" and Session("Extension") <> "" and extensions(i) <> Session("Extension"),"opacity:0.5","") %>" data-phones="<%=gasPhones(i)%>">
-                              <button style="width: 730px; text-align:left;"  onclick="window.location='unitselect.asp?t=<%=gnOrderTypeID%>&amp;c=<%=ganCustomerIDs(i)%>&amp;a=<%=gnAddressID%>'" class="nameButton">
+                              <button style="width: 730px; text-align:left;"  onclick="window.location='unitselect.asp?t=<%=gnOrderTypeID%>&amp;c=<%=ganCustomerIDs(i)%><%=Iif(gnAddressID <> 0,"&amp;a="&gnAddressID,"")%>'" class="nameButton">
                                 <span class="name"><%=gasNames(i)%></span>
                                 <%=IIf(extensions(i) <> ""," (ext. / bld. "+extensions(i)+")","") %>
                                 <span style="float:right;display:inline-block;margin-right:10px;font-size:14px"><%=IIf(gasEmails(i) <> "",gasEmails(i),"No Email Yet") %></span>
                               </button>
-                              <button style="width: 20px;" onclick="window.location='../custmaint/editcustomer.asp?c=<%=ganCustomerIDs(i)%>&amp;a=<%=gnAddressID%>&amp;o=0&amp;afterEdit=<%=Server.URLEncode(Request.ServerVariables("SCRIPT_NAME")& "?" & Request.QueryString)%>'" >Edit</button>
+                              <button style="width: 20px;" onclick="window.location='../custmaint/editcustomer.asp?c=<%=ganCustomerIDs(i)%>&amp;o=0&amp;afterEdit=<%=Server.URLEncode(Request.ServerVariables("SCRIPT_NAME")& "?" & Request.QueryString)%>'" >Edit</button>
                             </div>
                           <% Next
                           End If %>

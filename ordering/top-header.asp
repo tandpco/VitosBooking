@@ -45,8 +45,8 @@
         <% End If %>
       </li>
 
-      <li class="<%=IIf(Session("AddressID") <= 1,"disabled","")%> <%=IIf(currentTab = "customer-name","active","")%>">
-        <% If Session("AddressID") > 1 Then %>
+      <li class="<%=IIf(Session("CustomerID") <= 1 and currentTab <> "customer-name","disabled","")%> <%=IIf(currentTab = "customer-name"," active","")%>">
+        <% If Session("CustomerID") > 1 Then %>
           <a href="/ordering/customerselect.asp?t=<%=Session("OrderTypeID")%>&amp;a=<%=Session("AddressID")%>">Customer Name</a>
         <% Else %>
         Customer Name
@@ -54,11 +54,10 @@
       </li>
       <% If Session("CustomerID") > 1 AND Session("AddressID") > 1 Then %>
       <li id="orderNav" class="<%=IIf(currentTab = "order","active","")%>"><a href="/ordering/unitselect.asp?t=<%=Session("OrderTypeID")%>&c=<%=Session("CustomerID")%>&a=<%=Session("AddressID")%>">Order</a></li>
-      <li id="notesNav" class="<%=IIf(currentTab = "notes","active","")%>"><a href="/custmaint/addressnotes.asp?CustomerID=<%=Session("CustomerID")%>&AddressID=<%=Session("AddressID")%>&o=<%=Session("OrderID")%>">Notes</a></li>
       <% Else %>
       <li id="orderNav" class="<%=IIf(currentTab = "order"," active","")%>"><a href="/ordering/unitselect.asp?t=<%=Session("OrderTypeID")%>">Order</a></li>
-      <li id="notesNav" class="disabled">Notes</li>
       <% End If %>
+      <li id="notesNav" class="<%=IIf(currentTab = "notes","active","")%>"><a href="/custmaint/notes.asp">Notes</a></li>
     </ol>
   </td>
 </tr>

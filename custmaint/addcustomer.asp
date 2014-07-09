@@ -68,11 +68,17 @@ If Request("action") = "savecustomer" Then
   gbIsTextList  = Iif(Request("saveistextlist") = "yes",  TRUE,FALSE)
   gbNoChecks    = Iif(Request("savenochecks") = "yes",    TRUE,FALSE)
   gnCustomerID  = AddCustomer(gsEMail, "", gsFirstName, gsLastName, gdtBirthdate, 1, gsHomePhone, gsCellPhone, gsWorkPhone, gsFAXPhone, gbIsEMailList, gbIsTextList) 'gsExtension / noChecks
-  call AddCustomerAddress(gnCustomerID, gnAddressID, "Primary Address")
+  If gnAddressID <> 0 Then
+    call AddCustomerAddress(gnCustomerID, gnAddressID, "Primary Address")
+  End If
   If Session("optRedirect") <> "" Then
     'Response.Redirect(Session("optRedirect"))
   Else
-    Response.Redirect("/ordering/unitselect.asp?t="&gnOrderTypeID&"&c="&gnCustomerID&"&a="&gnAddressID)
+    If gnAddressID <> 0 Then
+      Response.Redirect("/ordering/unitselect.asp?t="&gnOrderTypeID&"&c="&gnCustomerID&"&a="&gnAddressID)
+    Else
+      Response.Redirect("/ordering/unitselect.asp?t="&gnOrderTypeID&"&c="&gnCustomerID)
+    End If
   End If
 Else
   Session("optRedirect") = Iif(optRedirect <> "", optRedirect, "")

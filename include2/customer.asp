@@ -32,13 +32,14 @@
 '				pasNames - Array of names found
 ' Return: True if sucessful, False if not
 ' **************************************************************************
-Function GetCustomersByPhone(ByVal pnPhone, ByRef panCustomerIDs, ByRef panPrimaryAddressIDs, ByRef panAddressIDs, ByRef panStoreIDs, ByRef pasAddresses, ByRef pasNames, ByRef rowCount)
+Function GetCustomersByPhone(ByVal pnPhone, ByRef panCustomerIDs, ByRef panPrimaryAddressIDs, ByRef panAddressIDs, ByRef panStoreIDs, ByRef pasAddresses, ByRef pasNames, ByRef rowCount, ByRef pasEmails, ByRef extensions,ByRef pasPhones)
 	Dim lbRet, lsSQL, loRS, lnPos
 
 	lbRet = FALSE
 
 '	lsSQL = "SELECT tblCustomers.CustomerID, PrimaryAddressID, tblAddresses.AddressID, StoreID, AddressLine1, AddressLine2, FirstName, LastName from tblCustomers left outer join trelCustomerAddresses on tblCustomers.CustomerID = trelCustomerAddresses.CustomerID left outer join tblAddresses on trelCustomerAddresses.AddressID = tblAddresses.AddressID where HomePhone = '" & pnPhone & "' or CellPhone = '" & pnPhone & "' or WorkPhone = '" & pnPhone & "' or FAXPhone = '" & pnPhone & "' order by tblCustomers.CustomerID, tblAddresses.AddressID"
-    lsSQL = "SELECT TOP " + rowCount + " tblCustomers.CustomerID,PrimaryAddressID,tblAddresses.AddressID,tOrders.StoreID,AddressLine1,AddressLine2,FirstName,LastName FROM tblCustomers OUTER APPLY (SELECT TOP 1 * FROM tblOrders WHERE (tblOrders.CustomerID = tblCustomers.CustomerID) ORDER BY tblOrders.TransactionDate) tOrders LEFT OUTER JOIN trelCustomerAddresses ON tOrders.CustomerID = trelCustomerAddresses.CustomerID LEFT OUTER JOIN tblAddresses on trelCustomerAddresses.AddressID = tblAddresses.AddressID WHERE HomePhone = '" & pnPhone & "' or CellPhone = '" & pnPhone & "' or WorkPhone = '" & pnPhone & "' or FAXPhone = '" & pnPhone & "' ORDER BY tOrders.TransactionDate DESC"
+' LEFT OUTER JOIN trelCustomerAddresses ON tOrders.CustomerID = trelCustomerAddresses.CustomerID LEFT OUTER JOIN tblAddresses on trelCustomerAddresses.AddressID = tblAddresses.AddressID 
+    lsSQL = "SELECT TOP " + rowCount + " tblCustomers.CustomerID,PrimaryAddressID,tOrders.StoreID,FirstName,LastName,Email FROM tblCustomers OUTER APPLY (SELECT TOP 1 * FROM tblOrders WHERE (tblOrders.CustomerID = tblCustomers.CustomerID) ORDER BY tblOrders.TransactionDate) tOrders WHERE HomePhone = '" & pnPhone & "' or CellPhone = '" & pnPhone & "' or WorkPhone = '" & pnPhone & "' or FAXPhone = '" & pnPhone & "' ORDER BY tOrders.TransactionDate DESC"
 	If DBOpenQuery(lsSQL, FALSE, loRS) Then
 		lbRet = TRUE
 
@@ -46,25 +47,31 @@ Function GetCustomersByPhone(ByVal pnPhone, ByRef panCustomerIDs, ByRef panPrima
 			lnPos = 0
 
 			Do While Not loRS.eof
-				ReDim Preserve panCustomerIDs(lnPos), panPrimaryAddressIDs(lnPos), panAddressIDs(lnPos), panStoreIDs(lnPos), pasAddresses(lnPos), pasNames(lnPos)
-
+				ReDim Preserve panCustomerIDs(lnPos), panPrimaryAddressIDs(lnPos), panAddressIDs(lnPos), panStoreIDs(lnPos), pasAddresses(lnPos), pasNames(lnPos),pasEmails(lnPos),extensions(lnPos),pasPhones(lnPos)
+				'Response.Write()
 				panCustomerIDs(lnPos) = loRS("CustomerID")
+				pasEmails(lnPos) = loRS("Email")
+				pasPhones(lnPos) = ""
+				extensions(lnPos) = ""
 				panPrimaryAddressIDs(lnPos) = loRS("PrimaryAddressID")
-				If IsNull(loRS("AddressID")) Then
-					panAddressIDs(lnPos) = 0
-				Else
-					panAddressIDs(lnPos) = loRS("AddressID")
-					panStoreIDs(lnPos) = loRS("StoreID")
-					If IsNull(loRS("AddressLine2")) Then
-						pasAddresses(lnPos) = Trim(loRS("AddressLine1"))
-					Else
-						If Len(loRS("AddressLine2")) = 0 Then
-							pasAddresses(lnPos) = Trim(loRS("AddressLine1"))
-						Else
-							pasAddresses(lnPos) = Trim(loRS("AddressLine1")) & " #" & Trim(loRS("AddressLine2"))
-						End If
-					End If
-				End If
+				panAddressIDs(lnPos) = 0
+				pasAddresses(lnPos) = ""
+				'If IsNull(loRS("AddressID")) Then
+				'	panAddressIDs(lnPos) = 0
+				'Else
+				'	'panAddressIDs(lnPos) = loRS("AddressID")
+				'	panAddressIDs(lnPos) = 0
+				'	panStoreIDs(lnPos) = loRS("StoreID")
+				'	If IsNull(loRS("AddressLine2")) Then
+				'		pasAddresses(lnPos) = Trim(loRS("AddressLine1"))
+				'	Else
+				'		If Len(loRS("AddressLine2")) = 0 Then
+				'			pasAddresses(lnPos) = Trim(loRS("AddressLine1"))
+				'		Else
+				'			pasAddresses(lnPos) = Trim(loRS("AddressLine1")) & " #" & Trim(loRS("AddressLine2"))
+				'		End If
+				'	End If
+				'End If
 				If IsNull(loRS("FirstName")) Then
 					pasNames(lnPos) = ""
 				Else
@@ -83,13 +90,16 @@ Function GetCustomersByPhone(ByVal pnPhone, ByRef panCustomerIDs, ByRef panPrima
 				loRS.MoveNext
 			Loop
 		Else
-			ReDim panCustomerIDs(0), panPrimaryAddressIDs(0), panAddressIDs(0), panStoreIDs(0), pasAddresses(0), pasNames(0)
+			ReDim panCustomerIDs(0), panPrimaryAddressIDs(0), panAddressIDs(0), panStoreIDs(0), pasAddresses(0), pasNames(0),pasEmails(0),extensions(0),pasPhones(0)
 			panCustomerIDs(0) = 0
 			panPrimaryAddressIDs(0) = 0
 			panAddressIDs(0) = 0
 			panStoreIDs(0) = 0
 			pasAddresses(0) = ""
 			pasNames(0) = ""
+			pasEmails(0) = ""
+			pasPhones(0) = ""
+			extensions(0) = ""
 		End If
 
 		DBCloseQuery loRS
