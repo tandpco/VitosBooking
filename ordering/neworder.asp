@@ -830,12 +830,12 @@ function showExtension() {
 	if(loExtensionDiv.style.visibility == "hidden") {
 		loExtensionDiv.style.visibility = "visible";
 		loExtensionLbl.style.visibility = "visible";
-		loExtensionBtn.textContent = "Clear Ext. / Dept.";
+		loExtensionBtn.textContent = "Clear Extension";
 		gbFocusExtension = true;
 	} else {
 		loExtensionDiv.style.visibility = "hidden";
 		loExtensionLbl.style.visibility = "hidden";
-		loExtensionBtn.textContent = "Add Ext. / Dept.";
+		loExtensionBtn.textContent = "Add Extension";
 		gbFocusExtension = false;
 	}
     loExtension = ie4? eval("document.all.txtExtension") : document.getElementById('txtExtension');
@@ -1250,7 +1250,7 @@ End If
 													<input type="text" id="txtExtension" autocomplete="off" onkeydown="disableEnterKey();" onfocus="setFocusAreaCode(false);" style="width: 200px; text-align: center;" /></div></td>
 											</tr>
                                             <tr>
-                                                <td colspan="3"><button style="width: 235px;" id="btnExtension" onclick="showExtension()">Add Ext. / Dept.</button></td>
+                                                <td colspan="3"><button style="width: 235px;" id="btnExtension" onclick="showExtension()">Add Extension</button></td>
                                             </tr>
                                         </table>
                                     </td>

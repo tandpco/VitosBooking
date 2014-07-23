@@ -134,6 +134,11 @@ Else
 	Session("TransactionDate") = Right("0" & CStr(Month(RSDateCheck("ReportDate"))), 2) & "/" & Right("0" & CStr(Day(RSDateCheck("ReportDate"))), 2) & "/" & CStr(Year(RSDateCheck("ReportDate")))
 	
 	If GetStoreOpenCloseTime(Session("StoreID"), Weekday(DateValue(Session("TransactionDate"))), gnOpenTime, gnCloseTime) Then
+
+    'Response.Write(gnOpenTime)
+    'Response.Write("---")
+    'Response.Write(gnCloseTime)
+    'Response.Write("---")
 		If gnCloseTime = 2400 Then
 			gsCloseTime = DateAdd("d", 1, DateValue(Session("TransactionDate"))) & " 12:00 AM"
 		Else
@@ -161,7 +166,15 @@ Else
 		End If
 		
 		If Now >= DateAdd("h", gnCloseOutThreshold, CDate(gsCloseTime)) Then
-			Response.Redirect("closepastdue.asp")
+      'Response.Write(Session("StoreID"))
+      'Response.Write("---")
+      'Response.Write(gsCloseTime)
+      'Response.Write("---")
+      'Response.Write(Weekday(DateValue(Session("TransactionDate"))))
+      'Response.Write("---")
+      'Response.Write(DateAdd("h", gnCloseOutThreshold, CDate(gsCloseTime)))
+      'Response.End
+			'Response.Redirect("closepastdue.asp")
 		End If
 	End If
 End If

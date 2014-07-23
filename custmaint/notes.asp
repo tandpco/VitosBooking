@@ -152,7 +152,7 @@ $(function(){
 					<div id="content-wrapper" style="top:10px">
 					<button style="width: 300px;margin-left:50px" class="active buttons addressNotes" onclick="addressNotes()">Address Notes</button>
 					<button style="width: 300px;" class="buttons customerNotes" onclick="customerNotes()">Customer Notes</button>
-					<button style="width: 300px;" class="buttons orderNotes" onclick="orderNotes()">Order Notes</button>
+					<button style="width: 300px;" class="buttons orderNotes" onclick="orderNotes()">One Time Notes</button>
 					<form style="display:none" action="notes.asp?action=savenotes" id="formNotes" method="post">
 						<input type="hidden" name="addressnotes" id="SaveAddressNotes">
 						<input type="hidden" name="customeraddressnotes" id="SaveCustomerAddressNotes">
@@ -197,7 +197,7 @@ $(function(){
 									<td colspan="3">
 										<table align="center" cellpadding="0" cellspacing="0">
 											<tr>
-												<td><strong>Order Notes:</strong><br/>
+												<td><strong>One Time Notes:</strong><br/>
 												<textarea id="orderNotesField" name="ordernotes" style="width: 900px; height: 60px;" onfocus="setCurrentField('orderNotesField');"><%=Server.HTMLEncode(gsOrderNotes)%></textarea></td>
 											</tr>
 										</table>

@@ -112,7 +112,8 @@ Function GetAddressesByPhone(ByVal pnPhone, ByVal rowCount, ByRef panAddressIDs,
 	Dim lbRet, lsSQL, loRS, lnPos
 
 	lbRet = FALSE
-  lsSQL = "SELECT TOP " + rowCount + " tblAddresses.AddressID,MAX(tblAddresses.StoreID) as StoreID,MAX(AddressLine1) as AddressLine1,MAX(AddressLine2) as AddressLine2		  FROM tblCustomers		  OUTER APPLY (SELECT TOP 1 * FROM tblOrders WHERE (tblOrders.CustomerID = tblCustomers.CustomerID) ORDER BY tblOrders.TransactionDate) tOrders 		  LEFT OUTER JOIN trelCustomerAddresses ON tOrders.CustomerID = trelCustomerAddresses.CustomerID 		  LEFT OUTER JOIN tblAddresses on trelCustomerAddresses.AddressID = tblAddresses.AddressID 		  WHERE HomePhone = '" & pnPhone & "' or CellPhone = '" & pnPhone & "' or WorkPhone = '" & pnPhone & "' or FAXPhone = '" & pnPhone & "' 		  GROUP BY tblAddresses.AddressID		  ORDER BY MAX(tOrders.TransactionDate) DESC"
+  lsSQL = "SELECT TOP " + rowCount + " tblAddresses.AddressID,MAX(tblAddresses.StoreID) as StoreID,MAX(AddressLine1) as AddressLine1,MAX(AddressLine2) as AddressLine2		  FROM tblCustomers		  OUTER APPLY (SELECT TOP 1 * FROM tblOrders WHERE (tblOrders.CustomerID = tblCustomers.CustomerID) ORDER BY tblOrders.TransactionDate) tOrders 		  LEFT OUTER JOIN trelCustomerAddresses ON tOrders.CustomerID = trelCustomerAddresses.CustomerID 		  LEFT OUTER JOIN tblAddresses on trelCustomerAddresses.AddressID = tblAddresses.AddressID 		  WHERE tblAddresses.AddressID IS NOT NULL and (HomePhone = '" & pnPhone & "' or CellPhone = '" & pnPhone & "' or WorkPhone = '" & pnPhone & "' or FAXPhone = '" & pnPhone & "' )		  GROUP BY tblAddresses.AddressID		  ORDER BY MAX(tOrders.TransactionDate) DESC"
+  'Response.write(lsSQL)
 
 	If DBOpenQuery(lsSQL, FALSE, loRS) Then
 		lbRet = TRUE
